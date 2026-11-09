@@ -1,0 +1,343 @@
+"""The closed relationship vocabulary the enrichment layer may write, and its constraints.
+
+Two vocabularies meet here and they are not the same thing.
+
+**Textual predicates** say something about how two stretches of Sanskrit relate:
+``EXACT_PARALLEL_OF``, ``NEAR_PARALLEL_OF``, ``VARIANT_OF``, ``REUSES_TEXT_FROM``,
+``SHARES_FORMULA_WITH``. They are decided by string comparison and are as reproducible as
+the comparison is. Distinguishing them matters: a verse the Samaveda takes from the
+Rigveda unchanged, a verse it takes with one word altered, and a verse that merely shares a
+formula with it are three different facts about textual transmission, and a reader who
+gets all three back as ``PARALLEL_TO`` has been told nothing.
+
+**Semantic predicates** say something about what a passage means. Those are not invented
+here. :mod:`vedagraph.semantic.ontology` already froze a 14-predicate whitelist for the
+Rigveda semantic pilot, with a written definition, an interpretation-risk grade and a
+subject/object signature for each, plus five predicates *refused by name* with recorded
+reasons. This module imports that vocabulary rather than restating it, for two reasons:
+a second list would drift from the first, and the refusals are the more valuable half.
+
+That import has a consequence worth stating plainly. The enrichment brief lists ``CAUSES``
+and ``IDENTIFIES_WITH`` among its candidate predicates. ``CAUSES`` is already refused by
+name in the frozen ontology -- "causal claims in a mythological narrative are not the same
+as causal claims about the world, and an edge cannot carry the difference" -- and
+``IDENTIFIES_WITH`` is the same claim as the refused ``REPRESENTS``. Neither is emitted.
+:data:`BRIEF_PREDICATE_MAPPING` records where every predicate the brief named ended up, so
+the omissions are decisions with reasons rather than gaps.
+
+Nothing in this module modifies the frozen ontology. It reads it.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from enum import StrEnum
+from typing import Final
+
+from vedagraph.semantic.ontology import (
+    ALLOWED_PREDICATES,
+    FORBIDDEN_PREDICATES,
+    SemanticPredicate,
+)
+
+
+class NodeKind(StrEnum):
+    """Node families an enrichment edge may attach to.
+
+    Deliberately coarser than the Neo4j labels: domain and range constraints are about
+    what kind of thing an edge connects, and ``Mantra`` is a ``Passage`` for that purpose.
+    """
+
+    PASSAGE = "Passage"
+    FORMULA = "Formula"
+    CONCEPT = "Concept"
+    DEVATA = "Devata"
+    RISHI = "Rishi"
+    CHANDAS = "Chandas"
+    LEMMA = "Lemma"
+    #: Internal. ``QA_ISSUE_ON`` is declared by this layer and attaches this repository's
+    #: findings about itself to the work they are about, so its endpoints need naming here
+    #: too: the vocabulary being too narrow to express an internal predicate is not a reason
+    #: for that predicate to go unconstrained.
+    QA_ISSUE = "QAIssue"
+    WORK = "Work"
+
+
+class TextualPredicate(StrEnum):
+    """How two stretches of Sanskrit relate. Decided by comparison, never by reading."""
+
+    #: The two verses are identical on the strongest surface their scripts allow. Between
+    #: same-script corpora that means identical text; across scripts it means identical
+    #: after transliteration and folding, and the edge records which.
+    EXACT_PARALLEL_OF = "EXACT_PARALLEL_OF"
+    #: Substantially the same verse with differences beyond notation -- a changed word, a
+    #: reordered pada, a different ending.
+    NEAR_PARALLEL_OF = "NEAR_PARALLEL_OF"
+    #: The same verse differing only in how the two editions write it: accent notation,
+    #: word division, orthography. A transmission fact about the editions, not the text.
+    VARIANT_OF = "VARIANT_OF"
+    #: Directed. One Veda takes a verse from another, asserted only where the corpus's own
+    #: structure establishes the direction. See :func:`reuse_direction`.
+    REUSES_TEXT_FROM = "REUSES_TEXT_FROM"
+    #: Two passages share at least one Formula.
+    #:
+    #: **Declared and deliberately not materialised in v1: zero edges are written.** The
+    #: Formula hub already carries this relation losslessly -- ``(a)-[:USES_FORMULA]->(f)
+    #: <-[:USES_FORMULA]-(b)`` is the same fact in two hops -- and materialising it would
+    #: undo the reason the hub exists: the largest formula spans 93 passages, so that one
+    #: node alone would emit 4,278 edges, and the layer as a whole would add 87,296 where it
+    #: currently adds 27,511. The name is kept in the vocabulary so a consumer can see the
+    #: relation is modelled and how to traverse it, rather than concluding it was forgotten.
+    SHARES_FORMULA_WITH = "SHARES_FORMULA_WITH"
+
+
+class StructuralPredicate(StrEnum):
+    """Edges that attach a passage or concept to a hub node."""
+
+    #: Passage to Formula. The hub that replaces combinatorial passage-to-passage edges.
+    USES_FORMULA = "USES_FORMULA"
+    #: Passage to Concept. Carries evidence, confidence and trust like everything else.
+    ABOUT_CONCEPT = "ABOUT_CONCEPT"
+    #: Concept to Concept, and only where the narrower term is genuinely a kind of the
+    #: broader one. Not a synonym link and not a topical association.
+    BROADER_THAN = "BROADER_THAN"
+    #: Concept to its Sanskrit or English surface forms.
+    HAS_ALIAS = "HAS_ALIAS"
+    #: Devata to Concept. The one edge that connects the two ontologies, and the reason
+    #: they can stay separate: Agni-the-deity is *associated with* fire-the-concept, and
+    #: is not the same node as it.
+    DEVATA_ASSOCIATED_WITH = "DEVATA_ASSOCIATED_WITH"
+    #: Work to its own QA findings, so a corpus caveat is visible in the graph.
+    QA_ISSUE_ON = "QA_ISSUE_ON"
+
+
+#: Semantic predicates this layer may write. Exactly the frozen whitelist -- not a subset
+#: chosen here, because choosing a subset is an ontology decision and this layer does not
+#: get to make one.
+SEMANTIC_PREDICATES: Final[frozenset[SemanticPredicate]] = ALLOWED_PREDICATES
+
+#: The complete set of relationship type names the enrichment layer may create. Validation
+#: rejects anything outside it; there is no path by which a stage invents a name.
+CONTROLLED_PREDICATES: Final[frozenset[str]] = (
+    frozenset(str(p) for p in TextualPredicate)
+    | frozenset(str(p) for p in StructuralPredicate)
+    | frozenset(str(p) for p in SEMANTIC_PREDICATES)
+)
+
+
+@dataclass(frozen=True)
+class Signature:
+    """What one predicate is allowed to connect."""
+
+    subject: frozenset[NodeKind]
+    object: frozenset[NodeKind]
+    symmetric: bool
+    definition: str
+
+
+_P = NodeKind.PASSAGE
+_F = NodeKind.FORMULA
+_C = NodeKind.CONCEPT
+_D = NodeKind.DEVATA
+
+#: Domain and range for every predicate this layer controls -- textual, structural, semantic
+#: and internal. Wave 4 added the last two groups: until then the dict held only the ten
+#: non-semantic predicates, and the fourteen semantic ones plus ``QA_ISSUE_ON`` were absent
+#: from the composed declaration that every gate reads.
+SIGNATURES: Final[dict[str, Signature]] = {
+    str(TextualPredicate.EXACT_PARALLEL_OF): Signature(
+        frozenset({_P}), frozenset({_P}), True, "Identical on the strongest reachable surface."
+    ),
+    str(TextualPredicate.NEAR_PARALLEL_OF): Signature(
+        frozenset({_P}), frozenset({_P}), True, "Substantially the same verse, materially altered."
+    ),
+    str(TextualPredicate.VARIANT_OF): Signature(
+        frozenset({_P}), frozenset({_P}), True, "Same verse, different editorial spelling."
+    ),
+    str(TextualPredicate.REUSES_TEXT_FROM): Signature(
+        frozenset({_P}), frozenset({_P}), False, "Directed borrowing, where direction is known."
+    ),
+    str(TextualPredicate.SHARES_FORMULA_WITH): Signature(
+        frozenset({_P}), frozenset({_P}), True, "Two passages share one or more formulas."
+    ),
+    str(StructuralPredicate.USES_FORMULA): Signature(
+        frozenset({_P}), frozenset({_F}), False, "This passage contains this formula."
+    ),
+    str(StructuralPredicate.ABOUT_CONCEPT): Signature(
+        frozenset({_P}), frozenset({_C}), False, "This passage concerns this concept."
+    ),
+    str(StructuralPredicate.BROADER_THAN): Signature(
+        frozenset({_C}), frozenset({_C}), False, "The subject is a genuine superordinate."
+    ),
+    str(StructuralPredicate.HAS_ALIAS): Signature(
+        frozenset({_C}), frozenset({_C}), False, "A surface form of this concept."
+    ),
+    str(StructuralPredicate.DEVATA_ASSOCIATED_WITH): Signature(
+        frozenset({_D}), frozenset({_C}), False, "A deity and a concept that are not the same node."
+    ),
+    # The fourteen semantic predicates. GAP-SEMANTIC-SIGNATURE-COVERAGE-001.
+    #
+    # Added in Wave 4, and the reason they were missing is instructive: ``validate_endpoints``
+    # DOES constrain them -- the branch below enforces "a semantic assertion is about a
+    # passage" -- but it does so by falling through on a missing signature, so the constraint
+    # lived only in a code path and never in the declaration ``all_endpoint_signatures()``
+    # composes. The scorecard's signature gate therefore reported 63 of 76 predicates covered
+    # and could not have noticed: a gate whose universe of discourse omits a predicate cannot
+    # find a violation on it.
+    #
+    # **Declared from the ontology's rule, not from the graph.** The subject of a semantic
+    # assertion is a passage, by the frozen ontology's definition. The object is a canonical
+    # entity, which in this graph is a ``:Devata`` or a ``:Concept`` -- every ``:DomainEntity``
+    # also carries ``:Concept``, so ``Place``, ``Offering``, ``Ritual``, ``Substance``,
+    # ``Action`` and the rest are inside ``_C`` rather than beside it. A live measurement over
+    # all 613 edges agrees with every line of this, which is the direction that check must run
+    # in: the declaration is the standard and the graph is what gets tested against it.
+    #
+    # ``ASSOCIATED_WITH`` and ``EXPRESSES`` carry zero edges and get the same signature from
+    # the same rule. Deriving a declaration from a population is how a layer's first edge
+    # becomes its own authority.
+    **{
+        str(predicate): Signature(
+            frozenset({_P}),
+            frozenset({_D, _C}),
+            False,
+            "A semantic assertion about a passage, whose object is a canonical entity.",
+        )
+        for predicate in sorted(str(p) for p in SEMANTIC_PREDICATES)
+    },
+    "QA_ISSUE_ON": Signature(
+        frozenset({NodeKind.QA_ISSUE}),
+        frozenset({NodeKind.WORK}),
+        False,
+        "A finding this repository holds about one of its own works. Never product content.",
+    ),
+}
+
+#: Enrichment predicates that are declared and deliberately carry zero edges.
+#:
+#: Kept as *data*, not only as a docstring on the enum member, because the emptiness is
+#: observed from the graph: an audit enumerating ``db.relationshipTypes()`` found a type
+#: with no rows and correctly reported it as an undocumented dead filter option -- the
+#: rationale existed, in a place nothing querying the database would look. The ontology
+#: reference reads this map together with the domain layer's own.
+#: Empty in this release, and Wave 4 found this map's one entry had stopped being true.
+#:
+#: ``SHARES_FORMULA_WITH`` was declared here as deliberately unpopulated, on the reasoning
+#: that materialising the full closure would add 87,296 edges and defeat the Formula hub. Wave
+#: 3 then materialised 6,148 of them -- not the closure, but the pairs selected on rarity-
+#: weighted distinctiveness, which is the criterion the original reasoning had not considered.
+#: The declaration was not revised, so ``generate_ontology_reference.py`` published "declared
+#: and deliberately carries zero edges" about a predicate holding 6,148, and
+#: ``GAP-FORMULA-001`` recorded the same thing as the graph's only declared-but-empty type.
+#:
+#: The entry is gone rather than reworded, because the predicate is populated and this map is
+#: for predicates that are not. ``scripts/graph_quality_scorecard.py`` now gates on exactly
+#: that: a predicate declared here that carries an edge is a false declaration, and nothing
+#: checked these two maps against the graph before.
+UNPOPULATED_BY_DESIGN: Final[dict[str, str]] = {}
+
+
+#: Where each predicate the enrichment brief named actually ended up. Kept as data so a
+#: reader can check the mapping instead of trusting a summary of it.
+BRIEF_PREDICATE_MAPPING: Final[dict[str, str]] = {
+    "EXACT_PARALLEL_OF": "EXACT_PARALLEL_OF (textual)",
+    "NEAR_PARALLEL_OF": "NEAR_PARALLEL_OF (textual)",
+    "VARIANT_OF": "VARIANT_OF (textual)",
+    "REUSES_TEXT_FROM": "REUSES_TEXT_FROM (textual, directed)",
+    "SHARES_FORMULA_WITH": "SHARES_FORMULA_WITH (textual) plus USES_FORMULA hub",
+    "INVOKES": "INVOKES (frozen semantic whitelist)",
+    "PRAISES": "PRAISES (frozen semantic whitelist)",
+    "REQUESTS_FROM": "REQUESTS (frozen semantic whitelist; same relation, existing name)",
+    "DESCRIBES": "DESCRIBES (frozen semantic whitelist)",
+    "ASSOCIATED_WITH": "ASSOCIATED_WITH (frozen semantic whitelist)",
+    "PROTECTS_FROM": "not emitted: no frozen predicate covers it and adding one is an "
+    "ontology version bump the semantic freeze does not permit this session",
+    "USED_FOR": "INVOLVES_RITUAL / INVOLVES_OFFERING / INVOLVES_SUBSTANCE, which say which "
+    "kind of use and are already in the frozen whitelist",
+    "CONTRASTS_WITH": "CONTRASTS_WITH (frozen semantic whitelist)",
+    "ELABORATES": "not emitted: indistinguishable in practice from NEAR_PARALLEL_OF plus "
+    "reading order, and the reading order is the interpretive part",
+    "PARALLELS_IDEA_IN": "ABOUT_CONCEPT on both passages, which is queryable and carries "
+    "evidence on each side rather than asserting an unevidenced link between them",
+    "IDENTIFIES_WITH": "refused: the same claim as REPRESENTS, refused by name in the "
+    "frozen ontology",
+    "CAUSES": "refused by name in the frozen ontology, with a recorded reason",
+}
+
+#: Predicates the brief asked for that this layer declines to write, with the reason. Kept
+#: separate from the mapping so a validation test can assert none of them is ever emitted.
+REFUSED_PREDICATES: Final[dict[str, str]] = {
+    "CAUSES": FORBIDDEN_PREDICATES[SemanticPredicate.CAUSES],
+    "IDENTIFIES_WITH": (
+        "An identity claim between a deity and a concept ('Agni is fire') is the "
+        "REPRESENTS claim under another name, and the frozen ontology refuses it: it "
+        "silently picks one commentarial reading. DEVATA_ASSOCIATED_WITH records the "
+        "connection without asserting the identity."
+    ),
+    "PROTECTS_FROM": (
+        "No frozen predicate covers it. Adding one is an ontology version bump, and the "
+        "semantic layer is sealed at V3.2 while the human gold set is unannotated."
+    ),
+    "ELABORATES": (
+        "Requires asserting which of two passages came first. The corpus does not record "
+        "that, and inferring it from Mandala order is a scholarly position, not a fact."
+    ),
+}
+
+assert REFUSED_PREDICATES.keys().isdisjoint(CONTROLLED_PREDICATES), (
+    "a refused predicate must not also be writable"
+)
+
+assert set(SIGNATURES) == set(CONTROLLED_PREDICATES), (
+    "every controlled predicate needs an endpoint signature, and nothing else may have one: "
+    f"missing {sorted(CONTROLLED_PREDICATES - set(SIGNATURES))}, "
+    f"stray {sorted(set(SIGNATURES) - CONTROLLED_PREDICATES)}"
+)
+
+
+def is_controlled(predicate: str) -> bool:
+    """True when ``predicate`` is a name this layer is permitted to write."""
+    return predicate in CONTROLLED_PREDICATES
+
+
+def check_signature(predicate: str, subject: NodeKind, object_: NodeKind) -> None:
+    """Raise if an edge violates its predicate's domain/range constraint."""
+    if predicate not in CONTROLLED_PREDICATES:
+        reason = REFUSED_PREDICATES.get(predicate)
+        detail = f": {reason}" if reason else ""
+        raise ValueError(f"{predicate} is not a controlled enrichment predicate{detail}")
+    signature = SIGNATURES.get(predicate)
+    if signature is None:
+        # Unreachable while the assertion below holds, and kept as a raise rather than a
+        # fallthrough. It used to be one: a missing signature meant "semantic predicate, so
+        # check only the subject", which is how fourteen predicates ended up constrained by a
+        # code path and by no declaration. Silently passing an unknown predicate is the
+        # failure this guard exists for.
+        raise ValueError(f"{predicate} is controlled but has no endpoint signature")
+    if subject not in signature.subject:
+        raise ValueError(f"{predicate}: subject {subject} not in {sorted(signature.subject)}")
+    if object_ not in signature.object:
+        raise ValueError(f"{predicate}: object {object_} not in {sorted(signature.object)}")
+
+
+#: Veda pairs where the corpus's own structure establishes which text borrowed from which.
+#: The Samaveda is, by its own construction, a songbook of Rigvedic verses set to melody --
+#: this is not a similarity finding but what the Samaveda is. Every other pair is left
+#: undirected, because asserting a direction there would be a chronology claim.
+ESTABLISHED_REUSE: Final[dict[tuple[str, str], str]] = {
+    ("SV", "RV"): (
+        "The Samaveda Arcika is a collection of Rigvedic verses arranged for chanting; "
+        "its own tradition identifies the Rigveda as the source of its text."
+    ),
+}
+
+
+def reuse_direction(veda_a: str, veda_b: str) -> tuple[str, str, str] | None:
+    """Return ``(borrower, source, reason)`` when direction is established, else ``None``."""
+    reason = ESTABLISHED_REUSE.get((veda_a, veda_b))
+    if reason:
+        return veda_a, veda_b, reason
+    reason = ESTABLISHED_REUSE.get((veda_b, veda_a))
+    if reason:
+        return veda_b, veda_a, reason
+    return None

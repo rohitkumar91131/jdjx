@@ -1,0 +1,1059 @@
+/* ================================================================ world ===
+ *
+ * The World View.
+ *
+ * The default aesthetic for a 3D graph is well established and entirely wrong for this
+ * product: a black void, neon nodes, additive bloom, a HUD of floating translucent panels.
+ * That is the visual language of a crypto network diagram, and it says the same thing every
+ * time, which is "look at how connected this is" rather than "here is what connects".
+ *
+ * So the world sits on the same paper the rest of the atlas is printed on, the nodes are
+ * matte discs in the semantic colours the token layer already declares, and the only chrome
+ * is a title, a way in by name, and a panel that does not exist until something is chosen.
+ * ========================================================================= */
+
+
+.va-world,
+.va-world-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.va-world-canvas {
+    cursor: crosshair;
+    touch-action: none;
+}
+
+/* ---------------------------------------------------------------- chrome - */
+
+/*
+ * Controls that recede.
+ *
+ * The chrome is a column in the top-left corner. The World view gives it the
+ * canvas background so its controls remain readable when dense nodes pass behind it.
+ */
+
+
+
+
+.va-world-find input {
+    width: 100%;
+    padding: var(--va-space-2xs) 0 var(--va-space-xs);
+    border: 0;
+    border-bottom: var(--va-border-width) solid var(--va-line-strong);
+    border-radius: 0;
+    background: none;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-sm);
+    color: var(--va-text-primary);
+    transition: border-color var(--va-duration-base) var(--va-ease-standard);
+}
+
+.va-world-find input::placeholder {
+    color: var(--va-text-tertiary);
+    opacity: 1;
+}
+
+.va-world-find input:focus {
+    outline: none;
+    border-bottom-color: var(--va-accent-base);
+}
+
+.va-world-find > label {
+    display: block;
+    margin-bottom: var(--va-space-3xs);
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    font-weight: var(--va-weight-semibold);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+/* ----------------------------------------------------------------- lists - */
+
+/*
+ * More of the neighbourhood, asked for rather than scrolled to.
+ *
+ * The list is bounded now, so the control that grows it has to say what it is not showing.
+ * Without the second figure the button reads as "there is a bit more" when on a hub there are
+ * seven thousand more, and a reader who presses it twice and stops has no way to tell whether
+ * they have seen the interesting part.
+ */
+.va-world-more {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--va-space-md);
+    width: 100%;
+    min-height: 44px;
+    margin-top: var(--va-space-xs);
+    padding: var(--va-space-2xs) 0;
+    border: 0;
+    border-top: var(--va-rule-quiet);
+    background: none;
+    color: var(--va-text-secondary);
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-xs);
+    text-align: start;
+    cursor: pointer;
+}
+
+.va-world-more span {
+    color: var(--va-text-tertiary);
+    font-size: var(--va-text-2xs);
+    font-variant-numeric: tabular-nums;
+}
+
+.va-world-more:hover,
+.va-world-more:focus-visible {
+    color: var(--va-accent-text);
+}
+
+/*
+ * The kinds of connection, including the kinds there are none of.
+ *
+ * The absent rows are the reason this section exists rather than being folded into the list
+ * above. Five of the twelve families are absent on Indra and eleven of twelve on a single
+ * mandala, and a reader shown only the present ones will read the omission as a zero they were
+ * told - which is a stronger claim than the corpus makes. So an absent family keeps its row and
+ * loses only its figure, and the recessive ink is what stops twelve rows of mostly-nothing from
+ * competing with the seven that carry a count.
+ */
+.va-world-families {
+    margin-top: var(--va-space-lg);
+}
+
+.va-world-families dl {
+    margin: var(--va-space-xs) 0 0;
+    border-top: var(--va-rule-quiet);
+}
+
+.va-world-families dl > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--va-space-md);
+    padding: var(--va-space-2xs) 0;
+    border-bottom: var(--va-rule-quiet);
+}
+
+.va-world-families dt {
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-xs);
+    color: var(--va-text-primary);
+}
+
+.va-world-families dd {
+    margin: 0;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    color: var(--va-text-secondary);
+    font-variant-numeric: tabular-nums;
+    text-align: end;
+}
+
+.va-world-families dd span {
+    display: block;
+    color: var(--va-text-tertiary);
+}
+
+/* Present, but nothing of it drawn: the row is a count and not an invitation. */
+.va-world-families dl > div[data-present="false"] dt,
+.va-world-families dl > div[data-present="false"] dd {
+    color: var(--va-text-tertiary);
+    font-style: italic;
+}
+
+/*
+ * Results and connections share one row treatment.
+ *
+ * Both answer the same question in the same shape - a name, and what kind of thing it is -
+ * and both move the map when used. Giving them one appearance is what makes the list read as
+ * the map's index rather than as a separate search feature bolted beside it.
+ */
+.va-world-hits,
+.va-world-neighbours ul {
+    margin: var(--va-space-xs) 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: var(--va-rule-quiet);
+}
+
+/*
+ * The hit list is the one overlay that has to stop light.
+ *
+ * The graph chrome is deliberately transparent on desktop so the world reads through it, and
+ * for a heading and three controls that is right. A list of twenty results is a different
+ * object: it covers a third of the canvas, and the subjects underneath it are labelled, so
+ * "Prthivi" and "Varuna" print through "Indra and Vayu DEITY" and neither is readable. The
+ * narrow chrome at a phone width already solves this by going opaque -- see the block at the
+ * foot of graph.css -- and this is the same remedy applied to the one element that needs it
+ * at every width, rather than to the whole panel.
+ *
+ * Inline padding with a matching negative margin so the paper extends past the text without
+ * moving it: the list stays optically aligned with the label and the input above it.
+ */
+.va-world-hits {
+    padding-inline: var(--va-space-sm);
+    margin-inline: calc(-1 * var(--va-space-sm));
+    background: var(--va-surface-page);
+}
+
+/*
+ * One scroller, not two.
+ *
+ * These lists carried `max-height: 44dvh; overflow-y: auto` inside a panel that scrolls, which
+ * put a short scroller inside a tall one: a reader whose pointer happened to be over the list
+ * scrolled the list, and over the facts above it scrolled the panel, and neither reached the
+ * other's content. That was survivable only because it was hiding a list of the whole
+ * adjacency - up to seven thousand rows in a narrow pane.
+ *
+ * The list is now the curated set, so it is forty rows at the ceiling and six for the median
+ * subject. There is nothing left to hide, and the panel's own scroll is enough. The inner
+ * scroller was a symptom of the unbounded list and it goes with it.
+ */
+
+.va-world-hits li,
+.va-world-neighbours li {
+    border-bottom: var(--va-rule-quiet);
+}
+
+.va-world-hits button,
+.va-world-neighbours button {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--va-space-md);
+    width: 100%;
+    padding: var(--va-space-2xs) 0;
+    border: 0;
+    background: none;
+    text-align: start;
+    cursor: pointer;
+    transition: var(--va-transition-colors);
+}
+
+.va-world-hit-name {
+    font-family: var(--va-font-iast);
+    font-size: var(--va-text-sm);
+    color: var(--va-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /*
+     * `min-width: 0`, without which the ellipsis above does nothing.
+     *
+     * A flex item's default `min-width` is `auto`, which for `nowrap` text is the width of the
+     * whole unbroken string - so `overflow: hidden` clips the glyphs while the item still
+     * *claims* its full width. Measured on Indra: this list's longest row is a derived-metric
+     * node labelled `DEVATA_ATTRIBUTION_BY_VEDA (VG:DEVATA:INDRAH)`, 338 px of text in a 286 px
+     * box, and the claim propagated up through the button, the list and the section to give the
+     * panel's grid column a min-content width of 403 px inside a 349 px panel. Every
+     * right-aligned value in the panel was then laid out 78 px past the panel's own edge and 46
+     * px off the side of a 1440 px viewport: the connection counts the phase requires a reader
+     * to see - 7,347 recorded, 40 shown - were in the DOM and off the screen.
+     */
+    min-width: 0;
+}
+
+.va-world-hit-kind {
+    flex: none;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+.va-world-hits button:hover .va-world-hit-name,
+.va-world-neighbours button:hover .va-world-hit-name,
+.va-world-hits button:focus-visible .va-world-hit-name,
+.va-world-neighbours button:focus-visible .va-world-hit-name {
+    color: var(--va-accent-text);
+}
+
+.va-world-nohits,
+.va-world-neighbours-note {
+    margin: var(--va-space-xs) 0 0;
+    font-size: var(--va-text-xs);
+    line-height: var(--va-leading-snug);
+    color: var(--va-text-tertiary);
+}
+
+/*
+ * No `min-height: 0` here, and that is the whole of a defect.
+ *
+ * It was left behind by the inner scroller removed above, where it existed to let the list
+ * shrink. The panel is a grid with a definite height - `position: absolute` with both block
+ * insets set - and in that situation `min-height: 0` tells the row-sizing algorithm that this
+ * item may be shrunk below its content. It was: measured at 1440x900 on Indra, the section's
+ * row came out **12 px** against 491 px of content, the box reported a height of **0**, and the
+ * list painted straight through the section below it. Thirty-nine pairs of glyphs overlapped -
+ * every neighbour's name over a relationship family's heading - which is visible in a
+ * screenshot and invisible to every assertion in the suite, because nothing measured the ink.
+ *
+ * The default for a grid item is `min-height: auto`, which is exactly the protection wanted: the
+ * row is as tall as its content and the panel's own `overflow-y: auto` does the scrolling. See
+ * `tests/e2e/graph-labels.spec.ts` for the assertion that now holds this.
+ */
+.va-world-neighbours {
+    margin-top: var(--va-space-md);
+}
+
+.va-world-neighbours h3 {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--va-space-md);
+    margin: 0;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    font-weight: var(--va-weight-semibold);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+.va-world-neighbours h3 span {
+    font-family: var(--va-font-mono);
+    letter-spacing: 0;
+    text-transform: none;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------- feedback - */
+
+.va-world-status {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline: 0;
+    margin: 0;
+    text-align: center;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-sm);
+    color: var(--va-text-tertiary);
+}
+
+.va-world-status.is-failed {
+    inset-block-start: 42%;
+    max-width: var(--va-measure);
+    margin-inline: auto;
+    color: var(--va-text-secondary);
+}
+
+.va-world-status-note {
+    margin-top: var(--va-space-xs);
+    font-size: var(--va-text-xs);
+    color: var(--va-text-tertiary);
+}
+
+/* The hovered name, set as a caption at the foot rather than as a tooltip that chases the
+   cursor: a label that moves with the pointer is unreadable while the pointer is moving. */
+.va-world-hover {
+    position: absolute;
+    inset-block-end: var(--va-space-2xl);
+    inset-inline-start: var(--va-space-2xl);
+    margin: 0;
+    max-width: 28rem;
+    font-family: var(--va-font-iast);
+    font-size: var(--va-text-lg);
+    color: var(--va-text-primary);
+    pointer-events: none;
+}
+
+.va-world-stats {
+    position: absolute;
+    inset-block-end: var(--va-space-md);
+    inset-inline-end: var(--va-space-2xl);
+    margin: 0;
+    font-family: var(--va-font-mono);
+    font-size: var(--va-text-2xs);
+    font-variant-numeric: tabular-nums;
+    color: var(--va-text-tertiary);
+    pointer-events: none;
+}
+
+/* --------------------------------------------------------------- labels - */
+
+/*
+ * Names, set in the reading face.
+ *
+ * These are DOM spans rather than sprites or SDF text, and only ever a few dozen of them.
+ * At that count the browser is simply the better text renderer: it has Charis SIL, it places
+ * the combining marks correctly, it follows the theme, and none of that would survive being
+ * baked into a texture atlas.
+ */
+/*
+ * There is no separate container for the names any more.
+ *
+ * They used to have their own absolutely-positioned layer, placed by their own React component on
+ * its own 160 ms timer, with the relationship phrases in a second layer above it. Two layers on
+ * two cadences cannot honour one priority order - a phrase could only ever give way to a name and
+ * never the other way round - so both classes are now in `.va-edge-labels` and both are placed by
+ * one pass. See `edge-labels.ts` and lead arbitration ARB-3.
+ */
+.va-world-label {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    /*
+     * No margin. The offset from the orb used to live here, as `margin-inline-start: 9px` and
+     * `margin-block-start: -0.62em`, on top of a transform that put the anchor on the node - so
+     * the box the browser painted was nine pixels and half a line-height away from the box the
+     * collision test had reserved. It is now one of four quadrant offsets in `NAME_QUADRANTS`,
+     * applied before the box is collided, because a label cannot be kept clear of anything if the
+     * stylesheet moves it afterwards.
+     */
+    max-width: 13rem;
+    font-family: var(--va-font-iast);
+    font-size: var(--va-text-xs);
+    line-height: 1.2;
+    color: var(--va-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*
+     * An opaque plate, not a glow.
+     *
+     * This was a `text-shadow` halo in the page colour, on the theory that paper showing through
+     * the letterforms keeps a name legible without a box behind it. Measured per pixel against
+     * the real backdrop, twelve of sixteen visible names came in under 4.5:1, several near
+     * 1.8:1, and for six of them the whole glyph box failed. The halo works over empty space and
+     * does nothing at all where a label sits on the node it names - which is exactly where
+     * labels sit. A blur cannot guarantee a contrast ratio; a fill can.
+     */
+    padding: 1px 5px;
+    border-radius: var(--va-radius-xs);
+    /*
+     * `--va-graph-label-halo` rather than a page colour, because this is paper stroked under
+     * canvas text and the token layer holds it as `var(--va-graph-canvas)` so it cannot be got
+     * wrong. A literal ivory in this slot is a recorded defect: the 2D view went on stroking an
+     * ivory halo around every name after a switch to dark, over correctly re-themed carbon ink.
+     */
+    background: var(--va-graph-label-halo);
+    /* 5.70:1 light, 6.61:1 dark on the halo. A neighbour's name is context, not the answer. */
+    color: var(--va-graph-label-ink-quiet);
+    /* The same 300 ms crossfade the phrases use. See `--va-label-fade`. */
+    transition: opacity var(--va-label-fade) var(--va-ease-standard);
+}
+
+/* The subject, or the one under the pointer: a plate rather than a halo, and the full ink.
+   15.68:1 light and 16.26:1 dark on the halo; the keyline is 3.84:1 / 3.99:1 on the plate. */
+.va-world-label.is-strong {
+    font-size: var(--va-text-md);
+    background: var(--va-graph-plate);
+    color: var(--va-graph-label-ink);
+    border: var(--va-border-width) solid var(--va-graph-plate-edge);
+}
+
+/* ----------------------------------------------------- relationship labels - */
+
+/*
+ * What each connection is, written on the connection.
+ *
+ * The graph could always show that two subjects were joined and never what joined them, which
+ * makes a line a decoration. These carry the predicate's curated phrase - "is ascribed to the
+ * seer", not "HAS_RISHI" - taken from the same table the API serves, and sit at the midpoint of
+ * the drawn line.
+ *
+ * Set apart from the subject names on purpose: smaller, in the interface face rather than the
+ * reading face, and in the accent. A relationship is an annotation on the diagram, and if it
+ * were set like a name the eye would read the fifty words on screen as fifty more subjects.
+ */
+.va-edge-labels {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: var(--va-z-annotation);
+    /*
+     * 300 ms, which is MapLibre's `fadeDuration` default and the figure Vaaraniemi, Treib &
+     * Westermann use for the entry and exit crossfade. Not a duration token: the scale has 240 and
+     * 400 and neither is the published number, and the scale is not this file's to change.
+     *
+     * Declared on the container so both classes of label inherit one value. They are drawn from
+     * one pool and placed by one pass, and a name that faded on a different clock from the phrase
+     * that displaced it would read as two systems disagreeing - which is what it used to be.
+     */
+    --va-label-fade: 300ms;
+}
+
+.va-edge-label {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    padding: 1px 5px;
+    max-width: 14rem;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    line-height: 1.25;
+    letter-spacing: var(--va-tracking-tight);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*
+     * The chip is drawn in the same ink as the line it names: 7.34:1 light and 7.71:1 dark
+     * against the plate. Tying the two together is the point - a phrase that is not the colour of
+     * its own relation is a caption looking for a line.
+     */
+    color: var(--va-graph-relation-primary);
+    background: var(--va-graph-plate);
+    /*
+     * The border was `--va-line-hairline`, measured at 1.20:1 against the page in light and
+     * 1.38:1 in dark, and a token audit found this was the *only* place in the product that read
+     * it. So the border of the only edge affordance on a phone was invisible. `--va-line-strong`
+     * does not fix it either, at 1.51:1 and 1.81:1.
+     *
+     * The hairline keeps its value - 49 sites read it or a composite built from it, and raising it
+     * would turn every list in the product into a spreadsheet - and this moves to
+     * `--va-graph-plate-edge`, which the token layer measures for exactly this job: 3.84:1 on the
+     * plate and 3.55:1 on the bare canvas in light, 3.99:1 and 4.35:1 in dark. Both grounds
+     * matter, because a chip near the edge of the plate is read against the canvas behind it.
+     */
+    border: var(--va-border-width) solid var(--va-graph-plate-edge);
+    border-radius: var(--va-radius-xs);
+    /*
+     * 300 ms, which is MapLibre's `fadeDuration` default and the figure Vaaraniemi, Treib &
+     * Westermann use. Not a duration token, because the token scale has 240 and 400 and neither is
+     * the published number; declared locally rather than added to the scale, which is not this
+     * file's to change.
+     *
+     * Placement decides whether a label is shown; the fade only stops it appearing and vanishing
+     * abruptly, which their expert study found readers described as "confusing and agitated".
+     * Transitioning opacity alone keeps this off the main thread.
+     */
+    transition: opacity var(--va-label-fade) var(--va-ease-standard);
+}
+
+/*
+ * The invisible touch pad.
+ *
+ * The chip is about 17 px tall at `--va-text-2xs`, and it is the only way into a relationship on
+ * the canvas. The pad grows it to the 44 px touch minimum - and the two custom properties are
+ * written by the layout from the same guard box it collided, so the rectangle the browser
+ * hit-tests and the rectangle that was kept clear are the same rectangle. Deriving them
+ * separately is how two 44 px pads elsewhere in this product came to overlap by 15.8 px, with the
+ * later one in the document silently winning the tap.
+ */
+.va-edge-label {
+    /* Declared, not defaulted behind a fallback: an undeclared token read through `var(x, 0px)`
+       renders the fallback for good and never fails, so the audit is right to refuse it. The
+       layout overwrites both inline, per chip, from the guard box it collided. */
+    --va-label-pad-x: 0px;
+    --va-label-pad-y: 0px;
+}
+
+/*
+ * The touch target, floored in CSS rather than in arithmetic.
+ *
+ * The inline pads carry the geometry the collision pass reserved, and they are derived from a
+ * *measured* chip - the layout sizes text with a hidden ruler so it can place labels without
+ * reading the DOM every frame. The ruler and the painted chip do not agree to the pixel: the
+ * ruler reported 18.0 and the chip paints at 17.75, so a pad computed as `ceil((44 - 18) / 2)`
+ * is 13, and 17.75 + 26 is **43.75**. A quarter of a pixel under a requirement is still under
+ * it, and it is the second time this target has been measured short.
+ *
+ * So the floor no longer depends on the measurement at all. `100%` on an absolutely positioned
+ * pseudo-element resolves against the chip's own padding box, which is the thing the reader
+ * actually touches, and `max()` guarantees 44 from that rather than from what a ruler said
+ * about a string. The pads still decide where the box sits; they no longer decide whether it is
+ * big enough.
+ */
+.va-edge-label[data-pickable="true"][data-shown="true"]::after {
+    content: "";
+    position: absolute;
+    inset-block-start: calc(-1 * var(--va-label-pad-y));
+    inset-inline-start: calc(-1 * var(--va-label-pad-x));
+    width: max(calc(100% + 2 * var(--va-label-pad-x)), 44px);
+    height: max(calc(100% + 2 * var(--va-label-pad-y)), 44px);
+}
+
+/*
+ * The rulers are measured, never seen. Out of flow, so measuring costs no visible layout.
+ *
+ * They deliberately keep their class's own `max-width`. It used to be `max-width: none`, which
+ * measured a long phrase at its full width while the painted chip was clipped to 14rem - so the
+ * layout reserved space for text that was never drawn, and dropped a neighbouring label to
+ * protect it. Two rulers rather than one, because the two classes are set in different faces at
+ * different sizes; one fixed rectangle for both is what over-reserved by a factor of four for the
+ * word "Agni".
+ */
+.va-edge-label.is-measuring,
+.va-world-label.is-measuring {
+    visibility: hidden;
+    inset-block-start: -9999px;
+    transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .va-edge-label,
+    .va-world-label {
+        transition: none;
+    }
+}
+
+/* ---------------------------------------------------------------- panel - */
+
+/*
+ * The panel exists only when something is selected.
+ *
+ * A rail that is always there, empty, waiting to be filled, is how a map becomes a dashboard.
+ * This one arrives with a subject and leaves with it.
+ */
+.va-world-panel {
+    position: absolute;
+    inset-block: var(--va-space-2xl);
+    inset-inline-end: var(--va-space-2xl);
+    width: min(22rem, calc(100% - 4rem));
+    align-content: start;
+    display: grid;
+    /*
+     * `minmax(0, 1fr)` rather than the implicit `auto`, so no descendant can widen the panel.
+     *
+     * An `auto` grid column is floored at its items' min-content width, and that floor is not
+     * clamped by the container - so one unbreakable string anywhere inside made the column wider
+     * than the panel and pushed every right-aligned value off the screen. `minmax(0, 1fr)` makes
+     * the column exactly the container's width whatever its contents claim, which turns an
+     * over-long row into a clipped row instead of a displaced panel. The individual fix is on
+     * `.va-world-hit-name`; this is the one that means the next long string is not a defect.
+     */
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--va-space-md);
+    padding: var(--va-space-xl);
+    background: color-mix(in srgb, var(--va-surface-page) 92%, transparent);
+    border-inline-start: var(--va-border-width-accent) solid var(--va-accent-base);
+    overflow-y: auto;
+}
+
+.va-world-panel-kind {
+    margin: 0;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    font-weight: var(--va-weight-semibold);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-accent-text);
+}
+
+.va-world-panel h2 {
+    margin: 0;
+    font-family: var(--va-font-iast);
+    font-size: var(--va-text-xl);
+    font-weight: var(--va-weight-regular);
+    line-height: var(--va-leading-snug);
+    color: var(--va-text-primary);
+}
+
+.va-world-facts {
+    display: grid;
+    gap: var(--va-space-2xs);
+    margin: 0;
+}
+
+.va-world-facts > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--va-space-md);
+    padding-bottom: 2px;
+    border-bottom: var(--va-rule-quiet);
+}
+
+.va-world-facts dt {
+    font-size: var(--va-text-xs);
+    color: var(--va-text-tertiary);
+}
+
+.va-world-facts dd {
+    margin: 0;
+    font-family: var(--va-font-mono);
+    font-size: var(--va-text-xs);
+    font-variant-numeric: tabular-nums;
+    color: var(--va-text-primary);
+}
+
+.va-world-ways {
+    display: grid;
+    gap: var(--va-space-sm);
+    justify-items: start;
+    margin-top: var(--va-space-xs);
+}
+
+.va-world-ways a {
+    padding-bottom: 2px;
+    border-bottom: var(--va-border-width) solid var(--va-line-strong);
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-sm);
+    color: var(--va-text-secondary);
+    text-decoration: none;
+    transition: var(--va-transition-colors);
+}
+
+.va-world-ways a:hover {
+    color: var(--va-accent-text);
+    border-bottom-color: var(--va-accent-base);
+}
+
+/* ------------------------------------------------------------ responsive - */
+
+@media (max-width: 47.99rem) {
+    /*
+     * The panel becomes a sheet at the foot, in three heights.
+     *
+     * A 22rem rail on a 390px screen is the screen. But the floating version was worse than
+     * that suggests: measured, the selected subject is flown to the centre of the canvas at
+     * y 455, and the sheet occupied y 390 to 829, so the thing the reader had just chosen was
+     * underneath the panel describing it. Along the vertical centre line only 122 unbroken
+     * pixels were canvas at all.
+     *
+     * Three states rather than one height. It opens collapsed - a name and its kind, and the
+     * map - and is raised by the reader when they want the detail. The surface is
+     * `--va-surface-raised` rather than `--va-surface-page` because the page colour is exactly
+     * what the canvas clears to, so at any opacity it read as a hole rather than as a sheet.
+     */
+    .va-world-panel {
+        inset-block: auto 0;
+        inset-inline: 0;
+        width: auto;
+        max-height: none;
+        height: var(--va-sheet-height, 44dvh);
+        padding: var(--va-space-lg) var(--va-space-lg) var(--va-space-2xl);
+        background: var(--va-surface-raised);
+        overscroll-behavior: contain;
+        border-inline-start: 0;
+        border-block-start: var(--va-border-width-accent) solid var(--va-accent-base);
+    }
+
+    .va-world-panel[data-sheet="collapsed"] {
+        --va-sheet-height: 7.5rem;
+        padding-block-end: var(--va-space-lg);
+    }
+
+    .va-world-panel[data-sheet="half"] {
+        --va-sheet-height: 44dvh;
+    }
+
+    /*
+     * Expanded, but never over the chrome.
+     *
+     * This was `calc(100% - 6rem)` - 684 px of a 780 px stage, leaving 96 px. Measured, the
+     * chrome above it is 168 px in Focus, so the sheet's top edge landed at 161 px and the
+     * renderer control's 44 px targets at 182-227 px were entirely covered: 3D and 2D could
+     * not be reached, 13 px of the view row went with them, and all sixteen drawn orbs
+     * including the subject sat behind furniture with their separation collapsing from 59.5 px
+     * to 36.7 - under the 44 px pitch the neighbour budget exists to guarantee.
+     *
+     * The chrome's height is not a constant that a stylesheet can know: it is 168 px in Focus,
+     * 245 with a subject in World, 294 with the hint showing and 380 in Path. So the page
+     * publishes what it measured for the camera as `--va-graph-chrome-height`, and the sheet
+     * leaves that plus a 7.5rem band - the same floor the budget arithmetic uses, so the two
+     * cannot disagree about how much canvas has to survive.
+     *
+     * The fallback is the widest chrome rather than the narrowest: before the first measurement
+     * a sheet that is too short is recoverable and one that covers the controls is not.
+     */
+    .va-world-panel[data-sheet="expanded"] {
+        --va-sheet-height: calc(
+            100% - var(--va-graph-chrome-height, 24rem) - 7.5rem
+        );
+    }
+
+    /*
+     * The name, and a control beside it.
+     *
+     * The name used to *be* the control - "no new furniture: the name you are reading is the
+     * control" - and the restraint was right while the cost looked like nothing. It was not.
+     * A button has presentational children in ARIA, so wrapping the h2 in it removed the
+     * panel's only heading from the structure and collapsed its accessible name to "Deity
+     * Indra"; and the sole signal that the name was pressable was `cursor: pointer`, which
+     * does not exist on the one device where the panel is a sheet at all.
+     *
+     * So: one piece of furniture, labelled with the state it moves to.
+     */
+    .va-world-sheet-head {
+        display: grid;
+        grid-template-areas: "kind control" "name control";
+        grid-template-columns: 1fr auto;
+        align-items: start;
+        column-gap: var(--va-space-md);
+    }
+
+    .va-world-sheet-head .va-world-panel-kind {
+        grid-area: kind;
+    }
+
+    .va-world-sheet-head h2 {
+        grid-area: name;
+    }
+
+    .va-world-sheet-handle {
+        grid-area: control;
+        align-self: center;
+        min-height: 44px;
+        padding-inline: var(--va-space-sm);
+        border: var(--va-border-width) solid var(--va-line-strong);
+        border-radius: var(--va-radius-xs);
+        background: none;
+        color: var(--va-text-secondary);
+        font-family: var(--va-font-ui);
+        font-size: var(--va-text-2xs);
+        letter-spacing: var(--va-tracking-wide);
+        text-transform: uppercase;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    /*
+     * A collapsed sheet does not scroll.
+     *
+     * Measured: 829 px of content behind a 117 px window, so a vertical swipe inside the
+     * collapsed sheet scrolled the panel instead of raising it - and a reader could read the
+     * whole thing without ever discovering it had three heights. What the collapse is hiding
+     * is reached by the control, which is the point of having one.
+     */
+    .va-world-panel[data-sheet="collapsed"] {
+        overflow: hidden;
+    }
+
+    .va-world-hover,
+    .va-world-stats {
+        display: none;
+    }
+}
+
+/*
+ * A relationship label is a target, not just a caption.
+ *
+ * The line it names is one pixel wide in a spatial scene; the word on it is a comfortable
+ * click. So the word is what opens the explanation, and it says so on hover.
+ */
+/*
+ * `[data-shown="true"]` and not just `[data-pickable]`.
+ *
+ * Every span in the pool is pickable, including the ones showing nothing. With
+ * `pointer-events: auto` on all of them, a faded, empty, fully transparent chip went on
+ * intercepting clicks on the canvas underneath - so a reader clicking where a label used to be hit
+ * an invisible target and got nothing, which reads as the graph ignoring them. Caught by the
+ * end-to-end gate, which refused to click a real label because an empty one was over it.
+ */
+.va-edge-label[data-pickable="true"][data-shown="true"] {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* Inverted, in the same hue: 7.34:1 light and 8.80:1 dark for the text on the fill. Resting and
+   hovered are one colour at two weights rather than two unrelated colours. */
+.va-edge-label[data-pickable="true"][data-shown="true"]:hover {
+    color: var(--va-text-inverse);
+    background: var(--va-graph-relation-primary);
+    border-color: var(--va-graph-relation-primary);
+}
+
+/* ------------------------------------------------- relationship inspector - */
+
+/*
+ * What one line means, opened by clicking its name.
+ *
+ * Placed at the foot of the stage rather than beside the subject panel, because the two answer
+ * different questions and stacking them would make the second look like a section of the first.
+ * The panel says what this subject is; this says what one of its connections claims.
+ *
+ * Solid paper with a rule, not a floating translucent card: the same surface the rest of the
+ * atlas is printed on, brought forward by an accent rule rather than by a shadow.
+ */
+.va-relationship {
+    position: absolute;
+    inset-block-end: var(--va-space-2xl);
+    inset-inline-start: var(--va-space-2xl);
+    z-index: var(--va-z-panel);
+    width: min(32rem, calc(100% - var(--va-space-4xl)));
+    padding: var(--va-space-lg);
+    background: var(--va-surface-raised);
+    border: var(--va-border-width) solid var(--va-line-strong);
+    border-block-start: var(--va-border-width-accent) solid var(--va-accent-base);
+    border-radius: var(--va-radius-xs);
+    /*
+     * It scrolls rather than growing off the stage.
+     *
+     * Two curated sentences plus an uncurated notice can be longer than the space below the
+     * chrome, and an explanation whose last line is under the edge of the viewport is an
+     * explanation the reader cannot finish. Capped against the stage rather than the page, because
+     * the page scrolls and this is pinned to a canvas that does not.
+     */
+    max-height: min(24rem, calc(100vh - 12rem));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+/* The heading takes focus when it opens, and a focused heading must show that it has. */
+.va-relationship-kind:focus-visible {
+    outline: var(--va-border-width-accent) solid var(--va-line-focus);
+    outline-offset: var(--va-space-3xs);
+}
+
+.va-relationship-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--va-space-md);
+}
+
+.va-relationship-kind {
+    margin: 0;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    font-weight: var(--va-weight-semibold);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+/*
+ * A 44 px target, not a 41 x 21.6 one.
+ *
+ * Measured at 390 px wide: the close control was 41 x 21.6, which is half the height of every
+ * published touch minimum, on the one control whose whole job is to get a reader out of a panel
+ * covering the bottom third of their phone. The word stays the same size; the box around it does
+ * not. Laid out as a grid so the label centres in a box sized by the minimum rather than by the
+ * text, which is what stops the two from drifting apart the next time the type scale moves.
+ */
+.va-relationship-close {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    /* Pulled back so a 44 px box does not push the head row taller than its baseline needs. */
+    margin: calc(-1 * var(--va-space-2xs)) calc(-1 * var(--va-space-2xs)) calc(-1 * var(--va-space-2xs)) 0;
+    padding: 0 var(--va-space-2xs);
+    border: 0;
+    background: none;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+    cursor: pointer;
+    transition: var(--va-transition-colors);
+}
+
+.va-relationship-close:hover {
+    color: var(--va-accent-text);
+}
+
+/* The claim, set as a sentence so it reads as one rather than as three fields. */
+.va-relationship-statement {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--va-space-2xs) var(--va-space-sm);
+    margin: var(--va-space-sm) 0 0;
+}
+
+.va-relationship-statement button {
+    padding: 0;
+    border: 0;
+    border-bottom: var(--va-border-width) solid var(--va-line-strong);
+    background: none;
+    font-family: var(--va-font-iast);
+    font-size: var(--va-text-lg);
+    color: var(--va-text-primary);
+    cursor: pointer;
+    transition: var(--va-transition-colors);
+}
+
+.va-relationship-statement button:hover {
+    color: var(--va-accent-text);
+    border-bottom-color: var(--va-accent-base);
+}
+
+.va-relationship-phrase {
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-accent-text);
+}
+
+.va-relationship-facts {
+    margin: var(--va-space-md) 0 0;
+    display: grid;
+    gap: var(--va-space-2xs);
+}
+
+.va-relationship-facts dt {
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    font-weight: var(--va-weight-semibold);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+.va-relationship-facts dd {
+    margin: 0 0 var(--va-space-sm);
+    font-size: var(--va-text-sm);
+    line-height: var(--va-leading-snug);
+    color: var(--va-text-secondary);
+}
+
+.va-relationship-uncurated {
+    margin: var(--va-space-md) 0 0;
+    font-size: var(--va-text-sm);
+    line-height: var(--va-leading-snug);
+    color: var(--va-text-secondary);
+}
+
+.va-relationship-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--va-space-2xs) var(--va-space-md);
+    margin: var(--va-space-sm) 0 0;
+    padding-block-start: var(--va-space-sm);
+    border-block-start: var(--va-rule-quiet);
+    font-size: var(--va-text-2xs);
+    color: var(--va-text-tertiary);
+}
+
+.va-relationship-meta > span:first-child {
+    font-family: var(--va-font-mono);
+}
+
+@media (max-width: 47.99rem) {
+    .va-relationship {
+        inset-block-end: 0;
+        inset-inline: 0;
+        width: auto;
+        border-inline: 0;
+        border-block-end: 0;
+        border-radius: 0;
+        /* The sheet is gone from under it, so it may use the height the sheet was using. */
+        max-height: 60vh;
+    }
+
+    /*
+     * At narrow widths the inspector *replaces* the subject sheet rather than stacking on it.
+     *
+     * Measured at 390 px: the inspector occupied y 528.9 to 845 and the collapsed sheet y 725 to
+     * 845, so the inspector covered the sheet entirely. Both are pinned to the foot of the stage
+     * and both claim it, and the result is a reader looking at a panel with another panel's
+     * shadow under it. Only one of them can answer at a time on a phone, and the one that answers
+     * is the one they just asked for.
+     *
+     * Keyed off structure rather than state, so no new attribute is needed: `.va-relationship`
+     * only exists in the tree while a relationship is being inspected. The sheet's own rules,
+     * including its three `data-sheet` heights, are untouched - this suppresses the element, it
+     * does not restyle it.
+     *
+     * One consequence for whoever owns the safe area: it is measured from `.va-graph-chrome` and
+     * `.va-world-panel`, and a hidden panel measures zero. While the inspector is open the bottom
+     * inset should come from `.va-relationship` instead, or the canvas will centre a subject
+     * behind it.
+     */
+    .va-graph:has(.va-relationship) .va-world-panel {
+        display: none;
+    }
+}

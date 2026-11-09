@@ -1,0 +1,121 @@
+{
+  "$defs": {
+    "EntityType": {
+      "description": "What kind of node a passage is on the generic Work -> container -> Passage spine.\n\n``SECTION`` and ``HYMN`` are frozen by the sealed Rigveda corpus and are NOT\nrenamed: in RV they mean Mandala and Sukta, in AVS Kanda and Sukta. Neither\nname generalises, so works whose containers are not section/hymn-shaped --\nSamaveda's Arcika/Prapathaka/Ardha/Dasati chain, four deep -- use\n``STRUCTURAL_CONTAINER`` and carry their real level name in\n``Passage.native_labels``. See docs/FOUR_VEDA_STRUCTURAL_MODEL.md.",
+      "enum": [
+        "WORK",
+        "SECTION",
+        "HYMN",
+        "STRUCTURAL_CONTAINER",
+        "MANTRA"
+      ],
+      "title": "EntityType",
+      "type": "string"
+    },
+    "PassageStatus": {
+      "enum": [
+        "DRAFT",
+        "CANONICAL",
+        "DEPRECATED"
+      ],
+      "title": "PassageStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "One addressable node on the generic ``Work -> container(s) -> Passage`` spine.\n\nDepth is not fixed. Rigveda and Atharvaveda are three levels, Vajasaneyi is two,\nSamaveda Kauthuma is five and its depth varies between arcikas. ``hierarchy``\ntherefore carries level-name -> value pairs rather than fixed columns, and\n``native_labels`` carries the edition's own ordered level names so no work is read\nthrough another work's vocabulary. See docs/FOUR_VEDA_STRUCTURAL_MODEL.md.",
+  "properties": {
+    "canonical_citation": {
+      "title": "Canonical Citation",
+      "type": "string"
+    },
+    "canonical_key": {
+      "pattern": "^VG:[A-Z]+:[A-Z]+:.+$",
+      "title": "Canonical Key",
+      "type": "string"
+    },
+    "canonical_urn": {
+      "pattern": "^urn:vedagraph:",
+      "title": "Canonical Urn",
+      "type": "string"
+    },
+    "entity_id": {
+      "format": "uuid",
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "entity_type": {
+      "$ref": "#/$defs/EntityType"
+    },
+    "hierarchy": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "title": "Hierarchy",
+      "type": "object"
+    },
+    "native_labels": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Native Labels",
+      "type": "array"
+    },
+    "parent_key": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Key"
+    },
+    "schema_version": {
+      "default": "1.0.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sequence_in_parent": {
+      "minimum": 1,
+      "title": "Sequence In Parent",
+      "type": "integer"
+    },
+    "status": {
+      "$ref": "#/$defs/PassageStatus",
+      "default": "CANONICAL"
+    },
+    "structural_path": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Structural Path",
+      "type": "array"
+    },
+    "work_id": {
+      "title": "Work Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "entity_id",
+    "canonical_key",
+    "canonical_urn",
+    "entity_type",
+    "work_id",
+    "hierarchy",
+    "canonical_citation",
+    "sequence_in_parent"
+  ],
+  "title": "Passage",
+  "type": "object"
+}

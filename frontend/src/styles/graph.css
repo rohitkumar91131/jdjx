@@ -1,0 +1,658 @@
+/* ================================================================ graph ===
+ *
+ * One graph, four ways of looking at it.
+ *
+ * The world stylesheet beside this one dresses the spatial view. This file is about the thing
+ * that holds all four views together: the mode switch, the planar diagram, the path column,
+ * and the rule that the chrome recedes so the map can be the page.
+ * ========================================================================= */
+
+.va-graph {
+    position: relative;
+    height: calc(100dvh - var(--va-header-height));
+    overflow: hidden;
+    background: var(--va-surface-page);
+}
+
+/*
+ * Both stages stay mounted; only one is shown.
+ *
+ * A canvas that unmounts loses its WebGL context, its buffers and its camera, so switching
+ * modes would mean a blank flash and a second spent reloading a two-megabyte artifact.
+ * Hidden with visibility rather than display, because `display: none` gives an element no
+ * layout box and the renderer would resize itself to nothing on every switch.
+ */
+.va-graph-stage {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+        opacity var(--va-duration-slow) var(--va-ease-standard),
+        visibility 0s linear var(--va-duration-slow);
+}
+
+.va-graph-stage[data-active="true"] {
+    visibility: visible;
+    opacity: 1;
+    transition:
+        opacity var(--va-duration-slow) var(--va-ease-standard),
+        visibility 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .va-graph-stage {
+        transition: none;
+    }
+}
+
+/* --------------------------------------------------------------- chrome - */
+
+.va-graph-chrome {
+    position: absolute;
+    inset-block-start: var(--va-space-2xl);
+    inset-inline-start: var(--va-space-2xl);
+    display: grid;
+    gap: var(--va-space-lg);
+    align-content: start;
+    max-width: 23rem;
+    max-height: calc(100% - 2 * var(--va-space-2xl));
+    pointer-events: none;
+}
+
+.va-graph-chrome > * {
+    pointer-events: auto;
+}
+
+/* Dense world dots can pass behind the controls during a zoom or orbit. */
+.va-graph[data-view="WORLD"] .va-graph-chrome {
+    background: var(--va-graph-canvas);
+    box-shadow: 0 0 0 var(--va-space-md) var(--va-graph-canvas);
+}
+
+.va-graph-kicker {
+    margin: 0 0 var(--va-space-2xs);
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    font-weight: var(--va-weight-semibold);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+.va-graph-head h1 {
+    margin: 0;
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-2xl);
+    font-weight: var(--va-weight-regular);
+    line-height: var(--va-leading-flat);
+    color: var(--va-text-primary);
+}
+
+/*
+ * The mode switch as an index line.
+ *
+ * Four capitalised pills across the top of a map is the shape of a dashboard, and it says the
+ * four things are separate tools that happen to share a screen. A ruled row of names with the
+ * current one marked says they are the contents of one thing, which is what they are.
+ */
+/*
+ * Two rows, one rule.
+ *
+ * The upper row is what is being explored, the lower is how it is drawn. Only the upper one
+ * carries the rule, so the pair reads as one control with a heading rather than as two
+ * unrelated toolbars stacked.
+ */
+.va-graph-switch {
+    display: grid;
+    gap: var(--va-space-2xs);
+}
+
+.va-graph-modes {
+    display: flex;
+    gap: var(--va-space-lg);
+    padding-top: var(--va-space-2xs);
+    border-top: var(--va-border-width) solid var(--va-line-strong);
+}
+
+.va-graph-modes.is-renderer {
+    gap: var(--va-space-md);
+    padding-top: 0;
+    border-top: 0;
+}
+
+.va-graph-modes.is-renderer button {
+    font-family: var(--va-font-mono);
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+}
+
+.va-graph-modes button {
+    padding: 0 0 3px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: none;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-sm);
+    color: var(--va-text-tertiary);
+    cursor: pointer;
+    transition: var(--va-transition-colors);
+}
+
+.va-graph-modes button:hover {
+    color: var(--va-text-primary);
+}
+
+.va-graph-modes button[aria-current="true"] {
+    color: var(--va-text-primary);
+    border-bottom-color: var(--va-accent-base);
+}
+
+.va-graph-notice,
+.va-graph-hint {
+    margin: 0;
+    max-width: 22rem;
+    font-size: var(--va-text-xs);
+    line-height: var(--va-leading-snug);
+    color: var(--va-text-tertiary);
+}
+
+.va-graph-notice button,
+.va-graph-hint button {
+    margin-inline-start: var(--va-space-2xs);
+    padding: 0 0 1px;
+    border: 0;
+    border-bottom: var(--va-border-width) solid var(--va-line-strong);
+    background: none;
+    font: inherit;
+    color: var(--va-text-secondary);
+    cursor: pointer;
+}
+
+.va-graph-notice button:hover,
+.va-graph-hint button:hover {
+    color: var(--va-accent-text);
+    border-bottom-color: var(--va-accent-base);
+}
+
+/* --------------------------------------------------------------- planar - */
+
+.va-planar,
+.va-planar-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.va-planar-canvas {
+    cursor: grab;
+    touch-action: none;
+}
+
+.va-planar-canvas:active {
+    cursor: grabbing;
+}
+
+.va-planar-empty {
+    position: absolute;
+    inset-block-start: 46%;
+    inset-inline: 0;
+    margin-inline: auto;
+    max-width: 26rem;
+    text-align: center;
+    font-size: var(--va-text-sm);
+    line-height: var(--va-leading-normal);
+    color: var(--va-text-tertiary);
+}
+
+/* ----------------------------------------------------------------- path - */
+
+.va-path {
+    display: grid;
+    gap: var(--va-space-md);
+    align-content: start;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.va-path-fields {
+    display: grid;
+    gap: var(--va-space-sm);
+}
+
+.va-path-fields label {
+    display: grid;
+    gap: var(--va-space-3xs);
+}
+
+.va-path-fields span {
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+.va-path-fields input {
+    padding: var(--va-space-3xs) 0 var(--va-space-2xs);
+    border: 0;
+    border-bottom: var(--va-border-width) solid var(--va-line-strong);
+    border-radius: 0;
+    background: none;
+    font-family: var(--va-font-iast);
+    font-size: var(--va-text-md);
+    color: var(--va-text-primary);
+}
+
+.va-path-fields input:focus {
+    outline: none;
+    border-bottom-color: var(--va-accent-base);
+}
+
+.va-path-go {
+    justify-self: start;
+    padding: var(--va-space-2xs) var(--va-space-xl);
+    border: 0;
+    border-radius: 0;
+    background: var(--va-accent-base);
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-sm);
+    font-weight: var(--va-weight-semibold);
+    color: var(--va-text-on-accent);
+    cursor: pointer;
+    transition: var(--va-transition-colors);
+}
+
+.va-path-go:hover {
+    background: var(--va-accent-hover);
+}
+
+.va-path-status {
+    margin: 0;
+    font-size: var(--va-text-sm);
+    line-height: var(--va-leading-normal);
+    color: var(--va-text-secondary);
+}
+
+.va-path-summary {
+    margin: 0;
+    font-size: var(--va-text-sm);
+    color: var(--va-text-secondary);
+}
+
+.va-path-summary strong {
+    font-family: var(--va-font-iast);
+    font-weight: var(--va-weight-regular);
+    color: var(--va-text-primary);
+}
+
+/*
+ * The hub warning.
+ *
+ * The most important sentence on this surface. A route through a waypoint attached to
+ * thousands of things exists between almost any two subjects, so reading one as a meaningful
+ * relationship is the easiest mistake to make with a shortest path. It takes the dashed rule
+ * the token layer reserves for a claim that stops short of itself.
+ */
+.va-path-caution {
+    margin: 0;
+    padding-inline-start: var(--va-space-md);
+    border-inline-start: var(--va-border-width-accent) dashed var(--va-tone-partial);
+    font-size: var(--va-text-xs);
+    line-height: var(--va-leading-snug);
+    color: var(--va-text-secondary);
+}
+
+.va-path-steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-inline-start: var(--va-border-width) solid var(--va-line-strong);
+}
+
+.va-path-step {
+    position: relative;
+    display: grid;
+    gap: 1px;
+    padding: var(--va-space-xs) 0 var(--va-space-xs) var(--va-space-lg);
+}
+
+/* A rubric diamond on the rule at each stop, so the column reads as a route rather than as a
+   list that happens to be indented. */
+.va-path-step::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -4px;
+    inset-block-start: calc(var(--va-space-xs) + 0.55em);
+    width: 7px;
+    height: 7px;
+    background: var(--va-accent-base);
+    transform: rotate(45deg);
+}
+
+.va-path-step.is-end::before {
+    background: var(--va-text-primary);
+}
+
+.va-path-relation {
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-accent-text);
+}
+
+.va-path-node {
+    font-family: var(--va-font-iast);
+    font-size: var(--va-text-md);
+    color: var(--va-text-primary);
+}
+
+.va-path-kind {
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+/*
+ * The service's own explanation of a step.
+ *
+ * Set as an apparatus note under the hop rather than as a tooltip or a disclosure, because it
+ * routinely ends with what the relationship does *not* establish, and that clause is the part
+ * a reader most needs and is least likely to go looking for.
+ */
+.va-path-why {
+    margin: var(--va-space-3xs) 0 0;
+    max-width: 22rem;
+    font-size: var(--va-text-xs);
+    line-height: var(--va-leading-snug);
+    color: var(--va-text-tertiary);
+}
+
+.va-path-read {
+    justify-self: start;
+    margin-top: 2px;
+    padding-bottom: 1px;
+    border-bottom: var(--va-border-width) solid var(--va-line-strong);
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-xs);
+    color: var(--va-text-secondary);
+    text-decoration: none;
+}
+
+.va-path-read:hover {
+    color: var(--va-accent-text);
+    border-bottom-color: var(--va-accent-base);
+}
+
+.va-path-caveats {
+    margin: 0;
+    padding-inline-start: var(--va-space-lg);
+    font-size: var(--va-text-xs);
+    line-height: var(--va-leading-snug);
+    color: var(--va-text-tertiary);
+}
+
+/* ------------------------------------------------------- panel additions - */
+
+.va-world-region {
+    display: grid;
+    gap: 1px;
+    margin: 0;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-xs);
+    color: var(--va-text-secondary);
+}
+
+.va-world-region span {
+    font-size: var(--va-text-2xs);
+    color: var(--va-text-tertiary);
+}
+
+.va-world-ways button {
+    padding: 0 0 2px;
+    border: 0;
+    border-bottom: var(--va-border-width) solid var(--va-line-strong);
+    background: none;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-sm);
+    color: var(--va-text-secondary);
+    text-align: start;
+    cursor: pointer;
+    transition: var(--va-transition-colors);
+}
+
+.va-world-ways button:hover {
+    color: var(--va-accent-text);
+    border-bottom-color: var(--va-accent-base);
+}
+
+/* ------------------------------------------------------------ responsive - */
+
+@media (max-width: 47.99rem) {
+    /*
+     * The chrome becomes a band, and the band is what scrolls.
+     *
+     * Floating over the map it had a transparent background, so its prose was set directly on
+     * the edges underneath; and in PATH it overflowed its own height - measured at 878 against
+     * a 716 box - with `overflow-y: visible` inside a clipped stage, so the caveats and the
+     * dismiss control sat below the screen with no way to reach them. The nested `.va-path`
+     * scroller could not help: its content and its box were the same height, so it never had
+     * anything to scroll.
+     *
+     * Opaque, bounded, and scrollable at this level fixes all three at once.
+     */
+    .va-graph-chrome {
+        inset-block-start: 0;
+        inset-inline: 0;
+        max-width: none;
+        max-height: 45dvh;
+        padding: var(--va-space-lg);
+        gap: var(--va-space-md);
+        background: var(--va-surface-page);
+        border-block-end: var(--va-border-width) solid var(--va-line-strong);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        /* Opaque now, so it must stop taps as well as light. */
+        pointer-events: auto;
+    }
+
+    /* The band is the scroller; this nested one never had anything to scroll. */
+    .va-path {
+        overflow: visible;
+    }
+
+    .va-graph-head h1 {
+        font-size: var(--va-text-xl);
+    }
+
+    .va-graph-modes {
+        gap: var(--va-space-md);
+    }
+
+    /*
+     * In Focus the page's own title is furniture.
+     *
+     * Measured live at 390x844: the chrome sat on 245.6 px of a 780 px canvas - 31.5% of it,
+     * opaque and taking taps - and in Focus every one of those pixels is the binding constraint
+     * on how much of a neighbourhood can be drawn, because the budget is derived from the band
+     * left underneath it and not from the phone. The audit figure was 225.6 px; the 20 px it has
+     * gained since is the switch gap, which had to grow to `--va-space-xl` to stop the two rows'
+     * 44 px touch pads overlapping. So the fix for one mobile defect was paid for out of another,
+     * and this is where it is paid back.
+     *
+     * The kicker and the h1 are what go, and only in Focus. There the reader has chosen a
+     * subject and the sheet at the foot names it, its kind, its constellation and its counts, so
+     * "The knowledge world / N subjects, connected" answers a question nobody is asking
+     * any more. In World it is the only thing on the page that says what the page is.
+     *
+     * Clipped rather than `display: none`, because that h1 is the route's only one: removing it
+     * from the accessibility tree would leave the document with no heading at all, which trades
+     * a layout defect for a worse structural one.
+     *
+     * The search label goes the same way for a weaker reason - the input keeps it as its
+     * accessible name and the placeholder repeats it in the open - so that is 19.6 px bought for
+     * one visible word.
+     *
+     * Measured after: 168.2 px, 21.6% of the canvas, and the half-raised sheet's drawing budget
+     * rises from 12 to 15 as a result. 96 px was the stated target and it is not reachable from
+     * here, which is worth writing down rather than leaving as an open action: two rows of 44 px
+     * pads that stay pairwise disjoint cannot occupy less than 26.7 + 17.3 + 26.7 = 70.7 px, and
+     * with the band's own 32 px of padding that is a 102.7 px floor before anything else is in
+     * it at all. Getting under it means one row instead of two - which is exactly the conflation
+     * of what is being explored with how it is drawn that this phase separated, and it is not
+     * worth 13 px.
+     */
+    .va-graph[data-view="FOCUS"] .va-graph-head,
+    .va-graph[data-view="FOCUS"] .va-world-find > label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+}
+
+/*
+ * Touch targets, without changing what anything looks like.
+ *
+ * Measured at 390x844, nothing in the graph chrome or the panel reached 44x44: the renderer
+ * buttons were 14x23, the view buttons about 30x26, the panel's links 24 tall. Growing the ink
+ * would turn a set of typographic controls into a row of buttons and lose the whole look, so the
+ * ink stays where it is and an invisible 44px target is centred on it.
+ */
+/*
+ * One hint, two devices.
+ *
+ * The copy described a wheel to every reader, including the ones holding a phone - where there
+ * is no wheel, and where the canvas takes the page's scroll for itself.
+ */
+.va-graph-hint-coarse {
+    display: none;
+}
+
+@media (pointer: coarse) {
+    .va-graph-hint-fine {
+        display: none;
+    }
+
+    .va-graph-hint-coarse {
+        display: inline;
+    }
+
+    .va-graph-modes,
+    .va-graph-modes.is-renderer {
+        /* Load-bearing: at the previous 12px gap the 3D and 2D overlays overlapped by 18px and
+           the later one in the DOM stole part of the earlier one's target. */
+        gap: var(--va-space-2xl);
+    }
+
+    /*
+     * The same collision, between the rows rather than along them.
+     *
+     * The horizontal case above was found and fixed. The vertical one was not looked at, and it
+     * was worse: the ink is about 26px tall, the target is 44, so each row overhangs its own box
+     * by nine pixels at top and bottom. Against a 4px grid gap the two rows overlapped by 15.8px
+     * - and the renderer row comes later in the document, so it won the hit test. Measured at
+     * 390px: a tap inside the word "World" changed the renderer instead, taking 27% of that
+     * control's target with it.
+     *
+     * Which is the exact failure the two-axis split was built to make impossible, returning
+     * through a stylesheet on touch only - where none of the state-model regression tests could
+     * see it. A gap that clears the overhang on both sides is the fix; the assertion that the
+     * pads stay pairwise disjoint is in the mobile suite, because this is now the second time
+     * this class of defect has shipped.
+     */
+    .va-graph-switch {
+        gap: var(--va-space-xl);
+    }
+
+    /*
+     * Re-measured at 390x844 after the fix, because a clearance is the number that matters and
+     * the gap is only how it is obtained. Declared pads, in page pixels:
+     *
+     *   World    12.08 - 56.08     Focus  80.63 - 124.63    Path  144.87 - 188.87   (y 134.68 - 178.68)
+     *   3D        1.04 - 45.04     2D     47.12 -  91.12                            (y 182.88 - 226.88)
+     *
+     * Pairwise disjoint, but the two tightest clearances in the control are 4.20 px between the
+     * rows and 2.08 px between 3D and 2D. That is a fix with almost no margin in it: a font
+     * metric, a token nudge or one more character in a label re-collides. Which is why the
+     * assertion lives in `graph-mobile.spec.ts` as pairwise disjointness over every pair rather
+     * than as this one gap value, and why it reports the minimum clearance when it fails.
+     */
+
+    .va-graph-modes button,
+    .va-graph-notice button,
+    .va-graph-hint button {
+        position: relative;
+    }
+
+    .va-graph-modes button::after,
+    .va-graph-notice button::after,
+    .va-graph-hint button::after {
+        content: "";
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
+        width: max(100%, 44px);
+        height: 44px;
+        transform: translate(-50%, -50%);
+    }
+
+    [dir="rtl"] .va-graph-modes button::after,
+    [dir="rtl"] .va-graph-notice button::after,
+    [dir="rtl"] .va-graph-hint button::after {
+        transform: translate(50%, -50%);
+    }
+
+    .va-world-hits button,
+    .va-world-neighbours button,
+    .va-path-go {
+        padding-block: var(--va-space-md);
+    }
+
+    .va-world-find input,
+    .va-path-fields input {
+        padding-block: var(--va-space-md);
+    }
+
+    /* A ruled list of full-width rows rather than inline links: the same treatment the facts and
+       the neighbour rows already use, so it reads as consistent rather than as enlarged. */
+    .va-world-ways {
+        gap: 0;
+        margin-top: 0;
+        justify-items: stretch;
+    }
+
+    .va-world-ways a,
+    .va-world-ways button {
+        width: 100%;
+        padding-block: var(--va-space-md);
+        border-bottom: var(--va-rule-quiet);
+    }
+}
+
+/* ------------------------------------------------- theme transition - */
+
+/*
+ * The canvas changes colour without the page flashing.
+ *
+ * Both renderers rewrite their own buffers on a theme change rather than being rebuilt, so
+ * there is nothing to fade; what this smooths is the surrounding paper, which would otherwise
+ * snap while the canvas takes a frame to repaint.
+ */
+.va-graph {
+    transition: background-color var(--va-duration-base) var(--va-ease-standard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .va-graph {
+        transition: none;
+    }
+}

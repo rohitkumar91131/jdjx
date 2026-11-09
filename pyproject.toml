@@ -1,0 +1,125 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vedagraph"
+version = "1.0.0"
+description = "VedaGraph Product V1: a provenance-aware knowledge graph of the four Vedas"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "PolyForm-Noncommercial-1.0.0; see LICENSE and LICENSE_SCOPE.md" }
+authors = [{ name = "VedaGraph contributors" }]
+dependencies = [
+  "beautifulsoup4>=4.12",
+  "fastapi>=0.115",
+  "httpx>=0.27",
+  "indic-transliteration>=2.3",
+  "lxml>=5.3",
+  # Was an undeclared import: installed in the environment and used by scripts and tests
+  # since the first projection, but never in this list. The API makes it load-bearing.
+  "neo4j>=5.26",
+  "orjson>=3.10",
+  "pydantic>=2.10",
+  "pydantic-settings>=2.7",
+  "pyyaml>=6.0",
+  "rich>=13.9",
+  "tenacity>=9.0",
+  "typer>=0.15",
+  "uvicorn[standard]>=0.34",
+]
+
+[project.optional-dependencies]
+# Only the live semantic extractor needs a vendor SDK. Everything else - packets,
+# validation, acceptance, evaluation, cost - runs offline against RecordedProvider,
+# so the default install has no LLM dependency at all.
+llm = ["openai>=1.60"]
+# Ask VedaGraph: provider-agnostic LLM layer. Switching providers is an ENV change, so
+# the adapters for every provider a deployment might select must be installable together.
+#
+# Gemini is absent on purpose: its adapter speaks the public v1beta REST contract over
+# httpx, which is already a core dependency. The vendor's own clients are a poor trade
+# here -- google-generativeai is end-of-life, and google-genai pulls protobuf, google-auth
+# and websockets to wrap three response fields.
+ask = ["openai>=1.60", "anthropic>=0.40"]
+dev = [
+  "lxml-stubs>=0.5",
+  "mypy>=1.14",
+  "pytest>=8.3",
+  "pytest-asyncio>=0.25",
+  "pytest-cov>=6.0",
+  "ruff>=0.9",
+  "types-pyyaml>=6.0",
+]
+
+[project.scripts]
+vedagraph = "vedagraph.cli.app:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vedagraph"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+# The formatter governs line length for code. What it leaves long - prose strings, Cypher,
+# URLs and comments - reads worse wrapped at 100 columns than it does long.
+ignore = ["E501"]
+
+[tool.ruff.format]
+# A declared builder of the Knowledge World in data/staging/integration/dependency_ledger.json,
+# pinned there by sha256. Reformatting it changes no behaviour, but scripts/dependency_state.py
+# compares hashes and would report the published world STALE_INPUT for a cosmetic edit. It is
+# formatted in the same change that rebuilds the world and re-records the ledger, not before.
+exclude = ["src/vedagraph/api/services/graph_service.py"]
+
+[tool.ruff.lint.per-file-ignores]
+# Held byte-identical for the dependency ledger; see [tool.ruff.format] above.
+"src/vedagraph/api/services/graph_service.py" = ["E402", "I001"]
+# Hashed by the sealed semantic freeze (docs/manifests/rigveda_semantic_execution_v3_1_freeze
+# .draft.json). With E501 off its `noqa: E501` directives read as unused, and removing them
+# would edit a sealed file for no behavioural reason.
+"src/vedagraph/semantic/*" = ["RUF100"]
+# The audible-review harness embeds its whole page -- HTML, CSS and the review keyboard
+# handler -- as one module constant, so it has no build step and no second file to keep in
+# sync with the endpoint that enforces the gate. CSS selectors and JS template literals do
+# not wrap at 100 columns without becoming less readable than they are long.
+# RUF001: the page prints a real en dash between the segment's start and end seconds,
+# which is what a reader expects to see between two times.
+"scripts/audio_review_harness.py" = ["E501", "RUF001"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["vedagraph"]
+mypy_path = "src"
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+# Optional dependency: the semantic extractor imports it lazily and the package is not
+# installed unless the 'llm' extra is.
+module = ["openai"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+# Ask VedaGraph provider adapters: optional extras, imported lazily by the factory so
+# that a deployment installs only the provider it configured.
+module = ["anthropic", "anthropic.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --cov=vedagraph --cov-report=term-missing"
+testpaths = ["tests"]
+markers = [
+  "live: requires internet access and is disabled unless explicitly selected",
+  "api: calls a paid LLM API and is disabled unless explicitly selected",
+  # Deliberately not called "api": that marker already means "costs money". These tests
+  # cost nothing and need a loaded local Neo4j, which is a different reason to skip.
+  "neo4j: requires the local Neo4j instance loaded with the frozen graph",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["vedagraph"]

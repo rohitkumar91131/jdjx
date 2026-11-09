@@ -1,0 +1,4273 @@
+{
+  "concept_by_veda": [
+    {
+      "concept_id": "VG:CONCEPT:DYAUS-HEAVEN",
+      "cross_veda": true,
+      "total": 1657,
+      "veda_counts": {
+        "AV": 367,
+        "RV": 1043,
+        "SV": 73,
+        "YV": 174
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VASU-WEALTH",
+      "cross_veda": true,
+      "total": 1621,
+      "veda_counts": {
+        "AV": 210,
+        "RV": 1154,
+        "SV": 92,
+        "YV": 165
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:YAJNA-SACRIFICE",
+      "cross_veda": true,
+      "total": 1577,
+      "veda_counts": {
+        "AV": 312,
+        "RV": 908,
+        "SV": 70,
+        "YV": 287
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SOMA-DRINK",
+      "cross_veda": true,
+      "total": 1512,
+      "veda_counts": {
+        "AV": 202,
+        "RV": 1043,
+        "SV": 156,
+        "YV": 111
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:STOMA-PRAISE",
+      "cross_veda": true,
+      "total": 1391,
+      "veda_counts": {
+        "AV": 79,
+        "RV": 1173,
+        "SV": 42,
+        "YV": 97
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:GO-CATTLE",
+      "cross_veda": true,
+      "total": 1341,
+      "veda_counts": {
+        "AV": 377,
+        "RV": 802,
+        "SV": 76,
+        "YV": 86
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:AGNI-FIRE",
+      "cross_veda": true,
+      "total": 1232,
+      "veda_counts": {
+        "AV": 349,
+        "RV": 741,
+        "SV": 53,
+        "YV": 89
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:PRTHIVI-EARTH",
+      "cross_veda": true,
+      "total": 1211,
+      "veda_counts": {
+        "AV": 349,
+        "RV": 642,
+        "SV": 35,
+        "YV": 185
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:OJAS-MIGHT",
+      "cross_veda": true,
+      "total": 1054,
+      "veda_counts": {
+        "AV": 153,
+        "RV": 755,
+        "SV": 42,
+        "YV": 104
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:AP-WATERS",
+      "cross_veda": true,
+      "total": 983,
+      "veda_counts": {
+        "AV": 318,
+        "RV": 542,
+        "SV": 20,
+        "YV": 103
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:ASVA-HORSE",
+      "cross_veda": true,
+      "total": 937,
+      "veda_counts": {
+        "AV": 96,
+        "RV": 738,
+        "SV": 19,
+        "YV": 84
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:AVAS-HELP",
+      "cross_veda": true,
+      "total": 902,
+      "veda_counts": {
+        "AV": 79,
+        "RV": 738,
+        "SV": 27,
+        "YV": 58
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VAC-SPEECH",
+      "cross_veda": true,
+      "total": 828,
+      "veda_counts": {
+        "AV": 157,
+        "RV": 516,
+        "SV": 80,
+        "YV": 75
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:HAVIS-OBLATION",
+      "cross_veda": true,
+      "total": 824,
+      "veda_counts": {
+        "AV": 234,
+        "RV": 458,
+        "SV": 17,
+        "YV": 115
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SAKHYA-FRIENDSHIP",
+      "cross_veda": true,
+      "total": 790,
+      "veda_counts": {
+        "AV": 88,
+        "RV": 581,
+        "SV": 69,
+        "YV": 52
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SARMAN-PROTECTION",
+      "cross_veda": true,
+      "total": 788,
+      "veda_counts": {
+        "AV": 230,
+        "RV": 431,
+        "SV": 16,
+        "YV": 111
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:JANMAN-BIRTH",
+      "cross_veda": true,
+      "total": 777,
+      "veda_counts": {
+        "AV": 281,
+        "RV": 385,
+        "SV": 35,
+        "YV": 76
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:JANA-PEOPLE",
+      "cross_veda": true,
+      "total": 763,
+      "veda_counts": {
+        "AV": 153,
+        "RV": 527,
+        "SV": 37,
+        "YV": 46
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SATRU-ENEMY",
+      "cross_veda": true,
+      "total": 762,
+      "veda_counts": {
+        "AV": 247,
+        "RV": 458,
+        "SV": 10,
+        "YV": 47
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:DHI-INSIGHT",
+      "cross_veda": true,
+      "total": 729,
+      "veda_counts": {
+        "AV": 74,
+        "RV": 530,
+        "SV": 53,
+        "YV": 72
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:DANA-LIBERALITY",
+      "cross_veda": true,
+      "total": 716,
+      "veda_counts": {
+        "AV": 37,
+        "RV": 629,
+        "SV": 11,
+        "YV": 39
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:RATHA-CHARIOT",
+      "cross_veda": true,
+      "total": 704,
+      "veda_counts": {
+        "AV": 91,
+        "RV": 550,
+        "SV": 38,
+        "YV": 25
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:ANNA-FOOD",
+      "cross_veda": true,
+      "total": 702,
+      "veda_counts": {
+        "AV": 105,
+        "RV": 494,
+        "SV": 10,
+        "YV": 93
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SURYA-SUN",
+      "cross_veda": true,
+      "total": 693,
+      "veda_counts": {
+        "AV": 189,
+        "RV": 379,
+        "SV": 44,
+        "YV": 81
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:BRAHMAN-FORMULATION",
+      "cross_veda": true,
+      "total": 691,
+      "veda_counts": {
+        "AV": 198,
+        "RV": 395,
+        "SV": 38,
+        "YV": 60
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:GRHA-HOUSE",
+      "cross_veda": true,
+      "total": 683,
+      "veda_counts": {
+        "AV": 121,
+        "RV": 464,
+        "SV": 6,
+        "YV": 92
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:JYOTIS-LIGHT",
+      "cross_veda": true,
+      "total": 677,
+      "veda_counts": {
+        "AV": 97,
+        "RV": 440,
+        "SV": 44,
+        "YV": 96
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SVASTI-WELLBEING",
+      "cross_veda": true,
+      "total": 634,
+      "veda_counts": {
+        "AV": 168,
+        "RV": 390,
+        "SV": 9,
+        "YV": 67
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SOMA-PRESSING",
+      "cross_veda": true,
+      "total": 627,
+      "veda_counts": {
+        "AV": 69,
+        "RV": 423,
+        "SV": 104,
+        "YV": 31
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:RAJAN-KINGSHIP",
+      "cross_veda": true,
+      "total": 618,
+      "veda_counts": {
+        "AV": 178,
+        "RV": 342,
+        "SV": 18,
+        "YV": 80
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SINDHU-RIVER",
+      "cross_veda": true,
+      "total": 617,
+      "veda_counts": {
+        "AV": 76,
+        "RV": 491,
+        "SV": 15,
+        "YV": 35
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:RTA-ORDER",
+      "cross_veda": true,
+      "total": 597,
+      "veda_counts": {
+        "AV": 84,
+        "RV": 448,
+        "SV": 21,
+        "YV": 44
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:AYUS-LIFE",
+      "cross_veda": true,
+      "total": 594,
+      "veda_counts": {
+        "AV": 188,
+        "RV": 299,
+        "SV": 12,
+        "YV": 95
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:PRAJA-OFFSPRING",
+      "cross_veda": true,
+      "total": 588,
+      "veda_counts": {
+        "AV": 199,
+        "RV": 301,
+        "SV": 7,
+        "YV": 81
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:HOTR-PRIEST",
+      "cross_veda": true,
+      "total": 574,
+      "veda_counts": {
+        "AV": 66,
+        "RV": 389,
+        "SV": 38,
+        "YV": 81
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VAJA-PRIZE",
+      "cross_veda": true,
+      "total": 553,
+      "veda_counts": {
+        "AV": 49,
+        "RV": 407,
+        "SV": 60,
+        "YV": 37
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:YUDH-BATTLE",
+      "cross_veda": true,
+      "total": 512,
+      "veda_counts": {
+        "AV": 38,
+        "RV": 430,
+        "SV": 8,
+        "YV": 36
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:USAS-DAWN",
+      "cross_veda": true,
+      "total": 499,
+      "veda_counts": {
+        "AV": 57,
+        "RV": 397,
+        "SV": 16,
+        "YV": 29
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SRAVAS-FAME",
+      "cross_veda": true,
+      "total": 487,
+      "veda_counts": {
+        "AV": 44,
+        "RV": 373,
+        "SV": 31,
+        "YV": 39
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:LOKA-WORLD",
+      "cross_veda": true,
+      "total": 479,
+      "veda_counts": {
+        "AV": 185,
+        "RV": 222,
+        "YV": 72
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:ADHVAN-PATH",
+      "cross_veda": true,
+      "total": 478,
+      "veda_counts": {
+        "AV": 80,
+        "RV": 344,
+        "SV": 9,
+        "YV": 45
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:MANAS-MIND",
+      "cross_veda": true,
+      "total": 472,
+      "veda_counts": {
+        "AV": 162,
+        "RV": 229,
+        "SV": 14,
+        "YV": 67
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:AMRTA-IMMORTALITY",
+      "cross_veda": true,
+      "total": 464,
+      "veda_counts": {
+        "AV": 116,
+        "RV": 286,
+        "SV": 20,
+        "YV": 42
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:NAMAS-HOMAGE",
+      "cross_veda": true,
+      "total": 426,
+      "veda_counts": {
+        "AV": 165,
+        "RV": 171,
+        "SV": 12,
+        "YV": 78
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:PAYAS-MILK",
+      "cross_veda": true,
+      "total": 419,
+      "veda_counts": {
+        "AV": 110,
+        "RV": 244,
+        "SV": 10,
+        "YV": 55
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:TANU-BODY",
+      "cross_veda": true,
+      "total": 402,
+      "veda_counts": {
+        "AV": 139,
+        "RV": 205,
+        "SV": 5,
+        "YV": 53
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VATA-WIND",
+      "cross_veda": true,
+      "total": 388,
+      "veda_counts": {
+        "AV": 122,
+        "RV": 193,
+        "SV": 13,
+        "YV": 60
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:OSADHI-PLANTS",
+      "cross_veda": true,
+      "total": 386,
+      "veda_counts": {
+        "AV": 193,
+        "RV": 125,
+        "SV": 4,
+        "YV": 64
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:MADHU-HONEY",
+      "cross_veda": true,
+      "total": 379,
+      "veda_counts": {
+        "AV": 78,
+        "RV": 237,
+        "SV": 26,
+        "YV": 38
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VAJRA-THUNDERBOLT",
+      "cross_veda": true,
+      "total": 353,
+      "veda_counts": {
+        "AV": 78,
+        "RV": 234,
+        "SV": 31,
+        "YV": 10
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VANASPATI-TREE",
+      "cross_veda": true,
+      "total": 349,
+      "veda_counts": {
+        "AV": 101,
+        "RV": 189,
+        "SV": 7,
+        "YV": 52
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:GHRTA-CLARIFIED-BUTTER",
+      "cross_veda": true,
+      "total": 344,
+      "veda_counts": {
+        "AV": 122,
+        "RV": 120,
+        "SV": 13,
+        "YV": 89
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:AYUDHA-WEAPON",
+      "cross_veda": true,
+      "total": 339,
+      "veda_counts": {
+        "AV": 127,
+        "RV": 162,
+        "SV": 8,
+        "YV": 42
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:ANTARIKSA-MIDSPACE",
+      "cross_veda": true,
+      "total": 332,
+      "veda_counts": {
+        "AV": 181,
+        "RV": 114,
+        "SV": 5,
+        "YV": 32
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:BARHIS-SACRED-GRASS",
+      "cross_veda": true,
+      "total": 320,
+      "veda_counts": {
+        "AV": 43,
+        "RV": 207,
+        "SV": 23,
+        "YV": 47
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SAMUDRA-OCEAN",
+      "cross_veda": true,
+      "total": 313,
+      "veda_counts": {
+        "AV": 86,
+        "RV": 166,
+        "SV": 19,
+        "YV": 42
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:AHAN-DAY",
+      "cross_veda": true,
+      "total": 305,
+      "veda_counts": {
+        "AV": 56,
+        "RV": 216,
+        "SV": 9,
+        "YV": 24
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:HIRANYA-GOLD",
+      "cross_veda": true,
+      "total": 300,
+      "veda_counts": {
+        "AV": 67,
+        "RV": 192,
+        "SV": 6,
+        "YV": 35
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:RAKSAS-DEMON",
+      "cross_veda": true,
+      "total": 300,
+      "veda_counts": {
+        "AV": 103,
+        "RV": 154,
+        "SV": 13,
+        "YV": 30
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:PITARAH-ANCESTORS",
+      "cross_veda": true,
+      "total": 296,
+      "veda_counts": {
+        "AV": 151,
+        "RV": 91,
+        "SV": 3,
+        "YV": 51
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:HRD-HEART",
+      "cross_veda": true,
+      "total": 284,
+      "veda_counts": {
+        "AV": 90,
+        "RV": 167,
+        "SV": 3,
+        "YV": 24
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:KAMA-DESIRE",
+      "cross_veda": true,
+      "total": 266,
+      "veda_counts": {
+        "AV": 77,
+        "RV": 154,
+        "SV": 4,
+        "YV": 31
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:MRTYU-DEATH",
+      "cross_veda": true,
+      "total": 266,
+      "veda_counts": {
+        "AV": 137,
+        "RV": 106,
+        "SV": 2,
+        "YV": 21
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:RATRI-NIGHT",
+      "cross_veda": true,
+      "total": 264,
+      "veda_counts": {
+        "AV": 83,
+        "RV": 137,
+        "SV": 5,
+        "YV": 39
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VI-BIRD",
+      "cross_veda": true,
+      "total": 254,
+      "veda_counts": {
+        "AV": 60,
+        "RV": 156,
+        "SV": 15,
+        "YV": 23
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:PARVATA-MOUNTAIN",
+      "cross_veda": true,
+      "total": 236,
+      "veda_counts": {
+        "AV": 53,
+        "RV": 162,
+        "SV": 2,
+        "YV": 19
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SATYA-TRUTH",
+      "cross_veda": true,
+      "total": 229,
+      "veda_counts": {
+        "AV": 56,
+        "RV": 135,
+        "SV": 12,
+        "YV": 26
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:ASMAN-PRESSING-STONE",
+      "cross_veda": true,
+      "total": 220,
+      "veda_counts": {
+        "AV": 26,
+        "RV": 162,
+        "SV": 22,
+        "YV": 10
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VRATA-ORDINANCE",
+      "cross_veda": true,
+      "total": 219,
+      "veda_counts": {
+        "AV": 50,
+        "RV": 122,
+        "SV": 23,
+        "YV": 24
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:KRATU-RESOLVE",
+      "cross_veda": true,
+      "total": 212,
+      "veda_counts": {
+        "AV": 17,
+        "RV": 144,
+        "SV": 40,
+        "YV": 11
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VRSTI-RAIN",
+      "cross_veda": true,
+      "total": 210,
+      "veda_counts": {
+        "AV": 49,
+        "RV": 136,
+        "SV": 8,
+        "YV": 17
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:PRANA-BREATH",
+      "cross_veda": true,
+      "total": 209,
+      "veda_counts": {
+        "AV": 148,
+        "RV": 15,
+        "SV": 1,
+        "YV": 45
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:TAMAS-DARKNESS",
+      "cross_veda": true,
+      "total": 202,
+      "veda_counts": {
+        "AV": 49,
+        "RV": 129,
+        "SV": 7,
+        "YV": 17
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VIDYUT-LIGHTNING",
+      "cross_veda": true,
+      "total": 201,
+      "veda_counts": {
+        "AV": 27,
+        "RV": 153,
+        "SV": 5,
+        "YV": 16
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:ENAS-SIN",
+      "cross_veda": true,
+      "total": 200,
+      "veda_counts": {
+        "AV": 74,
+        "RV": 107,
+        "SV": 1,
+        "YV": 18
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:VIRA-HERO",
+      "cross_veda": true,
+      "total": 188,
+      "veda_counts": {
+        "AV": 69,
+        "RV": 94,
+        "SV": 9,
+        "YV": 16
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:YAKSMA-DISEASE",
+      "cross_veda": true,
+      "total": 180,
+      "veda_counts": {
+        "AV": 108,
+        "RV": 55,
+        "YV": 17
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SAMIDH-FUEL",
+      "cross_veda": true,
+      "total": 148,
+      "veda_counts": {
+        "AV": 39,
+        "RV": 78,
+        "SV": 12,
+        "YV": 19
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SAMAN-CHANT",
+      "cross_veda": true,
+      "total": 147,
+      "veda_counts": {
+        "AV": 37,
+        "RV": 79,
+        "SV": 10,
+        "YV": 21
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:BHESAJA-HEALING",
+      "cross_veda": true,
+      "total": 140,
+      "veda_counts": {
+        "AV": 59,
+        "RV": 39,
+        "SV": 2,
+        "YV": 40
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:AHI-SERPENT",
+      "cross_veda": true,
+      "total": 133,
+      "veda_counts": {
+        "AV": 51,
+        "RV": 72,
+        "SV": 1,
+        "YV": 9
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:MAYA-WILE",
+      "cross_veda": true,
+      "total": 128,
+      "veda_counts": {
+        "AV": 22,
+        "RV": 96,
+        "SV": 6,
+        "YV": 4
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:TAPAS-FERVOUR",
+      "cross_veda": true,
+      "total": 99,
+      "veda_counts": {
+        "AV": 67,
+        "RV": 17,
+        "SV": 1,
+        "YV": 14
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:DAKSINA-PRIESTLY-GIFT",
+      "cross_veda": true,
+      "total": 91,
+      "veda_counts": {
+        "AV": 19,
+        "RV": 55,
+        "SV": 4,
+        "YV": 13
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:CANDRAMAS-MOON",
+      "cross_veda": true,
+      "total": 86,
+      "veda_counts": {
+        "AV": 49,
+        "RV": 21,
+        "SV": 1,
+        "YV": 15
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:KSETRA-FIELD",
+      "cross_veda": true,
+      "total": 85,
+      "veda_counts": {
+        "AV": 30,
+        "RV": 46,
+        "SV": 1,
+        "YV": 8
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:ATMAN-SELF",
+      "cross_veda": true,
+      "total": 84,
+      "veda_counts": {
+        "AV": 46,
+        "RV": 23,
+        "SV": 3,
+        "YV": 12
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:PASU-LIVESTOCK",
+      "cross_veda": true,
+      "total": 82,
+      "veda_counts": {
+        "AV": 49,
+        "RV": 23,
+        "YV": 10
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SRADDHA-FAITH",
+      "cross_veda": true,
+      "total": 45,
+      "veda_counts": {
+        "AV": 24,
+        "RV": 14,
+        "SV": 3,
+        "YV": 4
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:SAT-EXISTENCE",
+      "cross_veda": true,
+      "total": 24,
+      "veda_counts": {
+        "AV": 11,
+        "RV": 11,
+        "YV": 2
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "YV"
+      ]
+    },
+    {
+      "concept_id": "VG:CONCEPT:ASAT-NONEXISTENCE",
+      "cross_veda": true,
+      "total": 18,
+      "veda_counts": {
+        "AV": 10,
+        "RV": 7,
+        "YV": 1
+      },
+      "vedas": [
+        "AV",
+        "RV",
+        "YV"
+      ]
+    }
+  ],
+  "concept_connection_matrix": {
+    "AV-RV": 91,
+    "AV-SV": 86,
+    "AV-YV": 91,
+    "RV-SV": 86,
+    "RV-YV": 91,
+    "SV-YV": 86
+  },
+  "coverage": {
+    "concepts_defined": 91,
+    "known_source_gaps": {
+      "SV": "no English translation in any source, so English-evidence concept assertions are impossible; Sanskrit evidence only",
+      "SV/YV/AV": "no anukramani in any source, so Rishi, Devata and Chandas tables are Rigveda-only and their zeros are source gaps, not enrichment failures"
+    },
+    "per_veda": {
+      "AV": {
+        "concept_assertions": 10560,
+        "concept_coverage": 0.8123,
+        "mantras": 5839,
+        "mantras_with_a_concept": 4743,
+        "translation_coverage": 0.8354,
+        "with_traditional_metadata": 0,
+        "with_translation": 4878
+      },
+      "RV": {
+        "concept_assertions": 29022,
+        "concept_coverage": 0.9565,
+        "mantras": 10552,
+        "mantras_with_a_concept": 10093,
+        "translation_coverage": 0.9951,
+        "with_traditional_metadata": 10552,
+        "with_translation": 10500
+      },
+      "SV": {
+        "concept_assertions": 2005,
+        "concept_coverage": 0.6838,
+        "mantras": 1844,
+        "mantras_with_a_concept": 1261,
+        "translation_coverage": 0.0,
+        "with_traditional_metadata": 0,
+        "with_translation": 0
+      },
+      "YV": {
+        "concept_assertions": 4852,
+        "concept_coverage": 0.917,
+        "mantras": 1975,
+        "mantras_with_a_concept": 1811,
+        "translation_coverage": 0.9635,
+        "with_traditional_metadata": 0,
+        "with_translation": 1903
+      }
+    }
+  },
+  "devata_chandas_top": [
+    {
+      "lift": 2.053899,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 2872,
+      "support": 1225
+    },
+    {
+      "lift": 1.966387,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 1986,
+      "support": 811
+    },
+    {
+      "lift": 1.786692,
+      "object": "VG:CHANDAS:GAYATRI",
+      "object_total": 2434,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 2872,
+      "support": 618
+    },
+    {
+      "lift": 4.499161,
+      "object": "VG:CHANDAS:GAYATRI",
+      "object_total": 2434,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 1087,
+      "support": 589
+    },
+    {
+      "lift": 2.620026,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:VISVEDEVAH",
+      "subject_total": 805,
+      "support": 438
+    },
+    {
+      "lift": 1.739241,
+      "object": "VG:CHANDAS:GAYATRI",
+      "object_total": 2434,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 1986,
+      "support": 416
+    },
+    {
+      "lift": 1.803819,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:ASVINAU",
+      "subject_total": 622,
+      "support": 233
+    },
+    {
+      "lift": 1.789829,
+      "object": "VG:CHANDAS:JAGATI",
+      "object_total": 1302,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 1986,
+      "support": 229
+    },
+    {
+      "lift": 3.212177,
+      "object": "VG:CHANDAS:PRAGATHAH",
+      "object_total": 471,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 2872,
+      "support": 215
+    },
+    {
+      "lift": 1.151199,
+      "object": "VG:CHANDAS:JAGATI",
+      "object_total": 1302,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 2872,
+      "support": 213
+    },
+    {
+      "lift": 3.355125,
+      "object": "VG:CHANDAS:JAGATI",
+      "object_total": 1302,
+      "subject": "VG:DEVATA:VISVEDEVAH",
+      "subject_total": 805,
+      "support": 174
+    },
+    {
+      "lift": 2.370467,
+      "object": "VG:CHANDAS:JAGATI",
+      "object_total": 1302,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 1087,
+      "support": 166
+    },
+    {
+      "lift": 0.660061,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 1087,
+      "support": 149
+    },
+    {
+      "lift": 1.285157,
+      "object": "VG:CHANDAS:ANUSTUP",
+      "object_total": 783,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 2872,
+      "support": 143
+    },
+    {
+      "lift": 2.978002,
+      "object": "VG:CHANDAS:USNIK",
+      "object_total": 319,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 2872,
+      "support": 135
+    },
+    {
+      "lift": 1.741527,
+      "object": "VG:CHANDAS:ANUSTUP",
+      "object_total": 783,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 1986,
+      "support": 134
+    },
+    {
+      "lift": 3.280784,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:USAH",
+      "subject_total": 182,
+      "support": 124
+    },
+    {
+      "lift": 4.408474,
+      "object": "VG:CHANDAS:JAGATI",
+      "object_total": 1302,
+      "subject": "VG:DEVATA:MARUTAH",
+      "subject_total": 419,
+      "support": 119
+    },
+    {
+      "lift": 2.754579,
+      "object": "VG:CHANDAS:BRHATI",
+      "object_total": 304,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 2872,
+      "support": 119
+    },
+    {
+      "lift": 2.179839,
+      "object": "VG:CHANDAS:GAYATRI",
+      "object_total": 2434,
+      "subject": "VG:DEVATA:MARUTAH",
+      "subject_total": 419,
+      "support": 110
+    },
+    {
+      "lift": 1.415016,
+      "object": "VG:CHANDAS:GAYATRI",
+      "object_total": 2434,
+      "subject": "VG:DEVATA:ASVINAU",
+      "subject_total": 622,
+      "support": 106
+    },
+    {
+      "lift": 5.996709,
+      "object": "VG:CHANDAS:VIRAT",
+      "object_total": 168,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 1986,
+      "support": 99
+    },
+    {
+      "lift": 2.395721,
+      "object": "VG:CHANDAS:JAGATI",
+      "object_total": 1302,
+      "subject": "VG:DEVATA:ASVINAU",
+      "subject_total": 622,
+      "support": 96
+    },
+    {
+      "lift": 1.091785,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:MARUTAH",
+      "subject_total": 419,
+      "support": 95
+    },
+    {
+      "lift": 2.668161,
+      "object": "VG:CHANDAS:PANKTIH",
+      "object_total": 240,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 2872,
+      "support": 91
+    },
+    {
+      "lift": 1.922898,
+      "object": "VG:CHANDAS:PRAGATHAH",
+      "object_total": 471,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 1986,
+      "support": 89
+    },
+    {
+      "lift": 2.987767,
+      "object": "VG:CHANDAS:ANUSTUP",
+      "object_total": 783,
+      "subject": "VG:DEVATA:ASVINAU",
+      "subject_total": 622,
+      "support": 72
+    },
+    {
+      "lift": 1.81913,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:MITRAVARUNAU",
+      "subject_total": 180,
+      "support": 68
+    },
+    {
+      "lift": 2.242788,
+      "object": "VG:CHANDAS:BRHATI",
+      "object_total": 304,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 1986,
+      "support": 67
+    },
+    {
+      "lift": 2.96703,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:VARUNAH",
+      "subject_total": 99,
+      "support": 61
+    },
+    {
+      "lift": 0.629187,
+      "object": "VG:CHANDAS:GAYATRI",
+      "object_total": 2434,
+      "subject": "VG:DEVATA:VISVEDEVAH",
+      "subject_total": 805,
+      "support": 61
+    },
+    {
+      "lift": 3.644044,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:BRHASPATIH",
+      "subject_total": 74,
+      "support": 56
+    },
+    {
+      "lift": 1.595021,
+      "object": "VG:CHANDAS:USNIK",
+      "object_total": 319,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 1986,
+      "support": 50
+    },
+    {
+      "lift": 3.19354,
+      "object": "VG:CHANDAS:GAYATRI",
+      "object_total": 2434,
+      "subject": "VG:DEVATA:INDRAGNI",
+      "subject_total": 117,
+      "support": 45
+    },
+    {
+      "lift": 1.068532,
+      "object": "VG:CHANDAS:ANUSTUP",
+      "object_total": 783,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 1087,
+      "support": 45
+    },
+    {
+      "lift": 4.824835,
+      "object": "VG:CHANDAS:GAYATRI",
+      "object_total": 2434,
+      "subject": "VG:DEVATA:PUSA",
+      "subject_total": 74,
+      "support": 43
+    },
+    {
+      "lift": 2.156873,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:RBHAVAH",
+      "subject_total": 96,
+      "support": 43
+    },
+    {
+      "lift": 2.466396,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:SAVITA",
+      "subject_total": 82,
+      "support": 42
+    },
+    {
+      "lift": 2.44791,
+      "object": "VG:CHANDAS:USNIK",
+      "object_total": 319,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 1087,
+      "support": 42
+    },
+    {
+      "lift": 6.305924,
+      "object": "VG:CHANDAS:JAGATI",
+      "object_total": 1302,
+      "subject": "VG:DEVATA:RBHAVAH",
+      "subject_total": 96,
+      "support": 39
+    },
+    {
+      "lift": 3.23825,
+      "object": "VG:CHANDAS:GAYATRI",
+      "object_total": 2434,
+      "subject": "VG:DEVATA:ADITYAH",
+      "subject_total": 100,
+      "support": 39
+    },
+    {
+      "lift": 1.633568,
+      "object": "VG:CHANDAS:VIRAT",
+      "object_total": 168,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 2872,
+      "support": 39
+    },
+    {
+      "lift": 1.563958,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:INDRAGNI",
+      "subject_total": 117,
+      "support": 38
+    },
+    {
+      "lift": 1.460554,
+      "object": "VG:CHANDAS:PRAGATHAH",
+      "object_total": 471,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 1087,
+      "support": 37
+    },
+    {
+      "lift": 1.526435,
+      "object": "VG:CHANDAS:PANKTIH",
+      "object_total": 240,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 1986,
+      "support": 36
+    },
+    {
+      "lift": 3.481852,
+      "object": "VG:CHANDAS:PRAGATHAH",
+      "object_total": 471,
+      "subject": "VG:DEVATA:MARUTAH",
+      "subject_total": 419,
+      "support": 34
+    },
+    {
+      "lift": 2.046521,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:SOMAH",
+      "subject_total": 80,
+      "support": 34
+    },
+    {
+      "lift": 4.540182,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:ASHVAH",
+      "subject_total": 35,
+      "support": 33
+    },
+    {
+      "lift": 2.2013,
+      "object": "VG:CHANDAS:TRISTUP",
+      "object_total": 4197,
+      "subject": "VG:DEVATA:INDRAVARUNAU",
+      "subject_total": 70,
+      "support": 32
+    },
+    {
+      "lift": 2.660295,
+      "object": "VG:CHANDAS:ATYASTIH",
+      "object_total": 82,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 2872,
+      "support": 31
+    }
+  ],
+  "devata_concept_top": [
+    {
+      "lift": 2.405411,
+      "object": "VG:CONCEPT:AGNI-FIRE",
+      "object_total": 741,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 508
+    },
+    {
+      "lift": 0.914659,
+      "object": "VG:CONCEPT:STOMA-PRAISE",
+      "object_total": 1175,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 415
+    },
+    {
+      "lift": 0.979819,
+      "object": "VG:CONCEPT:SOMA-DRINK",
+      "object_total": 1044,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 395
+    },
+    {
+      "lift": 0.792169,
+      "object": "VG:CONCEPT:VASU-WEALTH",
+      "object_total": 1154,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 353
+    },
+    {
+      "lift": 1.145641,
+      "object": "VG:CONCEPT:OJAS-MIGHT",
+      "object_total": 755,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 334
+    },
+    {
+      "lift": 1.271317,
+      "object": "VG:CONCEPT:YAJNA-SACRIFICE",
+      "object_total": 908,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 329
+    },
+    {
+      "lift": 2.074592,
+      "object": "VG:CONCEPT:SOMA-DRINK",
+      "object_total": 1044,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 2790,
+      "support": 299
+    },
+    {
+      "lift": 0.964996,
+      "object": "VG:CONCEPT:AVAS-HELP",
+      "object_total": 738,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 275
+    },
+    {
+      "lift": 0.867533,
+      "object": "VG:CONCEPT:GO-CATTLE",
+      "object_total": 803,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 269
+    },
+    {
+      "lift": 0.750991,
+      "object": "VG:CONCEPT:VASU-WEALTH",
+      "object_total": 1154,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 247
+    },
+    {
+      "lift": 0.849196,
+      "object": "VG:CONCEPT:ASVA-HORSE",
+      "object_total": 738,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 242
+    },
+    {
+      "lift": 0.585411,
+      "object": "VG:CONCEPT:DYAUS-HEAVEN",
+      "object_total": 1044,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 236
+    },
+    {
+      "lift": 1.016267,
+      "object": "VG:CONCEPT:SAKHYA-FRIENDSHIP",
+      "object_total": 581,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 228
+    },
+    {
+      "lift": 2.002383,
+      "object": "VG:CONCEPT:HOTR-PRIEST",
+      "object_total": 389,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 222
+    },
+    {
+      "lift": 1.355927,
+      "object": "VG:CONCEPT:SOMA-PRESSING",
+      "object_total": 424,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 222
+    },
+    {
+      "lift": 0.659931,
+      "object": "VG:CONCEPT:STOMA-PRAISE",
+      "object_total": 1175,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 221
+    },
+    {
+      "lift": 1.324962,
+      "object": "VG:CONCEPT:YUDH-BATTLE",
+      "object_total": 430,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 220
+    },
+    {
+      "lift": 0.835785,
+      "object": "VG:CONCEPT:DANA-LIBERALITY",
+      "object_total": 629,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 203
+    },
+    {
+      "lift": 2.20235,
+      "object": "VG:CONCEPT:VAJRA-THUNDERBOLT",
+      "object_total": 234,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 199
+    },
+    {
+      "lift": 1.004284,
+      "object": "VG:CONCEPT:SATRU-ENEMY",
+      "object_total": 459,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 178
+    },
+    {
+      "lift": 0.598223,
+      "object": "VG:CONCEPT:DYAUS-HEAVEN",
+      "object_total": 1044,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 178
+    },
+    {
+      "lift": 1.287027,
+      "object": "VG:CONCEPT:HAVIS-OBLATION",
+      "object_total": 458,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 168
+    },
+    {
+      "lift": 0.823995,
+      "object": "VG:CONCEPT:JANA-PEOPLE",
+      "object_total": 528,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 168
+    },
+    {
+      "lift": 0.998974,
+      "object": "VG:CONCEPT:VAJA-PRIZE",
+      "object_total": 407,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 157
+    },
+    {
+      "lift": 1.036656,
+      "object": "VG:CONCEPT:JANA-PEOPLE",
+      "object_total": 528,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 156
+    },
+    {
+      "lift": 0.745374,
+      "object": "VG:CONCEPT:AP-WATERS",
+      "object_total": 542,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 156
+    },
+    {
+      "lift": 2.286716,
+      "object": "VG:CONCEPT:SINDHU-RIVER",
+      "object_total": 491,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 2790,
+      "support": 155
+    },
+    {
+      "lift": 0.613137,
+      "object": "VG:CONCEPT:PRTHIVI-EARTH",
+      "object_total": 642,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 152
+    },
+    {
+      "lift": 0.989986,
+      "object": "VG:CONCEPT:BRAHMAN-FORMULATION",
+      "object_total": 395,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 151
+    },
+    {
+      "lift": 0.683147,
+      "object": "VG:CONCEPT:OJAS-MIGHT",
+      "object_total": 755,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 147
+    },
+    {
+      "lift": 0.404997,
+      "object": "VG:CONCEPT:YAJNA-SACRIFICE",
+      "object_total": 908,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 142
+    },
+    {
+      "lift": 1.051092,
+      "object": "VG:CONCEPT:GRHA-HOUSE",
+      "object_total": 464,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 139
+    },
+    {
+      "lift": 2.777039,
+      "object": "VG:CONCEPT:RATHA-CHARIOT",
+      "object_total": 550,
+      "subject": "VG:DEVATA:ASVINAU",
+      "subject_total": 1826,
+      "support": 138
+    },
+    {
+      "lift": 0.753055,
+      "object": "VG:CONCEPT:DANA-LIBERALITY",
+      "object_total": 629,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 135
+    },
+    {
+      "lift": 0.671218,
+      "object": "VG:CONCEPT:VAC-SPEECH",
+      "object_total": 517,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 134
+    },
+    {
+      "lift": 0.630945,
+      "object": "VG:CONCEPT:RATHA-CHARIOT",
+      "object_total": 550,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 134
+    },
+    {
+      "lift": 1.19986,
+      "object": "VG:CONCEPT:JANMAN-BIRTH",
+      "object_total": 386,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 132
+    },
+    {
+      "lift": 0.901997,
+      "object": "VG:CONCEPT:DYAUS-HEAVEN",
+      "object_total": 1044,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 2790,
+      "support": 130
+    },
+    {
+      "lift": 1.100541,
+      "object": "VG:CONCEPT:GO-CATTLE",
+      "object_total": 803,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 2790,
+      "support": 122
+    },
+    {
+      "lift": 0.91633,
+      "object": "VG:CONCEPT:RTA-ORDER",
+      "object_total": 448,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 117
+    },
+    {
+      "lift": 0.617097,
+      "object": "VG:CONCEPT:SINDHU-RIVER",
+      "object_total": 491,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 117
+    },
+    {
+      "lift": 1.405917,
+      "object": "VG:CONCEPT:AMRTA-IMMORTALITY",
+      "object_total": 287,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 115
+    },
+    {
+      "lift": 0.780461,
+      "object": "VG:CONCEPT:VAC-SPEECH",
+      "object_total": 517,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 115
+    },
+    {
+      "lift": 0.809696,
+      "object": "VG:CONCEPT:ANNA-FOOD",
+      "object_total": 494,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 114
+    },
+    {
+      "lift": 0.715585,
+      "object": "VG:CONCEPT:VASU-WEALTH",
+      "object_total": 1154,
+      "subject": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "subject_total": 2790,
+      "support": 114
+    },
+    {
+      "lift": 0.557029,
+      "object": "VG:CONCEPT:DHI-INSIGHT",
+      "object_total": 530,
+      "subject": "VG:DEVATA:INDRAH",
+      "subject_total": 7804,
+      "support": 114
+    },
+    {
+      "lift": 0.901093,
+      "object": "VG:CONCEPT:JYOTIS-LIGHT",
+      "object_total": 440,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 113
+    },
+    {
+      "lift": 0.670333,
+      "object": "VG:CONCEPT:SAKHYA-FRIENDSHIP",
+      "object_total": 581,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 111
+    },
+    {
+      "lift": 9.232681,
+      "object": "VG:CONCEPT:USAS-DAWN",
+      "object_total": 397,
+      "subject": "VG:DEVATA:USAH",
+      "subject_total": 601,
+      "support": 109
+    },
+    {
+      "lift": 0.590245,
+      "object": "VG:CONCEPT:PRTHIVI-EARTH",
+      "object_total": 642,
+      "subject": "VG:DEVATA:AGNIH",
+      "subject_total": 5760,
+      "support": 108
+    }
+  ],
+  "formula_by_veda": [
+    {
+      "cross_veda": true,
+      "display_form": "pāta svastibhiḥ sadā naḥ",
+      "formula_id": "VG:ENRICH:FORMULA:01ee076bd8b5c608c52c6cb6f245f7f5",
+      "total": 93,
+      "veda_counts": {
+        "AV": 6,
+        "RV": 82,
+        "SV": 2,
+        "YV": 3
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "yūyam pāta svastibhiḥ sadā naḥ",
+      "formula_id": "VG:ENRICH:FORMULA:dbd579d610550001bdc364b5304ff702",
+      "total": 82,
+      "veda_counts": {
+        "RV": 82
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "yo smān dveṣṭi",
+      "formula_id": "VG:ENRICH:FORMULA:5b1f54e70a06a645dc4a39a8cd22ea8f",
+      "total": 67,
+      "veda_counts": {
+        "AV": 53,
+        "YV": 10
+      },
+      "vedas": [
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "yo smān dveṣṭi yaṃ",
+      "formula_id": "VG:ENRICH:FORMULA:89a5dd3d247b61d749f2aa9825d198a6",
+      "total": 65,
+      "veda_counts": {
+        "AV": 52,
+        "YV": 9
+      },
+      "vedas": [
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "viśvā bhuvanā",
+      "formula_id": "VG:ENRICH:FORMULA:709faeaecdc5a79716fa565ce0a051f0",
+      "total": 60,
+      "veda_counts": {
+        "AV": 14,
+        "RV": 39,
+        "SV": 2,
+        "YV": 5
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "bhavati ya evaṃ",
+      "formula_id": "VG:ENRICH:FORMULA:945b8df2ebe61bddb5742af97f87d077",
+      "total": 55,
+      "veda_counts": {
+        "AV": 55
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "bhavati ya evaṃ veda",
+      "formula_id": "VG:ENRICH:FORMULA:0456d8a603feac162856dc11cbdff96d",
+      "total": 54,
+      "veda_counts": {
+        "AV": 54
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "parame vyoman",
+      "formula_id": "VG:ENRICH:FORMULA:b829d53e6c5e9b26d39c3de720b87fcc",
+      "total": 53,
+      "veda_counts": {
+        "AV": 27,
+        "RV": 17,
+        "SV": 2,
+        "YV": 7
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "vayaṃ dviṣmaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:8224f8e85ac4de1f38be6ed72a6113dd",
+      "total": 52,
+      "veda_counts": {
+        "AV": 46,
+        "YV": 6
+      },
+      "vedas": [
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "yo smān dveṣṭi yaṃ vayaṃ",
+      "formula_id": "VG:ENRICH:FORMULA:8a01043ac7c927acef80cef7bf151d4c",
+      "total": 51,
+      "veda_counts": {
+        "AV": 51
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "yaṃ vayaṃ dviṣmaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:6c76b15955cd85ffd6897520bc2525a8",
+      "total": 46,
+      "veda_counts": {
+        "AV": 46
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "nabhantām anyake",
+      "formula_id": "VG:ENRICH:FORMULA:7c4f5167e19cd665cd96dc877ef8535d",
+      "total": 46,
+      "veda_counts": {
+        "AV": 3,
+        "RV": 40,
+        "SV": 3
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "viśvasmād indra uttaraḥ",
+      "formula_id": "VG:ENRICH:FORMULA:e5b0866a1de31a2fbdd83b204df86277",
+      "total": 46,
+      "veda_counts": {
+        "AV": 23,
+        "RV": 23
+      },
+      "vedas": [
+        "RV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "yo smān dveṣṭi yaṃ vayaṃ dviṣmaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:ab2ab41c84f6d3d3a407f0096a3864ed",
+      "total": 45,
+      "veda_counts": {
+        "AV": 45
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "haviṣā vidhema",
+      "formula_id": "VG:ENRICH:FORMULA:344d5a1fcd80946785a66db8e1b2d75d",
+      "total": 40,
+      "veda_counts": {
+        "AV": 12,
+        "RV": 13,
+        "YV": 14
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "bhuvanāni viśvā",
+      "formula_id": "VG:ENRICH:FORMULA:283d1c606203147900bf02094b8495c2",
+      "total": 39,
+      "veda_counts": {
+        "AV": 15,
+        "RV": 15,
+        "YV": 9
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "brahmaṇas pate",
+      "formula_id": "VG:ENRICH:FORMULA:fe3701b783e5aa28fc78f96a62636c8a",
+      "total": 38,
+      "veda_counts": {
+        "AV": 12,
+        "RV": 17,
+        "SV": 5,
+        "YV": 4
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "nabhantām anyake same",
+      "formula_id": "VG:ENRICH:FORMULA:97c623f17768f0a58c6b79ba6e82a852",
+      "total": 34,
+      "veda_counts": {
+        "RV": 34
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "sa janāsa indra",
+      "formula_id": "VG:ENRICH:FORMULA:04e644b190c5c93b65869083e1b52548",
+      "total": 33,
+      "veda_counts": {
+        "AV": 18,
+        "RV": 15
+      },
+      "vedas": [
+        "RV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "muñcantv aṃhasaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:43d2d89e22bfff1b6a4e2f936cbb7e7c",
+      "total": 33,
+      "veda_counts": {
+        "AV": 31,
+        "RV": 1,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "vasuvane vasudheyasya",
+      "formula_id": "VG:ENRICH:FORMULA:ebbc2c836be05c5ed6a0b21dcf7a5bfc",
+      "total": 33,
+      "veda_counts": {
+        "YV": 33
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "somasya pītaye",
+      "formula_id": "VG:ENRICH:FORMULA:f3a03d6d2142e7d437983a68f3c76983",
+      "total": 33,
+      "veda_counts": {
+        "AV": 2,
+        "RV": 29,
+        "SV": 2
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "viśvā bhuvanāni",
+      "formula_id": "VG:ENRICH:FORMULA:254ad3e2b4579cfc4048bb61a255a2dc",
+      "total": 32,
+      "veda_counts": {
+        "AV": 5,
+        "RV": 21,
+        "SV": 1,
+        "YV": 5
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "no muñcantv aṃhasaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:7f3ce55ee4bd14fc9a33ea4eff5b4e85",
+      "total": 32,
+      "veda_counts": {
+        "AV": 30,
+        "RV": 1,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "sa janāsa indraḥ",
+      "formula_id": "VG:ENRICH:FORMULA:c97b31fec17eaeefff544ffa59f872c4",
+      "total": 31,
+      "veda_counts": {
+        "AV": 17,
+        "RV": 14
+      },
+      "vedas": [
+        "RV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "ya evaṃ vidvāṃsaṃ",
+      "formula_id": "VG:ENRICH:FORMULA:033f33ededd1c941f8c424a133e7f41b",
+      "total": 29,
+      "veda_counts": {
+        "AV": 29
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "jitam asmākam udbhinnam asmākam",
+      "formula_id": "VG:ENRICH:FORMULA:10f39a3ff78b7f50131a4dcea76e5008",
+      "total": 29,
+      "veda_counts": {
+        "AV": 29
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "no mitro varuṇo",
+      "formula_id": "VG:ENRICH:FORMULA:3d1a4f6e644fb57c606fb78a257eb2fc",
+      "total": 29,
+      "veda_counts": {
+        "RV": 25,
+        "SV": 1,
+        "YV": 3
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "kasmai devāya haviṣā vidhema",
+      "formula_id": "VG:ENRICH:FORMULA:e85db671a46b141b44dc2ee6bfeba798",
+      "total": 29,
+      "veda_counts": {
+        "AV": 8,
+        "RV": 9,
+        "YV": 12
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "no muñcatam aṃhasaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:19119c7308fcc2585ee385934621439d",
+      "total": 28,
+      "veda_counts": {
+        "AV": 27,
+        "SV": 1
+      },
+      "vedas": [
+        "SV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "varuṇo mitro aryamā",
+      "formula_id": "VG:ENRICH:FORMULA:4aed46514dcc6dab6e499b4bcb65b96c",
+      "total": 28,
+      "veda_counts": {
+        "AV": 2,
+        "RV": 24,
+        "SV": 1,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "stotṛbhya ā bhara",
+      "formula_id": "VG:ENRICH:FORMULA:5ad784a47eb85efc67967e733de79db9",
+      "total": 28,
+      "veda_counts": {
+        "AV": 1,
+        "RV": 13,
+        "SV": 10,
+        "YV": 4
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "ca me yajñena kalpantām",
+      "formula_id": "VG:ENRICH:FORMULA:5fc252171071b64ad7aefcf16dce6273",
+      "total": 27,
+      "veda_counts": {
+        "YV": 27
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "jitam asmākam udbhinnam asmākam r̥tam asmākaṃ",
+      "formula_id": "VG:ENRICH:FORMULA:d746650ffa6726eacc792ac25dba5882",
+      "total": 27,
+      "veda_counts": {
+        "AV": 27
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "tasya devasya",
+      "formula_id": "VG:ENRICH:FORMULA:25887ecd266ea6b0ab9b4061ac39b787",
+      "total": 26,
+      "veda_counts": {
+        "AV": 26
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "brahmaṇas patiḥ",
+      "formula_id": "VG:ENRICH:FORMULA:598b0b5fa5f52b0074045699be2d852d",
+      "total": 26,
+      "veda_counts": {
+        "AV": 6,
+        "RV": 15,
+        "SV": 2,
+        "YV": 3
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "te no muñcantv aṃhasaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:cba517be3b7465cd60e7d0f21396d70a",
+      "total": 26,
+      "veda_counts": {
+        "AV": 26
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "mum āmuṣyāyaṇam amuṣyāḥ putram",
+      "formula_id": "VG:ENRICH:FORMULA:f65eeac63d034d498a73ac995f6ee558",
+      "total": 26,
+      "veda_counts": {
+        "AV": 26
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "tasya devasya kruddhasyaitad āgo ya evaṃ vidvāṃsaṃ",
+      "formula_id": "VG:ENRICH:FORMULA:4017c0a9fd1a8e04b248c23024cd6daa",
+      "total": 25,
+      "veda_counts": {
+        "AV": 25
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "upayāmagṛhīto si",
+      "formula_id": "VG:ENRICH:FORMULA:4a8bdc83fc54689c410e49db0786b62c",
+      "total": 25,
+      "veda_counts": {
+        "YV": 25
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "pṛthivī uta dyauḥ",
+      "formula_id": "VG:ENRICH:FORMULA:50d2acc20488fa5b66dccd8d42e972c1",
+      "total": 25,
+      "veda_counts": {
+        "AV": 1,
+        "RV": 21,
+        "SV": 1,
+        "YV": 2
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "bṛhad vadema vidathe suvīrāḥ",
+      "formula_id": "VG:ENRICH:FORMULA:9d85c4145c088dfb5726900a74742cca",
+      "total": 25,
+      "veda_counts": {
+        "AV": 1,
+        "RV": 23,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "asya bhuvanasya",
+      "formula_id": "VG:ENRICH:FORMULA:0968f19c827efae0b39e619ac7ef6912",
+      "total": 24,
+      "veda_counts": {
+        "AV": 3,
+        "RV": 17,
+        "SV": 1,
+        "YV": 3
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "ūtibhir aśvinā",
+      "formula_id": "VG:ENRICH:FORMULA:a804e944ab4213da317fc00a692b6d76",
+      "total": 24,
+      "veda_counts": {
+        "RV": 24
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "asuratvam ekam",
+      "formula_id": "VG:ENRICH:FORMULA:086de30cb4ef8a5107b2bb5182867154",
+      "total": 23,
+      "veda_counts": {
+        "RV": 23
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "makhāya tvā makhasya tvā śīrṣṇe",
+      "formula_id": "VG:ENRICH:FORMULA:0bc693bce1b0e6e7e1b204953e6b6ecd",
+      "total": 23,
+      "veda_counts": {
+        "YV": 8
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "tanno mitro varuṇo māmahantāmaditiḥ sindhuḥ pṛthivī uta dyauḥ",
+      "formula_id": "VG:ENRICH:FORMULA:74537bb3092020c97a2b3473efd32c41",
+      "total": 23,
+      "veda_counts": {
+        "RV": 20,
+        "SV": 1,
+        "YV": 2
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "anu svarājyam",
+      "formula_id": "VG:ENRICH:FORMULA:c9becf231b33705c02f1d4200b464536",
+      "total": 23,
+      "veda_counts": {
+        "AV": 3,
+        "RV": 20
+      },
+      "vedas": [
+        "RV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "tābhir ū ṣu ūtibhir aśvinā gatam",
+      "formula_id": "VG:ENRICH:FORMULA:d3f0890007188025f6f61ec3a2b00461",
+      "total": 23,
+      "veda_counts": {
+        "RV": 23
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "uṣasā sūryeṇa",
+      "formula_id": "VG:ENRICH:FORMULA:04b12f86fd032186c892baca34c407be",
+      "total": 22,
+      "veda_counts": {
+        "RV": 22
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "vidyāmeṣaṁ vṛjanaṁ jīradānum",
+      "formula_id": "VG:ENRICH:FORMULA:8394ee5aa866fff271fe6384512eb72e",
+      "total": 22,
+      "veda_counts": {
+        "RV": 21,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "mahad devānām asuratvam ekam",
+      "formula_id": "VG:ENRICH:FORMULA:d51bc68a5b2dd21240e6c266531ebdee",
+      "total": 22,
+      "veda_counts": {
+        "RV": 22
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "indra girvaṇaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:106c999c19ca7837e9e064708a65aa2e",
+      "total": 21,
+      "veda_counts": {
+        "AV": 3,
+        "RV": 15,
+        "SV": 3
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "athā no vasyasas",
+      "formula_id": "VG:ENRICH:FORMULA:8520879e21ca18c4eda9fffcfc908cad",
+      "total": 21,
+      "veda_counts": {
+        "RV": 10,
+        "SV": 10,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "sajoṣasā uṣasā sūryeṇa",
+      "formula_id": "VG:ENRICH:FORMULA:877c2aa4667b4f0cc98aca0b7a1832fe",
+      "total": 21,
+      "veda_counts": {
+        "RV": 21
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "iṣaṁ stotṛbhya ā bhara",
+      "formula_id": "VG:ENRICH:FORMULA:8fd58b61159234fc3547f349a46bee3d",
+      "total": 21,
+      "veda_counts": {
+        "AV": 1,
+        "RV": 10,
+        "SV": 7,
+        "YV": 3
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "me asya rodasī",
+      "formula_id": "VG:ENRICH:FORMULA:3b346cd458a47f69422dacbd602512ac",
+      "total": 20,
+      "veda_counts": {
+        "AV": 1,
+        "RV": 18,
+        "SV": 1
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "apa naḥ śośucad agham",
+      "formula_id": "VG:ENRICH:FORMULA:3d77757d9c4607e1b54c355d5a19f8f5",
+      "total": 20,
+      "veda_counts": {
+        "AV": 8,
+        "RV": 8,
+        "YV": 2
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "athā no vasyasas kṛdhi",
+      "formula_id": "VG:ENRICH:FORMULA:51201508726b2a3a9e7ba3ff4e73c55c",
+      "total": 20,
+      "veda_counts": {
+        "RV": 10,
+        "SV": 10
+      },
+      "vedas": [
+        "RV",
+        "SV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "sakhāya indra",
+      "formula_id": "VG:ENRICH:FORMULA:570ead1e7354dbb3a2051b2f8a3a96f7",
+      "total": 20,
+      "veda_counts": {
+        "AV": 6,
+        "RV": 8,
+        "SV": 5,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "viśvābhir ūtibhiḥ",
+      "formula_id": "VG:ENRICH:FORMULA:74ab0f03e4bdafb450c09d4472d037bb",
+      "total": 20,
+      "veda_counts": {
+        "AV": 2,
+        "RV": 14,
+        "SV": 3,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "lokakr̥taḥ pathikr̥to yajāmahe ye devānāṃ hutabhāgā iha stha",
+      "formula_id": "VG:ENRICH:FORMULA:75a185051b8864b85cf40cb267136229",
+      "total": 20,
+      "veda_counts": {
+        "AV": 20
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "pavasva dhārayā",
+      "formula_id": "VG:ENRICH:FORMULA:85cd41678fb7c8af5b6afce50cbef004",
+      "total": 20,
+      "veda_counts": {
+        "RV": 10,
+        "SV": 10
+      },
+      "vedas": [
+        "RV",
+        "SV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "tau no muñcatam aṃhasaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:a6322878a80730307b22b80c71b8b4ec",
+      "total": 20,
+      "veda_counts": {
+        "AV": 20
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "mitrasya varuṇasya",
+      "formula_id": "VG:ENRICH:FORMULA:02b5bc0ce74837f3e04ea7be8f9bd374",
+      "total": 19,
+      "veda_counts": {
+        "AV": 2,
+        "RV": 14,
+        "SV": 2,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "divo amuṣya śāsato divaṁ yaya divāvaso",
+      "formula_id": "VG:ENRICH:FORMULA:0f4653e5923bf8e04e0800ee37e94be3",
+      "total": 19,
+      "veda_counts": {
+        "RV": 15,
+        "SV": 4
+      },
+      "vedas": [
+        "RV",
+        "SV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "devasya tvā savituḥ prasave śvinor bāhubhyāṃ pūṣṇo",
+      "formula_id": "VG:ENRICH:FORMULA:47968f143aea3ce55d86ea03cbffdfbc",
+      "total": 19,
+      "veda_counts": {
+        "AV": 1,
+        "YV": 18
+      },
+      "vedas": [
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "maghavann indra",
+      "formula_id": "VG:ENRICH:FORMULA:50130087daf8a316d9608ff2bae184f4",
+      "total": 19,
+      "veda_counts": {
+        "AV": 3,
+        "RV": 13,
+        "SV": 2,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "upayāmagṛhīto sīndrāya",
+      "formula_id": "VG:ENRICH:FORMULA:d9df6aad0db60727a0fca6ba0ee2dc11",
+      "total": 19,
+      "veda_counts": {
+        "YV": 17
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "riṣāmā vayaṁ tava",
+      "formula_id": "VG:ENRICH:FORMULA:f2df9f59f8778ad5f19cb97d2e63dc02",
+      "total": 19,
+      "veda_counts": {
+        "AV": 1,
+        "RV": 14,
+        "SV": 4
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "yam abadhnād br̥haspatir",
+      "formula_id": "VG:ENRICH:FORMULA:f67ceb3f7d5a7e49e7515bdc73e18736",
+      "total": 19,
+      "veda_counts": {
+        "AV": 19
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "eṣa te yonirindrāya",
+      "formula_id": "VG:ENRICH:FORMULA:27e27a03fea0b515af45c68f9ea1230a",
+      "total": 18,
+      "veda_counts": {
+        "YV": 16
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "anti ṣad bhūtu vām avaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:6262957c3c96833c31e755323ffec58d",
+      "total": 18,
+      "veda_counts": {
+        "RV": 18
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "caitaṃ pūrva r̥ṣayaḥ prāśnan",
+      "formula_id": "VG:ENRICH:FORMULA:7051898fef77c8890f32bcb89c785367",
+      "total": 18,
+      "veda_counts": {
+        "AV": 18
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "sod akrāmat sā",
+      "formula_id": "VG:ENRICH:FORMULA:72faba19572a7be64220593d06a6d518",
+      "total": 18,
+      "veda_counts": {
+        "AV": 18
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "vittam me asya rodasī",
+      "formula_id": "VG:ENRICH:FORMULA:917238f66a7f0db87092a62099821897",
+      "total": 18,
+      "veda_counts": {
+        "RV": 18
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "upayāmagṛhīto sīndrāya tvā",
+      "formula_id": "VG:ENRICH:FORMULA:b87ac0f11827bc09bd2f3ed6913df3d3",
+      "total": 18,
+      "veda_counts": {
+        "YV": 16
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "gne sakhye mā riṣāmā vayaṁ tava",
+      "formula_id": "VG:ENRICH:FORMULA:bba460d83ccbabd87abcba8aa8abd127",
+      "total": 18,
+      "veda_counts": {
+        "AV": 1,
+        "RV": 14,
+        "SV": 3
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "mahate saubhagāya",
+      "formula_id": "VG:ENRICH:FORMULA:c1274e9fcc736c0f70c65b742a286f7f",
+      "total": 18,
+      "veda_counts": {
+        "AV": 8,
+        "RV": 6,
+        "YV": 4
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "devasya tvā savituḥ prasave śvinorbāhubhyāṃ pūṣṇo hastābhyām",
+      "formula_id": "VG:ENRICH:FORMULA:e2a75dd1e34f85281bfe7daae3eaebc3",
+      "total": 18,
+      "veda_counts": {
+        "YV": 18
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "nehaso va ūtayaḥ suūtayo va ūtayaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:f490bd4f932c382f6bfa4c9b03946882",
+      "total": 18,
+      "veda_counts": {
+        "RV": 18
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "vayaṃ syāma patayo",
+      "formula_id": "VG:ENRICH:FORMULA:3113ba641f99d2b0933d567f587931f4",
+      "total": 17,
+      "veda_counts": {
+        "AV": 7,
+        "RV": 5,
+        "YV": 5
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "muñcatv aṃhasaḥ",
+      "formula_id": "VG:ENRICH:FORMULA:92640ba1eaf310e9dbfb3bd24f330526",
+      "total": 17,
+      "veda_counts": {
+        "AV": 14,
+        "YV": 3
+      },
+      "vedas": [
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "ca ma indraśca me",
+      "formula_id": "VG:ENRICH:FORMULA:988cb6fea8a0706eee23078bdcc25f82",
+      "total": 17,
+      "veda_counts": {
+        "YV": 3
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "yajamānāya sunvate",
+      "formula_id": "VG:ENRICH:FORMULA:9e465596b21dc462e2b843d3071e7ecc",
+      "total": 17,
+      "veda_counts": {
+        "AV": 7,
+        "RV": 8,
+        "SV": 2
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "eṣa te yonirindrāya tvā",
+      "formula_id": "VG:ENRICH:FORMULA:b1e3a009009ab17ba4b04baf529ea26c",
+      "total": 17,
+      "veda_counts": {
+        "YV": 15
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "viśvasya bhuvanasya",
+      "formula_id": "VG:ENRICH:FORMULA:b502e88bf75038f121f1962349d54657",
+      "total": 17,
+      "veda_counts": {
+        "AV": 3,
+        "RV": 11,
+        "SV": 1,
+        "YV": 2
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "vyantvājyasya hotaryaja",
+      "formula_id": "VG:ENRICH:FORMULA:c3da53628e3f40bd1f0107a52ee6abe8",
+      "total": 17,
+      "veda_counts": {
+        "YV": 17
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "śarma yacchata",
+      "formula_id": "VG:ENRICH:FORMULA:cd060f6c3bde754d45fa5ed098efde6a",
+      "total": 17,
+      "veda_counts": {
+        "AV": 4,
+        "RV": 12,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "rāṣṭradā rāṣṭramamuṣmai",
+      "formula_id": "VG:ENRICH:FORMULA:d207d0f2a08c2f24fed077d2fc50aec6",
+      "total": 17,
+      "veda_counts": {
+        "YV": 3
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "asmin brahmaṇy asmin karmaṇy",
+      "formula_id": "VG:ENRICH:FORMULA:d9a1f9f58fe04bc81ccba56ed3cc70ff",
+      "total": 17,
+      "veda_counts": {
+        "AV": 17
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "asya mahimā na",
+      "formula_id": "VG:ENRICH:FORMULA:f31c52536c55da96854bd79cdb2c0f50",
+      "total": 17,
+      "veda_counts": {
+        "AV": 7,
+        "RV": 5,
+        "SV": 1,
+        "YV": 4
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "purodhāyām asyāṃ",
+      "formula_id": "VG:ENRICH:FORMULA:0439a379e424e9b501cf6f9bacc45657",
+      "total": 16,
+      "veda_counts": {
+        "AV": 16
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "rcann anu svarājyam",
+      "formula_id": "VG:ENRICH:FORMULA:166d4c0008f51515deb1cfdf26f75311",
+      "total": 16,
+      "veda_counts": {
+        "RV": 16
+      },
+      "vedas": [
+        "RV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "rāṣṭradā rāṣṭraṃ me",
+      "formula_id": "VG:ENRICH:FORMULA:170e9cadae4423c24db127c00ea65f76",
+      "total": 16,
+      "veda_counts": {
+        "YV": 3
+      },
+      "vedas": [
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "tena taṃ prati",
+      "formula_id": "VG:ENRICH:FORMULA:18e3cd95f9dc1f45ff76162c2dac8dfb",
+      "total": 16,
+      "veda_counts": {
+        "AV": 16
+      },
+      "vedas": [
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "adyā vṛṇīmahe",
+      "formula_id": "VG:ENRICH:FORMULA:24ba81bf1bb2442438d1f89bbdb7a6e7",
+      "total": 16,
+      "veda_counts": {
+        "RV": 13,
+        "SV": 2,
+        "YV": 1
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "no mitrāvaruṇā",
+      "formula_id": "VG:ENRICH:FORMULA:36b8fd4c3c100a86a21686571c063c88",
+      "total": 16,
+      "veda_counts": {
+        "AV": 1,
+        "RV": 9,
+        "SV": 4,
+        "YV": 2
+      },
+      "vedas": [
+        "RV",
+        "SV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": true,
+      "display_form": "daivyā hotārā",
+      "formula_id": "VG:ENRICH:FORMULA:573ad11d68a55254ed7559fed7d5a991",
+      "total": 16,
+      "veda_counts": {
+        "AV": 1,
+        "RV": 7,
+        "YV": 8
+      },
+      "vedas": [
+        "RV",
+        "YV",
+        "AV"
+      ]
+    },
+    {
+      "cross_veda": false,
+      "display_form": "skambhaṃ taṃ brūhi katamaḥ svid eva saḥ",
+      "formula_id": "VG:ENRICH:FORMULA:7dd11535ecfe864bc18b4d03eaff37c8",
+      "total": 16,
+      "veda_counts": {
+        "AV": 16
+      },
+      "vedas": [
+        "AV"
+      ]
+    }
+  ],
+  "formula_sharing_matrix": {
+    "AV-RV": 2030,
+    "AV-SV": 804,
+    "AV-YV": 914,
+    "RV-SV": 1800,
+    "RV-YV": 1274,
+    "SV-YV": 544
+  },
+  "relationship_matrix": {
+    "AV-RV": {
+      "EXACT_PARALLEL_OF": 551,
+      "NEAR_PARALLEL_OF": 752,
+      "VARIANT_OF": 22,
+      "distinct_pairs": 1325
+    },
+    "AV-SV": {
+      "EXACT_PARALLEL_OF": 9,
+      "NEAR_PARALLEL_OF": 326,
+      "VARIANT_OF": 132,
+      "distinct_pairs": 467
+    },
+    "AV-YV": {
+      "EXACT_PARALLEL_OF": 11,
+      "NEAR_PARALLEL_OF": 141,
+      "VARIANT_OF": 64,
+      "distinct_pairs": 216
+    },
+    "RV-SV": {
+      "EXACT_PARALLEL_OF": 90,
+      "NEAR_PARALLEL_OF": 1179,
+      "REUSES_TEXT_FROM": 1684,
+      "VARIANT_OF": 415,
+      "distinct_pairs": 1684
+    },
+    "RV-YV": {
+      "EXACT_PARALLEL_OF": 41,
+      "NEAR_PARALLEL_OF": 340,
+      "VARIANT_OF": 287,
+      "distinct_pairs": 668
+    },
+    "SV-YV": {
+      "EXACT_PARALLEL_OF": 93,
+      "NEAR_PARALLEL_OF": 128,
+      "VARIANT_OF": 20,
+      "distinct_pairs": 241
+    }
+  },
+  "rishi_devata_top": [
+    {
+      "lift": 3.045801,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:GATHINO-VISVAMITRAH",
+      "subject_total": 501,
+      "support": 217
+    },
+    {
+      "lift": 2.444821,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:GAUTAMO-VAMADEVAH",
+      "subject_total": 558,
+      "support": 194
+    },
+    {
+      "lift": 3.610369,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:GATHINO-VISVAMITRAH",
+      "subject_total": 501,
+      "support": 179
+    },
+    {
+      "lift": 3.30466,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:BARHASPATYO-BHARADVAJAH",
+      "subject_total": 529,
+      "support": 173
+    },
+    {
+      "lift": 3.096694,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:GAUTAMO-VAMADEVAH",
+      "subject_total": 558,
+      "support": 171
+    },
+    {
+      "lift": 2.193349,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:BARHASPATYO-BHARADVAJAH",
+      "subject_total": 529,
+      "support": 165
+    },
+    {
+      "lift": 1.369436,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:MAITRAVARUNIRVASISTHAH",
+      "subject_total": 837,
+      "support": 163
+    },
+    {
+      "lift": 17.345401,
+      "object": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "object_total": 1087,
+      "subject": "VG:RISHI:KASYAPO-ASITAH",
+      "subject_total": 164,
+      "support": 153
+    },
+    {
+      "lift": 2.709053,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:SAUNAKO-GRTSAMADAH",
+      "subject_total": 366,
+      "support": 141
+    },
+    {
+      "lift": 1.690203,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:MAITRAVARUNIRVASISTHAH",
+      "subject_total": 837,
+      "support": 140
+    },
+    {
+      "lift": 27.982001,
+      "object": "VG:DEVATA:MARUTAH",
+      "object_total": 428,
+      "subject": "VG:RISHI:ATREYAH-SYAVASVAH",
+      "subject_total": 189,
+      "support": 112
+    },
+    {
+      "lift": 8.757667,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:SAKTYAH-PARASARAH",
+      "subject_total": 105,
+      "support": 91
+    },
+    {
+      "lift": 2.699526,
+      "object": "VG:DEVATA:VISVEDEVAH",
+      "object_total": 805,
+      "subject": "VG:RISHI:MAITRAVARUNIRVASISTHAH",
+      "subject_total": 837,
+      "support": 90
+    },
+    {
+      "lift": 17.222958,
+      "object": "VG:DEVATA:ASVINAU",
+      "object_total": 645,
+      "subject": "VG:RISHI:AUSIJO-DAIRGHATAMASAH-KAKSIVAN",
+      "subject_total": 151,
+      "support": 83
+    },
+    {
+      "lift": 2.531524,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:KANVO-MEDHATITHIH",
+      "subject_total": 225,
+      "support": 81
+    },
+    {
+      "lift": 10.105,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:ANGIRASO-VIRUPAH",
+      "subject_total": 79,
+      "support": 79
+    },
+    {
+      "lift": 4.708936,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:VAISVAMITRO-MADHUCCHANDAH",
+      "subject_total": 112,
+      "support": 75
+    },
+    {
+      "lift": 3.048202,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:AUCATHYO-DIRGHATAMAH",
+      "subject_total": 242,
+      "support": 73
+    },
+    {
+      "lift": 7.032011,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:ANGIRASAH-SAVYAH",
+      "subject_total": 72,
+      "support": 72
+    },
+    {
+      "lift": 5.141686,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:BARHASPATYAH-SAMYUH",
+      "subject_total": 93,
+      "support": 68
+    },
+    {
+      "lift": 24.33311,
+      "object": "VG:DEVATA:VISVEDEVAH",
+      "object_total": 805,
+      "subject": "VG:RISHI:BHARADVAJA-RJISVA",
+      "subject_total": 65,
+      "support": 63
+    },
+    {
+      "lift": 18.271897,
+      "object": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "object_total": 1087,
+      "subject": "VG:RISHI:MARICAH-KASYAPAH",
+      "subject_total": 58,
+      "support": 57
+    },
+    {
+      "lift": 1.908689,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:RAHUGANO-GOTAMAH",
+      "subject_total": 210,
+      "support": 57
+    },
+    {
+      "lift": 2.096376,
+      "object": "VG:DEVATA:ASVINAU",
+      "object_total": 645,
+      "subject": "VG:RISHI:MAITRAVARUNIRVASISTHAH",
+      "subject_total": 837,
+      "support": 56
+    },
+    {
+      "lift": 1.789966,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:MAITRAVARUNIRAGASTYAH",
+      "subject_total": 220,
+      "support": 56
+    },
+    {
+      "lift": 10.674818,
+      "object": "VG:DEVATA:VISVEDEVAH",
+      "object_total": 805,
+      "subject": "VG:RISHI:BHAUMO-ATRIH",
+      "subject_total": 127,
+      "support": 54
+    },
+    {
+      "lift": 25.10559,
+      "object": "VG:DEVATA:VISVEDEVAH",
+      "object_total": 805,
+      "subject": "VG:RISHI:VAISVAMITRAH-VACYAH",
+      "subject_total": 52,
+      "support": 52
+    },
+    {
+      "lift": 1.435683,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:SAUNAKO-GRTSAMADAH",
+      "subject_total": 366,
+      "support": 52
+    },
+    {
+      "lift": 14.587927,
+      "object": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "object_total": 1087,
+      "subject": "VG:RISHI:SAPTARSAYAH",
+      "subject_total": 65,
+      "support": 51
+    },
+    {
+      "lift": 2.820766,
+      "object": "VG:DEVATA:MARUTAH",
+      "object_total": 428,
+      "subject": "VG:RISHI:MAITRAVARUNIRVASISTHAH",
+      "subject_total": 837,
+      "support": 50
+    },
+    {
+      "lift": 5.32414,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:APTYASTRITAH",
+      "subject_total": 93,
+      "support": 49
+    },
+    {
+      "lift": 18.109319,
+      "object": "VG:DEVATA:RBHAVAH",
+      "object_total": 96,
+      "subject": "VG:RISHI:GAUTAMO-VAMADEVAH",
+      "subject_total": 558,
+      "support": 48
+    },
+    {
+      "lift": 5.357723,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:KANVAH-PRAGATHAH",
+      "subject_total": 63,
+      "support": 48
+    },
+    {
+      "lift": 2.101482,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:ANGIRASAH-KUTSAH",
+      "subject_total": 226,
+      "support": 47
+    },
+    {
+      "lift": 4.11354,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:KANVAH-SOBHARIH",
+      "subject_total": 113,
+      "support": 46
+    },
+    {
+      "lift": 5.455871,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:KANVO-VATSAH",
+      "subject_total": 58,
+      "support": 45
+    },
+    {
+      "lift": 3.6401,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:GAUTAMO-NODHAH",
+      "subject_total": 85,
+      "support": 44
+    },
+    {
+      "lift": 2.953445,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:DAIVAODASIH-PARUCCHEPAH",
+      "subject_total": 100,
+      "support": 42
+    },
+    {
+      "lift": 25.10559,
+      "object": "VG:DEVATA:VISVEDEVAH",
+      "object_total": 805,
+      "subject": "VG:RISHI:VAIVASVASTO-MANUH",
+      "subject_total": 41,
+      "support": 41
+    },
+    {
+      "lift": 6.864582,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:KANVASTRISOKAH",
+      "subject_total": 42,
+      "support": 41
+    },
+    {
+      "lift": 4.253426,
+      "object": "VG:DEVATA:VISVEDEVAH",
+      "object_total": 805,
+      "subject": "VG:RISHI:AUCATHYO-DIRGHATAMAH",
+      "subject_total": 242,
+      "support": 41
+    },
+    {
+      "lift": 1.972881,
+      "object": "VG:DEVATA:AGNIH",
+      "object_total": 2000,
+      "subject": "VG:RISHI:RAHUGANO-GOTAMAH",
+      "subject_total": 210,
+      "support": 41
+    },
+    {
+      "lift": 19.674844,
+      "object": "VG:DEVATA:MARUTAH",
+      "object_total": 428,
+      "subject": "VG:RISHI:GHAURAH-KANVAH",
+      "subject_total": 96,
+      "support": 40
+    },
+    {
+      "lift": 18.592456,
+      "object": "VG:DEVATA:PAVAMANAH-SOMAH",
+      "object_total": 1087,
+      "subject": "VG:RISHI:BHARGAVAH-KAVIH",
+      "subject_total": 40,
+      "support": 40
+    },
+    {
+      "lift": 8.585387,
+      "object": "VG:DEVATA:MARUTAH",
+      "object_total": 428,
+      "subject": "VG:RISHI:MAITRAVARUNIRAGASTYAH",
+      "subject_total": 220,
+      "support": 40
+    },
+    {
+      "lift": 5.30676,
+      "object": "VG:DEVATA:USAH",
+      "object_total": 182,
+      "subject": "VG:RISHI:MAITRAVARUNIRVASISTHAH",
+      "subject_total": 837,
+      "support": 40
+    },
+    {
+      "lift": 5.249078,
+      "object": "VG:DEVATA:MITRAVARUNAU",
+      "object_total": 184,
+      "subject": "VG:RISHI:MAITRAVARUNIRVASISTHAH",
+      "subject_total": 837,
+      "support": 40
+    },
+    {
+      "lift": 5.554545,
+      "object": "VG:DEVATA:ASVINAU",
+      "object_total": 645,
+      "subject": "VG:RISHI:MAITRAVARUNIRAGASTYAH",
+      "subject_total": 220,
+      "support": 39
+    },
+    {
+      "lift": 4.495876,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:KANVO-MEDHYATITHIH",
+      "subject_total": 61,
+      "support": 39
+    },
+    {
+      "lift": 1.213489,
+      "object": "VG:DEVATA:INDRAH",
+      "object_total": 2874,
+      "subject": "VG:RISHI:ANGIRASAH-KUTSAH",
+      "subject_total": 226,
+      "support": 39
+    }
+  ]
+}

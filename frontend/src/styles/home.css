@@ -1,0 +1,1835 @@
+/* ============================================================================
+   The VedAnvaya homepage.
+
+   Ten sections, ten layout families, one shared measure. The rhythm between
+   them is deliberately unequal: three section-spacing steps that never repeat
+   twice in a row, so the page reads as composed rather than as a stack.
+   ============================================================================ */
+
+/*
+ * The page width, declared on every band that is a band.
+ *
+ * `--va-page` is scoped rather than global, which is right - it is the homepage's own
+ * measure and nothing outside the homepage should inherit it. The cost is that a new band
+ * has to be added here, and the archive strip was not: `width: var(--va-page)` with no
+ * declaration in scope computes to `auto`, so its head sat flush against the viewport's
+ * left edge while every other heading on the page started on the 60px margin. Invalid at
+ * computed-value time means silent, and the token audit could not see it either - the
+ * token *is* declared, just not here.
+ */
+.va-hero,
+.va-section,
+.va-plate,
+.va-archive-strip {
+    --va-page: min(100% - (2 * var(--va-shell-gutter)), var(--va-shell-max));
+}
+
+/* ------------------------------------------------------------------- hero - */
+
+.va-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    padding-block: var(--va-space-5xl) var(--va-space-4xl);
+}
+
+/*
+ * The hero plate.
+ *
+ * Set on a pseudo-element rather than as a background on the section, so it can be masked
+ * independently of the content and so it costs nothing in the DOM. It is anchored to the
+ * right, where the artwork's drafting geometry lives, and faded toward the left, where the
+ * headline sits. Type over an unmasked texture is the difference between a manuscript and a
+ * scrapbook.
+ */
+.va-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: var(--va-z-beneath);
+    background-image: image-set(
+        url("/brand/textures/hero-light-1920.avif") type("image/avif"),
+        url("/brand/textures/hero-light-1920.webp") type("image/webp")
+    );
+    background-size: cover;
+    background-position: right center;
+    opacity: 0.9;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 46%, #000 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 46%, #000 100%);
+}
+
+.dark .va-hero::before {
+    background-image: image-set(
+        url("/brand/textures/hero-dark-1920.avif") type("image/avif"),
+        url("/brand/textures/hero-dark-1920.webp") type("image/webp")
+    );
+    opacity: 0.85;
+}
+
+.va-hero-inner {
+    width: var(--va-page);
+    margin-inline: auto;
+    display: grid;
+    /*
+     * Not a half-and-half split. The type column is wider than the figure and the two are
+     * separated by a column of nothing, so the composition reads as a page with a margin
+     * rather than as two panes. 1.15fr against 0.85fr with a 4xl gutter is the asymmetry.
+     */
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: var(--va-space-4xl);
+    align-items: center;
+}
+
+.va-hero-brand {
+    margin: 0 0 var(--va-space-lg);
+    font-family: var(--va-font-deva);
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.15rem);
+    line-height: 1.5;
+    letter-spacing: 0;
+    color: var(--va-accent-text);
+}
+
+.va-hero-headline {
+    margin: 0;
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-display);
+    font-weight: var(--va-weight-regular);
+    line-height: var(--va-leading-flat);
+    letter-spacing: var(--va-tracking-display);
+    color: var(--va-text-primary);
+    text-wrap: balance;
+    font-optical-sizing: auto;
+    /* Two lines for a thirty-three character headline. At 16ch `balance` found a third line
+       and broke the name away from its predicate; at 18ch it sets as name-plus-clause. */
+    max-width: 18ch;
+}
+
+/*
+ * The predicate, a step quieter than the name.
+ *
+ * "VedAnvaya" is the noun and "The Vedas, connected" is what it is for, and they are not the
+ * same kind of thing. Setting them at one weight makes the line read as a slogan; setting the
+ * second in the secondary ink makes it read as an apposition, which is what it is. It is still
+ * the same type size, so the headline stays one object rather than becoming a headline and a
+ * subtitle pretending to be one.
+ */
+.va-hero-em {
+    color: var(--va-text-secondary);
+}
+
+/* -------------------------------------------------------- the capability rail - */
+
+/*
+ * Five verbs, directly under the headline.
+ *
+ * The hero's job is to say what a reader can do here before it says how much of it there is,
+ * so the rail sits above the lede and above the figures. Each word is a link to the surface
+ * that does the thing: a rail of capability words that do not go anywhere is an advertisement.
+ *
+ * Separated by middots, which is how the five read as one line rather than as five controls.
+ */
+.va-hero-rail {
+    margin: var(--va-space-xl) 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--va-space-2xs) var(--va-space-sm);
+}
+
+/*
+ * The separator is a middot on the item, not a rule between items.
+ *
+ * A border drawn on `li + li` is the obvious way to rule a horizontal list and it breaks the
+ * moment the list wraps: whichever item lands first on the second line keeps the separator it
+ * inherited from its position in the source, and a stray hairline appears against the left
+ * margin. A mark that belongs to the item travels with the item.
+ */
+.va-hero-rail li:not(:last-child)::after {
+    content: "·";
+    margin-inline-start: var(--va-space-sm);
+    color: var(--va-text-tertiary);
+}
+
+.va-hero-rail-item {
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-sm);
+    font-weight: var(--va-weight-medium);
+    letter-spacing: var(--va-tracking-wide);
+    color: var(--va-text-secondary);
+    text-decoration: none;
+    transition: var(--va-transition-colors);
+}
+
+.va-hero-rail-item:hover {
+    color: var(--va-accent-text);
+}
+
+.va-hero-lede {
+    margin: var(--va-space-xl) 0 0;
+    max-width: var(--va-measure-tight);
+    font-size: var(--va-text-lg);
+    line-height: var(--va-leading-normal);
+    color: var(--va-text-secondary);
+}
+
+.va-hero-actions {
+    margin-top: var(--va-space-2xl);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--va-space-xl);
+}
+
+/* No max-width. Constrained to the lede's measure the three figures broke after the second
+   separator and left a dangling middle dot at the end of the line. */
+.va-hero-signal {
+    margin: var(--va-space-2xl) 0 0;
+    padding-top: var(--va-space-md);
+    border-top: var(--va-rule-quiet);
+    max-width: max-content;
+    font-size: var(--va-text-xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------- the button - */
+
+/*
+ * The only filled button on the page. Everything else is a ruled link, so that the primary
+ * action is the one object shaped like a control and the reader never has to work out which
+ * of nine identical pills is the important one.
+ *
+ * It is a rectangle with a small radius rather than a pill: a pill is the most generic shape
+ * in contemporary interface design, and this page is trying not to look like every other one.
+ */
+.va-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--va-space-sm);
+    padding: 0.7rem 1.4rem;
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-base);
+    font-weight: var(--va-weight-medium);
+    color: var(--va-text-on-accent);
+    background: var(--va-accent-base);
+    border: var(--va-border-width) solid var(--va-accent-base);
+    border-radius: var(--va-radius-xs);
+    text-decoration: none;
+    transition: var(--va-transition-colors);
+}
+
+.va-button:hover {
+    background: var(--va-accent-hover);
+    border-color: var(--va-accent-hover);
+}
+
+.va-action {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: var(--va-space-sm);
+    padding-bottom: 3px;
+    font-size: var(--va-text-base);
+    font-weight: var(--va-weight-medium);
+    color: var(--va-accent-text);
+    text-decoration: none;
+    border-bottom: var(--va-border-width) solid
+        color-mix(in srgb, var(--va-accent-text) 34%, transparent);
+    transition: var(--va-transition-colors);
+}
+
+.va-action:hover {
+    color: var(--va-text-primary);
+    border-bottom-color: var(--va-text-primary);
+}
+
+.va-action svg {
+    transition: var(--va-transition-transform);
+}
+
+.va-action:hover svg {
+    transform: translateX(3px);
+}
+
+.va-action-note {
+    grid-column: 1 / -1;
+    font-size: var(--va-text-xs);
+    font-weight: var(--va-weight-regular);
+    color: var(--va-text-tertiary);
+}
+
+/*
+ * With a note, the rule has to move.
+ *
+ * The underline belongs to the label: it is the affordance that says "this is the link". The
+ * note is a second grid row, so a border on the link box drew the rule beneath the note
+ * instead and made the gloss look like the thing you click.
+ */
+.va-action:has(.va-action-note) {
+    border-bottom-color: transparent;
+}
+
+.va-action:has(.va-action-note) .va-action-label {
+    padding-bottom: 3px;
+    border-bottom: var(--va-border-width) solid
+        color-mix(in srgb, var(--va-accent-text) 34%, transparent);
+    transition: var(--va-transition-colors);
+}
+
+.va-action:has(.va-action-note):hover .va-action-label {
+    border-bottom-color: var(--va-text-primary);
+}
+
+/* ------------------------------------------------------------ world preview - */
+
+.va-world-preview-panel {
+    position: relative;
+    /*
+     * The palm-leaf proportion, from the Archive Plates artwork and from the object itself.
+     * A Vedic manuscript folio is far wider than it is tall, and using that ratio here makes
+     * the panel sit in the page as a plate rather than as a widget.
+     */
+    aspect-ratio: 5 / 4;
+    border-radius: var(--va-radius-sm);
+    overflow: hidden;
+    background: var(--va-night-800);
+    border: var(--va-border-width) solid var(--va-night-line-strong);
+}
+
+.va-world-preview,
+.va-world-preview-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/*
+ * A field you turn, so the cursor says turn.
+ *
+ * It said `pointer` while a release anywhere on this canvas navigated - including the release
+ * that ends an orbit - so the cursor was an accurate description of the defect. Nothing here
+ * navigates now. `grabbing` is keyed off the gesture module's own phase attribute rather than
+ * off `:active`, so what the cursor shows is what the classifier decided rather than a second
+ * opinion about it.
+ */
+.va-world-preview-canvas {
+    cursor: grab;
+}
+
+.va-world-preview-canvas[data-gesture="dragging"],
+.va-world-preview-canvas[data-gesture="multi"] {
+    cursor: grabbing;
+}
+
+/*
+ * Four names on the field, two on a phone.
+ *
+ * Without them the front door is fifty coloured discs and a reader has no way to discover that
+ * the thing in front of them holds Indra. An opaque plate rather than a halo, for the reason
+ * the graph page measured: a blur cannot guarantee a contrast ratio over a backdrop that is
+ * itself a diagram, and twelve of sixteen haloed names there came in under 4.5:1.
+ */
+.va-world-preview-labels {
+    position: absolute;
+    inset: 0;
+    /* A name that swallowed a press would be a hole in the surface the reader turns. */
+    pointer-events: none;
+    /* A containing block for spans placed from the top-left corner by transform. */
+    overflow: hidden;
+}
+
+.va-world-preview-label {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    /* The transform puts the anchor on the disc; these clear the text of it. */
+    margin-inline-start: 10px;
+    margin-block-start: -0.62em;
+    max-width: 11rem;
+    padding: 1px 5px;
+    border-radius: var(--va-radius-xs);
+    background: var(--va-surface-page);
+    color: var(--va-text-primary);
+    font-family: var(--va-font-iast);
+    font-size: var(--va-text-xs);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* The held subject, tied to the card describing it by taking the card's accent. */
+.va-world-preview-label.is-held {
+    color: var(--va-accent-text);
+    border: var(--va-border-width) solid var(--va-line-strong);
+}
+
+/*
+ * Flipped to the leading side of its disc, for a name that would otherwise be clipped.
+ *
+ * The inline-start margin is the gap between the disc and the text, so when the text runs the
+ * other way the gap has to run the other way too - left as it was, the plate sat on the disc.
+ */
+.va-world-preview-label.is-flipped {
+    margin-inline-start: -10px;
+    text-align: end;
+}
+
+/*
+ * Everything written over the foot of the field, in one column under one scrim.
+ *
+ * The card and the readout were two blocks both anchored to the bottom edge, which stacked one
+ * on top of the other as soon as a subject was held. The scrim is here rather than on the
+ * readout because without one the type collided with the subject names on a narrow panel,
+ * where it wraps to two lines and the field has nowhere to move to.
+ */
+.va-world-preview-foot {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--va-space-sm);
+    padding: var(--va-space-2xl) var(--va-space-lg) var(--va-space-lg);
+    background: linear-gradient(to top, var(--va-night-800) 38%, transparent);
+    /* The field keeps the pointer; the two children that need it take it back. */
+    pointer-events: none;
+}
+
+.va-world-preview-readout {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--va-space-sm);
+}
+
+/*
+ * The held subject, spelled out.
+ *
+ * A plate rather than bare type over the diagram, and opaque: the contrast walk resolves the
+ * nearest ancestor painted at 95 per cent or more, and a translucent card would hand it the
+ * panel's colour while the reader sees this text over whatever lines happen to be behind it.
+ */
+.va-world-preview-chosen {
+    pointer-events: auto;
+    max-width: min(22rem, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: var(--va-space-2xs);
+    padding: var(--va-space-sm) var(--va-space-md);
+    border: var(--va-border-width) solid var(--va-night-line);
+    border-radius: var(--va-radius-xs);
+    background: var(--va-night-900);
+}
+
+.va-world-preview-chosen-head {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.va-world-preview-chosen-title {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: var(--va-space-sm);
+}
+
+.va-world-preview-chosen-head .va-world-preview-kind {
+    margin: 0;
+}
+
+/*
+ * The release, set at the weight of a caption and pushed to the trailing edge.
+ *
+ * It shares the head's row rather than taking one of its own, because the card already takes
+ * about two thirds of a 390 px panel and the whole reason this control exists is that there
+ * was not enough field left to tap.
+ */
+.va-world-preview-release {
+    margin-inline-start: auto;
+    font: inherit;
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-secondary);
+    background: none;
+    border: 0;
+    padding: var(--va-space-2xs) 0;
+    cursor: pointer;
+    transition: var(--va-transition-colors);
+}
+
+.va-world-preview-release:hover {
+    color: var(--va-text-primary);
+}
+
+/*
+ * The connections, as sentences rather than as a count.
+ *
+ * The phrase is the curated one from the API's own table - "is ascribed to the seer", never
+ * "HAS_RISHI" and never this codebase's general enum humaniser, which disagrees with the
+ * scholarship on 44 of 57 predicates. Set apart from the subject names the way the graph page
+ * sets them apart: smaller, in the interface face, in the accent, because a row read at the
+ * weight of a name would be read as another name.
+ */
+.va-world-preview-relations {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.va-world-preview-relations li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--va-space-2xs);
+    font-size: var(--va-text-xs);
+    line-height: 1.35;
+}
+
+.va-world-preview-predicate {
+    color: var(--va-accent-text);
+}
+
+.va-world-preview-other {
+    font-family: var(--va-font-iast);
+    color: var(--va-text-primary);
+}
+
+.va-world-preview-relations-absent {
+    margin: 0;
+    font-size: var(--va-text-xs);
+    color: var(--va-text-secondary);
+}
+
+.va-world-preview-explore {
+    margin-block-start: var(--va-space-2xs);
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-accent-text);
+    text-decoration: none;
+    border-block-end: var(--va-border-width) solid
+        color-mix(in srgb, var(--va-accent-text) 40%, transparent);
+    align-self: flex-start;
+    transition: var(--va-transition-colors);
+}
+
+.va-world-preview-explore:hover {
+    color: var(--va-text-primary);
+    border-block-end-color: var(--va-text-primary);
+}
+
+.va-world-preview-name {
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-lg);
+    color: #efe9dc;
+}
+
+.va-world-preview-kind {
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: #8f887a;
+}
+
+/* The flat fallback offers its own way through, since it cannot be clicked into. */
+.va-world-preview-kind button {
+    pointer-events: auto;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: var(--va-accent-text);
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.va-world-preview-link {
+    position: absolute;
+    top: var(--va-space-lg);
+    inset-inline-end: var(--va-space-lg);
+    padding: var(--va-space-2xs) var(--va-space-sm);
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: #cdc6b6;
+    text-decoration: none;
+    border: var(--va-border-width) solid #3a3b33;
+    border-radius: var(--va-radius-xs);
+    background: color-mix(in srgb, #131410 76%, transparent);
+    transition: var(--va-transition-colors);
+}
+
+.va-world-preview-link:hover {
+    color: #f4f0e7;
+    border-color: #57584d;
+}
+
+.va-world-preview-absent {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    padding: var(--va-space-2xl);
+    text-align: center;
+    font-size: var(--va-text-sm);
+    color: #8f887a;
+}
+
+/* ---------------------------------------------------------------- sections - */
+
+.va-section {
+    position: relative;
+    padding-block: var(--va-space-5xl);
+}
+
+/*
+ * Unequal rhythm, set per section rather than by nth-of-type. The generated-layout tell is a
+ * page whose sections are all the same height apart; this varies the gap deliberately, and
+ * doing it by an explicit modifier means the sequence survives a section being inserted.
+ */
+.va-section.is-tight {
+    padding-block: var(--va-space-3xl);
+}
+
+.va-section.is-open {
+    padding-block: var(--va-space-6xl);
+}
+
+.va-section-inner {
+    position: relative;
+    z-index: var(--va-z-content);
+    width: var(--va-page);
+    margin-inline: auto;
+}
+
+.va-section.is-sunk {
+    background: var(--va-surface-sunk);
+    border-block: var(--va-border-hairline);
+}
+
+.va-section-rule {
+    width: var(--va-page);
+    margin: 0 auto;
+    padding-block: var(--va-space-2xl);
+}
+
+.va-kicker {
+    margin: 0 0 var(--va-space-md);
+    display: flex;
+    align-items: baseline;
+    gap: var(--va-space-sm);
+    font-size: var(--va-text-2xs);
+    font-weight: var(--va-weight-semibold);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+.va-kicker .va-deva-label {
+    font-size: 1.6em;
+    font-weight: var(--va-weight-regular);
+    letter-spacing: 0;
+    color: var(--va-accent-text);
+}
+
+.va-heading {
+    max-width: var(--va-measure);
+}
+
+.va-heading-title {
+    margin: 0;
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-2xl);
+    font-weight: var(--va-weight-regular);
+    line-height: var(--va-leading-tight);
+    letter-spacing: var(--va-tracking-tight);
+    color: var(--va-text-primary);
+    text-wrap: balance;
+    font-optical-sizing: auto;
+}
+
+.va-heading-lede {
+    margin: var(--va-space-lg) 0 0;
+    font-size: var(--va-text-md);
+    line-height: var(--va-leading-normal);
+    color: var(--va-text-secondary);
+}
+
+/* ------------------------------------------------- the measured figures - */
+
+/*
+ * What the product holds, as a band of figures.
+ *
+ * Not a stat strip of four big numbers on a coloured ground. Each cell carries a value, the
+ * thing it counts and one clause that keeps the value from being read as something it is not,
+ * and the clause is the reason the cell has to be a block rather than a tile: a tile has room
+ * for a number and a two-word label and nothing else, which is exactly how a figure loses the
+ * condition that makes it true.
+ *
+ * Set as a definition list because that is what it is. The grid is `auto-fit` over a 17rem
+ * minimum, so it settles at three columns on a desktop, two on a tablet and one at 390px
+ * without a breakpoint of its own, and the wide cell spans the whole row wherever it lands.
+ */
+.va-counts-section .va-heading {
+    margin-bottom: var(--va-space-2xl);
+}
+
+.va-counts {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: var(--va-space-2xl) var(--va-space-3xl);
+    border-top: var(--va-border-width) solid var(--va-line-strong);
+    padding-top: var(--va-space-2xl);
+}
+
+.va-count-cell {
+    display: grid;
+    align-content: start;
+    gap: var(--va-space-xs);
+}
+
+.va-count-cell.is-wide {
+    grid-column: 1 / -1;
+    padding-top: var(--va-space-2xl);
+    border-top: var(--va-rule-quiet);
+}
+
+.va-count-cell dd {
+    margin: 0;
+    display: grid;
+    gap: var(--va-space-sm);
+}
+
+.va-count-label {
+    font-size: var(--va-text-2xs);
+    font-weight: var(--va-weight-semibold);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+.va-count-value {
+    font-family: var(--va-font-display);
+    font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+    font-weight: var(--va-weight-regular);
+    line-height: var(--va-leading-flat);
+    letter-spacing: var(--va-tracking-display);
+    font-variant-numeric: tabular-nums;
+    font-optical-sizing: auto;
+    color: var(--va-text-primary);
+}
+
+.va-count-gloss {
+    max-width: 34ch;
+    font-size: var(--va-text-sm);
+    line-height: var(--va-leading-normal);
+    color: var(--va-text-secondary);
+}
+
+/*
+ * The named populations, counted apart.
+ *
+ * They are on one line at a smaller size than the headline figures on purpose. Giving each of
+ * them a display-size number would say they are five more headline metrics; they are one
+ * metric with five parts, and the parts must not be added together.
+ */
+.va-count-subjects {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--va-space-md) var(--va-space-2xl);
+}
+
+.va-count-subjects li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--va-space-xs);
+}
+
+.va-count-subjects b {
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-xl);
+    font-weight: var(--va-weight-regular);
+    font-variant-numeric: tabular-nums;
+    color: var(--va-text-primary);
+}
+
+.va-count-subjects span {
+    font-size: var(--va-text-xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+/* Where the figures came from. A number a reader cannot trace is a number nothing can
+   check, so the provenance of the band is part of the band and not a footer somewhere else. */
+.va-count-source {
+    margin: var(--va-space-2xl) 0 0;
+    max-width: var(--va-measure);
+    font-size: var(--va-text-xs);
+    line-height: var(--va-leading-normal);
+    color: var(--va-text-tertiary);
+}
+
+.va-count-source a {
+    color: var(--va-accent-text);
+    text-decoration: none;
+    border-bottom: var(--va-border-width) solid
+        color-mix(in srgb, var(--va-accent-text) 34%, transparent);
+}
+
+/* ------------------------------------------------------------- the ledger - */
+
+.va-ledger-section .va-heading {
+    margin-bottom: var(--va-space-2xl);
+}
+
+.va-ledger {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--va-text-sm);
+}
+
+.va-ledger th,
+.va-ledger td {
+    padding: var(--va-space-lg) var(--va-space-lg) var(--va-space-lg) 0;
+    text-align: start;
+    vertical-align: baseline;
+    border-bottom: var(--va-rule-quiet);
+}
+
+.va-ledger thead th {
+    padding-block: var(--va-space-sm);
+    font-size: var(--va-text-2xs);
+    font-weight: var(--va-weight-semibold);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+    border-bottom: var(--va-border-width) solid var(--va-line-strong);
+}
+
+/*
+ * A numeric column is flush to its own right edge, and gets a gutter only where the next
+ * cell is not another number.
+ *
+ * `padding-right: 0` on every `.is-num` was right when "Recited" ended the table and wrong
+ * the moment the "Read" column was added after it: on every row the figure and the link met
+ * with no space at all, and the page read "10,552Open Rigveda".
+ *
+ * The first fix restored the gutter on every numeric cell, which cost 48px of table width
+ * and pushed the whole page 15px past a 768px viewport - a defect traded for a defect. Two
+ * right-aligned columns need no gutter between them: each one's content already sits at its
+ * own right edge and the whitespace is in the middle. Only the boundary with the left-ranged
+ * link needs one, and `:has()` names exactly that boundary.
+ */
+.va-ledger .is-num {
+    text-align: end;
+    font-variant-numeric: tabular-nums;
+    padding-right: 0;
+    white-space: nowrap;
+}
+
+.va-ledger .is-num:has(+ .va-ledger-open) {
+    padding-right: var(--va-space-lg);
+}
+
+.va-ledger tbody th {
+    font-weight: var(--va-weight-regular);
+}
+
+.va-ledger tbody th a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--va-space-sm);
+    color: inherit;
+    text-decoration: none;
+}
+
+.va-ledger-name {
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-xl);
+    color: var(--va-text-primary);
+    transition: var(--va-transition-colors);
+}
+
+.va-ledger tbody th a:hover .va-ledger-name {
+    color: var(--va-accent-text);
+}
+
+.va-ledger tbody th .va-deva-label {
+    color: var(--va-text-tertiary);
+}
+
+/*
+ * The last column is a way in, not a fact.
+ *
+ * The table used to end in a paragraph of what each collection does not hold, which made the
+ * widest column on the page the one about absence and buried the link to the text itself. The
+ * scope statements moved to /limits; what stands here instead is the thing the table is for.
+ */
+.va-ledger-open {
+    text-align: end;
+    padding-right: 0;
+    white-space: nowrap;
+}
+
+.va-ledger-open a {
+    font-size: var(--va-text-sm);
+    font-weight: var(--va-weight-medium);
+    color: var(--va-accent-text);
+    text-decoration: none;
+    border-bottom: var(--va-border-width) solid
+        color-mix(in srgb, var(--va-accent-text) 30%, transparent);
+    transition: var(--va-transition-colors);
+}
+
+.va-ledger-open a:hover {
+    color: var(--va-text-primary);
+    border-bottom-color: var(--va-text-primary);
+}
+
+/* A real zero, marked as one. It is the most informative cell in the table and printing it
+   as "0" alongside four-figure counts makes it look like a rounding artefact. */
+.va-ledger-zero {
+    color: var(--va-tone-unbuilt);
+    border-bottom: var(--va-border-dashed);
+    padding-bottom: 1px;
+}
+
+.va-ledger-note {
+    margin: var(--va-space-xl) 0 var(--va-space-2xl);
+    max-width: var(--va-measure);
+    font-size: var(--va-text-sm);
+    color: var(--va-text-secondary);
+}
+
+/* --------------------------------------------------------------- the split - */
+
+.va-split .va-section-inner {
+    display: grid;
+    gap: var(--va-space-3xl);
+}
+
+@media (min-width: 62rem) {
+    .va-split .va-section-inner {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: var(--va-space-4xl);
+        align-items: center;
+    }
+
+    /* Reversing by order rather than by source keeps the figure first in the DOM, where it
+       belongs: the copy refers to it, so a screen reader should meet it first either way. */
+    .va-split.is-reversed .va-split-figure {
+        order: 2;
+    }
+}
+
+.va-split-copy p {
+    margin: var(--va-space-lg) 0 0;
+    max-width: var(--va-measure);
+    color: var(--va-text-secondary);
+}
+
+.va-split-copy .va-action {
+    margin-top: var(--va-space-xl);
+}
+
+/* ---------------------------------------------------------- the verse frame - */
+
+.va-verse-frame {
+    position: relative;
+    padding: var(--va-space-2xl);
+    background: var(--va-surface-raised);
+    border: var(--va-border-hairline);
+    border-radius: var(--va-radius-sm);
+}
+
+/*
+ * The corner ornament, as two rules rather than as the supplied artwork.
+ *
+ * The manuscript corner in the asset library is a 76 KB raster with black ink baked in. What
+ * it is a picture of is a ruled corner with a marked intersection, and that is four lines of
+ * CSS which take the ink colour in dark mode and cost nothing.
+ */
+.va-verse-frame::before {
+    content: "";
+    position: absolute;
+    top: var(--va-space-md);
+    left: var(--va-space-md);
+    width: 22px;
+    height: 22px;
+    border-top: var(--va-border-width) solid var(--va-accent-base);
+    border-left: var(--va-border-width) solid var(--va-accent-base);
+}
+
+.va-verse-citation {
+    margin: 0 0 var(--va-space-lg);
+    font-family: var(--va-font-mono);
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+.va-verse-frame .va-sanskrit {
+    margin: 0;
+    font-size: clamp(1.05rem, 0.9rem + 0.5vw, 1.3rem);
+    color: var(--va-text-primary);
+}
+
+.va-verse-apparatus {
+    margin: var(--va-space-2xl) 0 0;
+    padding-top: var(--va-space-lg);
+    border-top: var(--va-rule-quiet);
+    display: grid;
+    gap: var(--va-space-md);
+    font-size: var(--va-text-xs);
+}
+
+.va-verse-apparatus div {
+    display: grid;
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    gap: var(--va-space-md);
+}
+
+/*
+ * Sentence case, not the tracked uppercase used for section kickers.
+ *
+ * A sweep of the rendered page counted twenty-one separate uppercase tracked labels: three
+ * section kickers, which are budgeted, and eighteen table headers, definition terms and panel
+ * readouts that had drifted into the same treatment. The eye stops distinguishing them, and
+ * the kickers stop being emphatic. Uppercase is now reserved for the kicker, the table head
+ * and the two panel readouts; a definition list inside a frame does not need it.
+ */
+.va-verse-apparatus dt {
+    color: var(--va-text-tertiary);
+}
+
+.va-verse-apparatus dd {
+    margin: 0;
+    color: var(--va-text-secondary);
+}
+
+/* ----------------------------------------------------------------- the bars - */
+
+.va-bars {
+    margin: var(--va-space-3xl) 0 0;
+    display: grid;
+    gap: var(--va-space-xl);
+}
+
+.va-bar-row {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--va-space-lg);
+}
+
+.va-bar-label {
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-lg);
+    color: var(--va-text-primary);
+}
+
+.va-bar-track {
+    position: relative;
+    height: 10px;
+}
+
+/* The ghost is the corpus, the fill is what is recited. Drawing the denominator as a
+   hairline outline rather than as a filled track keeps the comparison honest: the eye reads
+   the gap as unrecited verses rather than as empty chrome. */
+.va-bar-ghost {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    border: var(--va-border-width) solid var(--va-line-strong);
+}
+
+.va-bar-fill {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    background: var(--va-accent-base);
+    z-index: var(--va-z-content);
+}
+
+.va-bar-figure {
+    font-size: var(--va-text-sm);
+    font-variant-numeric: tabular-nums;
+    color: var(--va-text-primary);
+    white-space: nowrap;
+}
+
+.va-bar-figure span {
+    color: var(--va-text-tertiary);
+}
+
+.va-bar-row.is-absent {
+    grid-template-columns: 9rem minmax(0, 1fr);
+}
+
+/*
+ * The typed absence, at the rhythm of a bar row rather than instead of one.
+ *
+ * It replaced a bordered paragraph that ran to four lines and made the Samavedic row twice
+ * the height of the three around it. Two rules keep it small: it is one line at the size the
+ * figures are set at, and it has no edge, no fill and no padding - the register's dialect
+ * says a row is a ruled line and metadata is ranged, and a toned panel inside one row was
+ * the only enclosure on the page. The tone mark is dropped with it, which costs nothing:
+ * `--va-tone-unbuilt` was never the channel carrying the claim here. The words are.
+ */
+.va-bar-none {
+    font-size: var(--va-text-sm);
+    color: var(--va-text-tertiary);
+}
+
+/* ---------------------------------------------------------------- the chain - */
+
+.va-chain {
+    display: grid;
+    gap: var(--va-space-xl);
+    padding-inline-start: var(--va-space-xl);
+    border-inline-start: var(--va-border-width) solid var(--va-line-hairline);
+}
+
+.va-chain li {
+    position: relative;
+    display: grid;
+    gap: var(--va-space-2xs);
+}
+
+.va-chain-mark {
+    position: absolute;
+    inset-inline-start: calc(var(--va-space-xl) * -1 - 4px);
+    top: 0.45em;
+    width: 7px;
+    height: 7px;
+    background: var(--va-accent-base);
+    rotate: 45deg;
+}
+
+.va-chain-label {
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-lg);
+    color: var(--va-text-primary);
+}
+
+.va-chain-note {
+    font-size: var(--va-text-sm);
+    color: var(--va-text-tertiary);
+}
+
+/* ------------------------------------------------------------------- ask --- */
+
+/*
+ * The Thread of Inquiry, as this section's ground.
+ *
+ * The artwork is a line travelling left to right through a series of drafting constructions
+ * and arriving at a rubric diamond, which is the shape of what Ask actually does: a question
+ * goes in, retrieval runs over a fixed set of channels, and an answer comes out carrying its
+ * evidence. It is the one section that was otherwise two columns of prose under two small
+ * labels, and it looked it.
+ *
+ * Held at 22% and masked from both ends, so it reads as a watermark under the type rather
+ * than as an illustration the type is sitting on.
+ */
+.va-ask {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+}
+
+/* Above the section's own sunk background, below its content. A negative z-index would put
+   it behind that background, which on a section that paints one means invisible: the hero
+   gets away with -1 only because it has no background of its own. */
+.va-ask::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: var(--va-z-ground);
+    pointer-events: none;
+    background-image: image-set(
+        url("/brand/textures/inquiry-light-1600.avif") type("image/avif"),
+        url("/brand/textures/inquiry-light-1600.webp") type("image/webp")
+    );
+    background-size: cover;
+    background-position: center;
+    opacity: 0.22;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+}
+
+/* Paper again: it cannot be inverted, so on carbon the section keeps its own ground. */
+.dark .va-ask::before {
+    display: none;
+}
+
+.va-ask-pair {
+    margin: var(--va-space-3xl) 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    gap: var(--va-space-3xl);
+}
+
+.va-ask-pair h3 {
+    margin: 0 0 var(--va-space-md);
+    padding-bottom: var(--va-space-sm);
+    border-bottom: var(--va-border-width) solid var(--va-line-strong);
+    font-family: var(--va-font-ui);
+    font-size: var(--va-text-2xs);
+    font-weight: var(--va-weight-semibold);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+}
+
+.va-ask-pair p {
+    margin: 0;
+    color: var(--va-text-secondary);
+}
+
+/* The right-hand panel is the refusal, and it carries the dashed edge the token layer
+   reserves for "this is where the product stops". */
+.va-ask-pair div:last-child h3 {
+    border-bottom-style: dashed;
+}
+
+/* ------------------------------------------------------------- the plate --- */
+
+.va-plate {
+    position: relative;
+    isolation: isolate;
+    margin-block: var(--va-space-4xl);
+    padding-block: var(--va-space-5xl);
+    display: grid;
+    place-items: center;
+    overflow: clip;
+}
+
+.va-plate-ground {
+    position: absolute;
+    inset: 0;
+    z-index: var(--va-z-beneath);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+}
+
+.dark .va-plate-ground {
+    /* The plate is a photograph of paper and cannot be inverted. On carbon it is dropped and
+       the section keeps its type on the page's own ground. */
+    display: none;
+}
+
+/*
+ * What frames the plate once the photograph is gone.
+ *
+ * Dropping the ground is right and dropping it left nothing: in dark the section was four
+ * centred blocks floating in an unbounded band, with no edge anywhere to compose them
+ * against. The replacement is the hairline dialect rather than the texture at low opacity -
+ * a rule above and below, which is how the archive strip is framed on the same page, and
+ * the tightened block spacing that the photograph's own margins were carrying in light.
+ */
+.dark .va-plate {
+    border-block: var(--va-border-width) solid var(--va-line-strong);
+    padding-block: var(--va-space-4xl);
+}
+
+/*
+ * One column, one axis, and every block on it.
+ *
+ * The inner was 58rem, which no child but the verse ever filled: the verse ran 875px wide
+ * and the translation 536px directly beneath it, so the composition tapered from a line
+ * nearly the full plate to one a little over half of it and read as positioned rather than
+ * set. 46rem is the width the verse wants at this size and the width the translation is
+ * already given, so the two now sit in one column and the kicker and the colophon range on
+ * the same centre.
+ */
+.va-plate-inner {
+    width: min(100% - (2 * var(--va-shell-gutter)), 46rem);
+    margin: 0;
+    text-align: center;
+}
+
+.va-plate .va-kicker {
+    justify-content: center;
+}
+
+/*
+ * The last line, and the defect this section was reported for.
+ *
+ * `.va-sanskrit` sets `text-align-last: start`, and it is right to: a verse is not
+ * justified, and a flush last line would assert a line length the metre does not have. But
+ * `text-align-last` is a separate property from `text-align`, so a centred verse inherited
+ * it and ranged its *final* line hard left while every line above it was centred. On the
+ * plate that is two lines, one of them centred and one of them not, which is exactly the
+ * "positioned rather than composed" the QA pass saw. Centred here, and only here, because
+ * this is the one block on the site set as an epigraph rather than as a reading text.
+ *
+ * `balance` for the same reason. The plate's lines are the wrap's, not the poem's - the
+ * dandas are inside the run and the break falls where the measure puts it - so evening them
+ * asserts nothing the default did not already assert. With the narrower inner it turns an
+ * 875/583 split into three lines within 60px of each other.
+ */
+.va-plate-verse {
+    margin: var(--va-space-xl) 0 0;
+    max-width: none;
+    font-size: clamp(1.2rem, 0.95rem + 1.1vw, 1.7rem);
+    color: var(--va-text-primary);
+    text-align: center;
+    text-align-last: center;
+    text-wrap: balance;
+}
+
+.va-plate-translation {
+    margin: var(--va-space-2xl) auto 0;
+    max-width: 46ch;
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-lg);
+    line-height: var(--va-leading-prose);
+    color: var(--va-text-secondary);
+    font-optical-sizing: auto;
+}
+
+.va-plate-caption {
+    margin-top: var(--va-space-2xl);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--va-space-lg);
+    font-size: var(--va-text-xs);
+    color: var(--va-text-tertiary);
+}
+
+.va-plate-caption a {
+    color: var(--va-accent-text);
+    text-decoration: none;
+    border-bottom: var(--va-border-width) solid
+        color-mix(in srgb, var(--va-accent-text) 34%, transparent);
+}
+
+/* ---------------------------------------------------------------- absence - */
+
+.va-absence {
+    text-align: center;
+}
+
+/*
+ * The one centred section on the page, and the measure is the whole difficulty. At 22ch this
+ * headline broke to eight lines of one and two words, which reads as a poster rather than as
+ * a sentence. 34ch gives it two lines at every width the page supports.
+ */
+.va-absence .va-heading {
+    max-width: 52ch;
+    margin-inline: auto;
+}
+
+.va-absence .va-heading-title {
+    font-size: var(--va-text-2xl);
+    max-width: 34ch;
+    margin-inline: auto;
+}
+
+.va-absence .va-heading-lede {
+    max-width: 52ch;
+    margin-inline: auto;
+}
+
+.va-absence-list {
+    margin: var(--va-space-3xl) auto 0;
+    max-width: 46rem;
+    display: grid;
+    gap: var(--va-space-lg);
+    text-align: start;
+}
+
+.va-absence-list div {
+    display: grid;
+    grid-template-columns: 13rem minmax(0, 1fr);
+    gap: var(--va-space-lg);
+    padding-bottom: var(--va-space-lg);
+    border-bottom: var(--va-rule-quiet);
+}
+
+.va-absence-list dt {
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-lg);
+    color: var(--va-text-primary);
+}
+
+.va-absence-list dd {
+    margin: 0;
+    color: var(--va-text-secondary);
+}
+
+.va-absence-close {
+    margin: var(--va-space-2xl) auto 0;
+    max-width: var(--va-measure);
+    font-size: var(--va-text-sm);
+    color: var(--va-text-tertiary);
+}
+
+/* Two ways on rather than one. The evidence model and the scope of the edition are different
+   questions and a single link forces the reader to guess which one it answers. */
+.va-absence-actions {
+    margin-top: var(--va-space-2xl);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--va-space-xl) var(--va-space-3xl);
+}
+
+/* ------------------------------------------------------------- start here - */
+
+.va-start-list {
+    margin: var(--va-space-2xl) 0 0;
+    border-top: var(--va-border-width) solid var(--va-line-strong);
+}
+
+.va-start-list li {
+    border-bottom: var(--va-rule-quiet);
+}
+
+.va-start-list a {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 22rem) minmax(0, 1fr);
+    align-items: baseline;
+    gap: var(--va-space-lg);
+    padding-block: var(--va-space-lg);
+    color: inherit;
+    text-decoration: none;
+    transition: var(--va-transition-colors);
+}
+
+.va-start-index {
+    font-family: var(--va-font-mono);
+    font-size: var(--va-text-2xs);
+    color: var(--va-text-tertiary);
+    font-variant-numeric: tabular-nums;
+}
+
+.va-start-title {
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-xl);
+    color: var(--va-text-primary);
+    transition: var(--va-transition-colors);
+}
+
+/*
+ * Ranged at the right margin, because that is what the register does with metadata.
+ *
+ * The note sat at the start of a `1fr` column it never filled, so every row of the last
+ * section on the page ended with a 478px band of nothing between the note and the rule's
+ * own right edge - seven of them stacked, which is the "awkward dead space" the QA pass
+ * names. Ranging it right gives the rule two ends to run between and turns the block into
+ * the contents page it already is. The mobile rule below stacks it back under the title,
+ * where a ranged note would read as a caption for the wrong thing.
+ */
+.va-start-note {
+    justify-self: end;
+    text-align: end;
+    font-size: var(--va-text-sm);
+    color: var(--va-text-tertiary);
+}
+
+/*
+ * The hover: a rubric rule extends from the left margin and the title takes the accent. No
+ * lift, no shadow, no background fill. The row is an index entry, and an index entry that
+ * rises off the page when you look at it is a card pretending to be an index entry.
+ */
+.va-start-list a::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    width: 0;
+    height: var(--va-border-width-accent);
+    background: var(--va-accent-base);
+    transition: width var(--va-duration-base) var(--va-ease-standard);
+}
+
+.va-start-list li {
+    position: relative;
+}
+
+.va-start-list a:hover::before,
+.va-start-list a:focus-visible::before {
+    width: var(--va-space-2xl);
+}
+
+.va-start-list a:hover .va-start-title,
+.va-start-list a:focus-visible .va-start-title {
+    color: var(--va-accent-text);
+}
+
+.va-start-close {
+    margin: var(--va-space-2xl) 0 0;
+    max-width: var(--va-measure);
+    font-size: var(--va-text-sm);
+    color: var(--va-text-tertiary);
+}
+
+.va-start-close a {
+    color: var(--va-accent-text);
+    text-decoration: none;
+    border-bottom: var(--va-border-width) solid
+        color-mix(in srgb, var(--va-accent-text) 34%, transparent);
+}
+
+/* ------------------------------------------------------------- responsive - */
+
+@media (max-width: 61.99rem) {
+    .va-hero {
+        padding-block: var(--va-space-3xl) var(--va-space-2xl);
+    }
+
+    .va-hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--va-space-3xl);
+    }
+
+    /* The plate is anchored right and faded left for a two-column hero. In one column there
+       is no left to fade to, so it becomes a quiet full-width ground instead. */
+    .va-hero::before {
+        background-position: right top;
+        opacity: 0.5;
+        -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
+        mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
+    }
+
+    .va-hero-headline {
+        max-width: none;
+    }
+
+    .va-section,
+    .va-section:nth-of-type(even) {
+        padding-block: var(--va-space-3xl);
+    }
+
+    .va-bar-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: var(--va-space-sm) var(--va-space-lg);
+    }
+
+    .va-bar-label {
+        grid-column: 1 / -1;
+    }
+
+    .va-bar-row.is-absent {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .va-absence-list div,
+    .va-verse-apparatus div {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--va-space-2xs);
+    }
+
+    .va-start-list a {
+        grid-template-columns: 2.4rem minmax(0, 1fr);
+        row-gap: var(--va-space-2xs);
+    }
+
+    .va-start-note {
+        grid-column: 2;
+        justify-self: start;
+        text-align: start;
+    }
+}
+
+@media (max-width: 47.99rem) {
+    /* The band's cells stack, so the wide cell no longer needs a rule to mark itself out from
+       a row of siblings it is not sitting beside. */
+    .va-count-cell.is-wide {
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    .va-count-subjects {
+        gap: var(--va-space-sm) var(--va-space-xl);
+    }
+
+    /*
+     * A step down from the fluid display size. At the clamp's floor the headline set five
+     * lines and pushed the primary action below an 844px viewport, so the first thing a
+     * phone visitor saw had no way out of it. This keeps the type emphatic and gets the
+     * action back above the fold.
+     */
+    .va-hero-headline {
+        font-size: clamp(2rem, 1.1rem + 4.6vw, 2.5rem);
+    }
+
+    .va-hero-lede {
+        font-size: var(--va-text-md);
+    }
+
+    /*
+     * The foot is 350 px wide here against 537, so the inset comes in and the card takes the
+     * whole column. Measured at 390: a held subject's card, two connections and the way into
+     * the graph occupy about half the panel, which is the price of the card carrying words at
+     * all - and the reader asked for it by tapping a subject.
+     */
+    .va-world-preview-foot {
+        padding-inline: var(--va-space-md);
+        padding-block-start: var(--va-space-xl);
+        font-size: var(--va-text-2xs);
+    }
+
+    .va-world-preview-chosen {
+        max-width: 100%;
+        padding: var(--va-space-xs) var(--va-space-sm);
+    }
+
+    /* A phone's panel gets two names on the field rather than four; see KEY_LABELS_COMPACT. */
+    .va-world-preview-label {
+        max-width: 8rem;
+        font-size: var(--va-text-2xs);
+    }
+
+    .va-world-preview-panel {
+        aspect-ratio: 4 / 3;
+    }
+
+    /*
+     * The ledger becomes a stack of records on a phone. Six columns cannot be read at 390px
+     * and a horizontally scrolling table is a way of saying the layout gave up. Each row's
+     * cells take their own label from the header, carried in a data attribute.
+     */
+    .va-ledger,
+    .va-ledger tbody,
+    .va-ledger tr,
+    .va-ledger td,
+    .va-ledger tbody th {
+        display: block;
+        width: auto;
+    }
+
+    .va-ledger thead {
+        display: none;
+    }
+
+    .va-ledger tr {
+        padding-block: var(--va-space-xl);
+        border-bottom: var(--va-border-width) solid var(--va-line-strong);
+    }
+
+    .va-ledger tbody th,
+    .va-ledger td {
+        padding: 0 0 var(--va-space-sm);
+        border-bottom: 0;
+    }
+
+    .va-ledger td::before {
+        content: attr(data-label) " ";
+        display: block;
+        font-size: var(--va-text-2xs);
+        letter-spacing: var(--va-tracking-eyebrow);
+        text-transform: uppercase;
+        color: var(--va-text-tertiary);
+    }
+
+    .va-ledger .is-num {
+        text-align: start;
+    }
+
+    /* Stacked, the "Read" cell is the record's own action and belongs at its foot, aligned
+       with everything above it rather than pushed to the right edge of a column that is no
+       longer there. */
+    .va-ledger-open {
+        text-align: start;
+        white-space: normal;
+        padding-top: var(--va-space-xs);
+    }
+
+    .va-ledger-open::before {
+        content: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .va-action svg,
+    .va-start-list a::before {
+        transition: none;
+    }
+}
+
+/* ========================================================= the archive strip - */
+
+/*
+ * The one horizontal moving-text moment on the site, placed once.
+ *
+ * It sits where the homepage's vertical rhythm most needs breaking: between the recitation
+ * coverage bars and the connections split, which are the two tallest stacked blocks on the
+ * page. A band of citations running the other way is the break, and it is made of the
+ * corpus's own addresses rather than of decoration.
+ *
+ * See `ArchiveStrip` for why there is no timer in it and `thread.css` for the ADVANCE
+ * primitive the track uses.
+ */
+.va-archive-strip {
+    position: relative;
+    isolation: isolate;
+    margin-block: var(--va-space-5xl);
+    padding-block: var(--va-space-3xl);
+    border-block: var(--va-border-width) solid var(--va-line-strong);
+    overflow: clip;
+}
+
+/*
+ * The head sits on the page's own left margin, like every other section head.
+ *
+ * `width: var(--va-page)` with `margin-inline: auto` is the shell; the measure is applied
+ * to the children rather than to the wrapper, because a `max-width` on the wrapper centres
+ * it and the strip's head then floats in the middle of a page that is ranged left.
+ */
+.va-archive-strip-head {
+    width: var(--va-page);
+    margin-inline: auto;
+    margin-bottom: var(--va-space-2xl);
+}
+
+.va-archive-strip-head > * {
+    max-width: var(--va-measure);
+}
+
+.va-archive-strip-head h2 {
+    margin: 0;
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-xl);
+    font-weight: var(--va-weight-regular);
+    line-height: var(--va-leading-tight);
+    color: var(--va-text-primary);
+}
+
+.va-archive-strip-head p {
+    margin: var(--va-space-sm) 0 0;
+    font-size: var(--va-text-sm);
+    color: var(--va-text-tertiary);
+}
+
+/*
+ * The frame clips; the track travels.
+ *
+ * Full-bleed on purpose - this is the one element on the page that runs past the shell's
+ * gutters, which is what makes it read as a register running through the page rather than
+ * as another block sitting in it.
+ */
+.va-archive-frame {
+    /* Padded rather than inset, so the first citation starts on the page's own left margin
+       and the last one is free to run off the right edge. */
+    padding-inline-start: max(var(--va-shell-gutter), (100% - var(--va-shell-max)) / 2);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+
+.va-archive-frame::-webkit-scrollbar {
+    display: none;
+}
+
+/*
+ * The frame stays hand-scrollable at every level of support, and that is a correction.
+ *
+ * It was `overflow-x: clip` wherever `animation-timeline` was available, on the reasoning
+ * that a hand-scroll would fight the scroll-driven translate. Measured, that reasoning cost
+ * more than it bought: with the track translated and the frame clipped, an entry that has
+ * travelled out of the frame is focusable and unreachable - the browser cannot scroll a
+ * clipped box to reveal a focused child, so tabbing through the register moved focus to
+ * citations nobody could see. Playwright found it by being unable to click the first entry.
+ *
+ * `auto` with the scrollbar suppressed keeps the reveal available, and the rule below makes
+ * sure there is something to reveal: the moment focus enters the register the lateral offset
+ * is dropped, so a keyboard reader operates a plain row and the browser's own
+ * scroll-into-view works against untransformed positions.
+ *
+ * `:focus-visible`, not `:focus-within`, and that distinction is the second half of the
+ * register's click defect. A pointer press on a link focuses it, so with `:focus-within` the
+ * mousedown dropped a three-hundred-pixel lateral offset *between the press and the
+ * release*: the citation jumped out from under the cursor, mouseup landed on a different
+ * element, and the click never completed. Measured against the running page - the pointer
+ * proof stayed on the homepage while the keyboard proof opened the verse. Keyboard focus
+ * still matches, because Chromium does not match `:focus-visible` on a pointer press to a
+ * link, so the reveal a tab-stop needs is unchanged and the pointer no longer moves its own
+ * target.
+ */
+.va-archive-strip:has(.va-register-track a:focus-visible) .va-register-track {
+    animation: none;
+    transform: none;
+}
+
+.va-archive-strip .va-register-track {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: baseline;
+}
+
+.va-archive-strip .va-register-track a {
+    display: grid;
+    gap: var(--va-space-3xs);
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.va-archive-collection {
+    font-size: var(--va-text-2xs);
+    letter-spacing: var(--va-tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--va-text-tertiary);
+    transition: var(--va-transition-colors);
+}
+
+.va-archive-citation {
+    font-family: var(--va-font-display);
+    font-size: var(--va-text-2xl);
+    font-weight: var(--va-weight-regular);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--va-tracking-tight);
+    line-height: var(--va-leading-flat);
+    color: var(--va-text-secondary);
+    border-bottom: var(--va-border-width) solid transparent;
+    transition: var(--va-transition-colors);
+}
+
+.va-archive-strip .va-register-track a:hover .va-archive-citation,
+.va-archive-strip .va-register-track a:focus-visible .va-archive-citation {
+    color: var(--va-accent-text);
+    border-bottom-color: var(--va-accent-base);
+}
+
+.va-archive-strip .va-register-track a:hover .va-archive-collection,
+.va-archive-strip .va-register-track a:focus-visible .va-archive-collection {
+    color: var(--va-text-secondary);
+}
+
+@media (max-width: 47.999rem) {
+    .va-archive-citation {
+        font-size: var(--va-text-xl);
+    }
+
+    .va-archive-strip .va-register-track {
+        gap: var(--va-space-xl);
+    }
+}
